@@ -1,0 +1,10 @@
+<div id="user_nav">
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <%= link_to "Invite User", send_invitation_users_path %>
+    <%= link_to "Create Company", new_company_path %>
+  <% else %>
+    <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+</div>

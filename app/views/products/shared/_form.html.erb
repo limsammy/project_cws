@@ -1,0 +1,7 @@
+<%= f.select :company_id, option_for_select(company_list)  %>
+<%= f.input "product_name", label: "Product" %>
+<%= f.input "code", label: "Code" %>
+<%= f.input "quantity", label: "Quantity" %>
+<%= f.input "last_order", label: "Last Order" %>
+ <%= f.input "recorder_type", label: "Recorder type" %>
+ <%= f.submit "Save" %>

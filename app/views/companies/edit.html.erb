@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-sm-12 col-md-8">
+    <h1>Edit Company</h1>
+    <%= simple_nested_form_for @company do |f| %>
+      <%= render partial:'companies/shared/form' , locals: {f: f} %>
+    <%end%>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

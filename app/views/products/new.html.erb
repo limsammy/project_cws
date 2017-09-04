@@ -1,0 +1,4 @@
+<%= simple_nested_form_for @product, url: products_path, method: :post do |f| %>
+  <%= render partial:'products/shared/form' , locals: {f: f} %>
+
+<%end %>

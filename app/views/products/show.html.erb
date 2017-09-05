@@ -1,7 +1,29 @@
-Product Name <%= @product.product_name %>
-Code <%= @product.code %>
-Quantity <%= @product.quantity %>
-Last Order<%= @product.last_order %>
-Recorder Type <%= @product.recorder_type %>
+<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_product_path(@product)%>
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @product.code %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @product.company %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Stock in hand:</strong>
+  <%= @product.stock_in_hand %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

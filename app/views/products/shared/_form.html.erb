@@ -1,4 +1,3 @@
-<% binding.pry %>
 <%= f.input :order_id, collection: Order.all.map{ |a| [a.order_number, a.id] } %>
 <%= f.input "code", label: "Code" %>
 <%= f.input "quantity", label: "Quantity" %>

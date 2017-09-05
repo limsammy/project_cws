@@ -1,12 +1,10 @@
 class ProductsController < ApplicationController
   include ApplicationHelper
   def new
-    binding.pry
     @product = Product.new
   
   end
   def create
-    binding.pry
     @product = Product.new(product_params)
     if @product.save
       redirect_to product_path(@product)
@@ -26,6 +24,10 @@ class ProductsController < ApplicationController
     if @product.update_attributes(product_params)
       redirect_to product_path(@product)
     end
+  end
+
+  def index
+    @products = Product.all
   end
 
   private

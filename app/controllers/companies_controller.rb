@@ -1,8 +1,6 @@
 class CompaniesController < ApplicationController
 
-  def index
-
-  end
+  
 
   def new
     @company = Company.new
@@ -19,9 +17,8 @@ class CompaniesController < ApplicationController
   def edit
     @company = Company.find(params[:id])
   end
-
   def update
-     @company = Company.find(params[:id])
+    @company = Company.find(params[:id])
     if @company.update_attributes(company_params)
       flash[:success] = "Successfully updated"
       redirect_to company_path(@company)
@@ -33,8 +30,8 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
   end
 
-  def destroy
-
+  def index
+    @companies = Company.all
   end
 
 

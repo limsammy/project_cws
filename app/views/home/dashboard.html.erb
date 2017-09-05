@@ -4,6 +4,8 @@
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
     <%= link_to "Invite User", send_invitation_users_path %>
     <%= link_to "Create Company", new_company_path %>
+    <%= link_to "Create Client", new_client_url %>
+    <%= link_to "Create Order", new_order_url %>
   <% else %>
     <%= link_to "sign in", new_user_session_path %>
   <% end %>

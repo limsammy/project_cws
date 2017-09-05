@@ -1,12 +1,10 @@
 class ClientsController < ApplicationController
   def new
-    binding.pry
     @client= Client.new
     @client.build_address
   end
 
   def create
-    binding.pry
     @client = Client.new(client_params)
     if @client.save
       flash[:success] = " Client Created"
@@ -24,6 +22,10 @@ class ClientsController < ApplicationController
     if @client.update_attributes(client_params)
       flash[:success] = "successfully updated"
     end
+  end
+
+  def index
+    @clients = Client.all
   end
   private
   def client_params

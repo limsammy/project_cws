@@ -1,11 +1,11 @@
 
 Name <%= @client.name %>
-Department <%= @client.department %>
-phone <%= @client.mobile_number %>
-Line 1 <%= @company.address.line_1 %>
-Line 2  <%= @company.address.line_2 %>
-Country <%= @company.address.country %>
-State <%= @company.address.state %>
-Zip <%= @company.address.zip %>
+email <%= @client.email %>
+phone <%= @client.mob_number %>
+Line 1 <%= @client.address.line_1 %>
+Line 2  <%= @client.address.line_2 %>
+Country <%= @client.address.country %>
+State <%= @client.address.state %>
+Zip <%= @client.address.zip %>
 
 <%= link_to "EDIT", edit_client_path(@client) %>

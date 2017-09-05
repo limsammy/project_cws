@@ -1,0 +1,4 @@
+<%= f.input 'company_id' , label: "Company", collection: Company.all.map{ |a| [a.name, a.id]} %>
+<%= f.input 'order_number', label: "Order Number" %>
+<%= f.input 'order_detail', label: "Order Detail" %>
+<%= f.submit 'Save' %>	

@@ -11,19 +11,16 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    binding.pry
     if @company.save
       redirect_to company_path(@company)
     end
   end
 
   def edit
-    binding.pry
     @company = Company.find(params[:id])
   end
 
   def update
-    binding.pry
      @company = Company.find(params[:id])
     if @company.update_attributes(company_params)
       flash[:success] = "Successfully updated"
@@ -43,7 +40,6 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      binding.pry
       params.require(:company).permit(:id, :name, :department, :phone_number, :fax,
                                       address_attributes: [
                                         :id ,

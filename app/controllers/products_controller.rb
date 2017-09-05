@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   include ApplicationHelper
   def new
     binding.pry
-    @product = Product.new(company_id: current_user.company_id)
+    @product = Product.new
+  
   end
   def create
     binding.pry
@@ -29,6 +30,6 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:id, :company_id, :product_name, :code, :quantity, :last_order, :recorder_type)
+    params.require(:product).permit(:id, :order_id, :product_name, :code, :quantity, :last_order, :recorder_type)
   end
 end

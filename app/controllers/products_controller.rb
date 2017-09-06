@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product= Product.find(params[:id])
   end
 
   # POST /products
@@ -42,7 +41,6 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        @product.order_item.update_attributes(quantity: @product.order_item.quantity)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else

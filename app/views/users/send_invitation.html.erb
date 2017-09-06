@@ -1,0 +1,14 @@
+<h2>Invite User</h2>
+<%= form_tag create_invitation_users_path, method: :put do  %>
+  <div class="field">
+    <%= label_tag "Email" %><br />
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag "First Name" %><br />
+    <%= text_field_tag :first_name %>
+  </div>
+  <div>
+    <%= submit_tag "Invite User", class: "btn btn-success btn-sm"  %>
+  </div>
+<% end %>

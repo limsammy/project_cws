@@ -1,0 +1,25 @@
+<%= f.input 'company_id' , label: "Company", collection: Company.all.map{ |a| [a.name, a.id]} %>
+<%= f.input 'client_id' , label: "Client", collection: Client.all.map{ |a| [a.name, a.id]} %>
+
+<%= f.input 'order_number', label: "Order Number" %>
+<%= f.input 'order_description', label: "Order Detail" %>
+<!-- <div id = "items" >
+	<h3> Order Items </h3>
+		<%= f.fields_for :order_items do |a| %>
+		  <%= a.input 'quantity', label: "Quantity" %>
+		<%end%>
+</div>
+<p><%= f.link_to_add "Add a task", :order_items, "data-target" => "#items" %></p>
+ -->
+
+<table id="tasks">
+  <%= f.fields_for :order_items do |a| %>
+    <tr class="fields">
+      <td><%= a.input 'quantity', label: "Quantity" %></td>
+      <td><%= a.link_to_remove "Remove " %></td>
+    </tr>
+  <% end %>
+</table>
+<p><%= f.link_to_add "Add", :order_items, :data => { :target => "#tasks" } %></p>
+
+<%= f.submit 'Save' %>	

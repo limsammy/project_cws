@@ -1,0 +1,19 @@
+<table>
+	<tr>
+		<td>
+			Order Number
+		</td>
+    <td> Order Detail </td>
+    <td> Action </td>
+  </tr>
+	<%= @orders.each_with_index do |i| %>
+		<tr>
+			<td>
+				<%= i.order_number %></td>
+			<td><%= i.order_description %></td>
+			<td><%= link_to 'show', order_path(i) %></td><br>
+	  </tr>
+	<%end%>
+		<br>
+</table>
+

@@ -1,0 +1,11 @@
+
+Name <%= @client.name %>
+email <%= @client.email %>
+phone <%= @client.mob_number %>
+Line 1 <%= @client.address.line_1 %>
+Line 2  <%= @client.address.line_2 %>
+Country <%= @client.address.country %>
+State <%= @client.address.state %>
+Zip <%= @client.address.zip %>
+
+<%= link_to "EDIT", edit_client_path(@client) %>

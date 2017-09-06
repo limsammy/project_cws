@@ -1,0 +1,48 @@
+class CompaniesController < ApplicationController
+
+  def new
+    @company = Company.new
+    @company.build_address
+  end
+
+  def create
+    @company = Company.new(company_params)
+    if @company.save
+      redirect_to company_path(@company)
+    end
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+  def update
+    @company = Company.find(params[:id])
+    if @company.update_attributes(company_params)
+      flash[:success] = "Successfully updated"
+      redirect_to company_path(@company)
+    else
+      render :new
+    end
+  end
+  def show
+    @company = Company.find(params[:id])
+  end
+
+  def index
+    @companies = Company.all
+  end
+
+
+  private
+    def company_params
+      params.require(:company).permit(:id, :name, :department, :phone_number, :fax,
+                                      address_attributes: [
+                                        :id ,
+                                        :line_1 ,
+                                        :line_2 ,
+                                        :country ,
+                                        :state ,
+                                        :zip])
+
+    end
+end

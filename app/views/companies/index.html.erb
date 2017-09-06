@@ -1,0 +1,9 @@
+<%= @companies.each_with_index do |i|  %>
+ 
+  <%= i.name %>
+  <%= i.department %>
+  <%= i.phone_number %>
+  <%= i.fax %>
+  <%= link_to 'show', company_path(i) %>
+  <br>
+<% end %>

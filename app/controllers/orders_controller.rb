@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
   def new
+    binding.pry
   	@order = Order.new
+    @order.order_items.build
+
   end
 
   def create
+    binding.pry
     @order = Order.new(order_params) 
     if @order.save
     	redirect_to order_path(@order)
@@ -38,7 +42,13 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:id, :company_id, :order_number,:order_detail)
+    params.require(:order).permit(:id, :company_id, :client_id, :order_number,:order_description,
+                                   order_items_attributes: [
+                                    :id,
+                                    :quantity,
+                                    :_destroy
+                                    ])
 
   end
+
 end

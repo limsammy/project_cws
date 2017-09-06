@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905055334) do
+ActiveRecord::Schema.define(version: 20170905120016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,23 +44,39 @@ ActiveRecord::Schema.define(version: 20170905055334) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "order_items", force: :cascade do |t|
+    t.string "quantity"
+    t.bigint "client_id"
+    t.bigint "order_id"
+    t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_order_items_on_client_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
     t.integer "order_number"
-    t.string "order_detail"
-    t.integer "company_id"
+    t.string "order_description"
+    t.bigint "company_id"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["company_id"], name: "index_orders_on_company_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "product_name"
-    t.string "code"
-    t.float "quantity"
-    t.datetime "last_order"
-    t.integer "recorder_type"
+    t.string "name", null: false
+    t.string "code", null: false
+    t.bigint "company_id"
+    t.decimal "price", precision: 10, scale: 5, null: false
+    t.integer "stock_in_hand", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_id"
+    t.index ["code", "company_id"], name: "index_products_on_code_and_company_id", unique: true
+    t.index ["company_id"], name: "index_products_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,4 +112,10 @@ ActiveRecord::Schema.define(version: 20170905055334) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "order_items", "clients"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
+  add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "companies"
+  add_foreign_key "products", "companies"
 end

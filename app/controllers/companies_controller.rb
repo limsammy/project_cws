@@ -1,7 +1,5 @@
 class CompaniesController < ApplicationController
 
-  
-
   def new
     @company = Company.new
     @company.build_address

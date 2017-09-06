@@ -1,10 +1,13 @@
   <%= f.input :name, as: :string, label: "Company Name", input_html: {class: "form-control masked exp_desp ", placeholder: "company name"} %>
   <%= f.input :fax, as: :string, label: "Fax", input_html: {class: "form-control masked exp_desp ", placeholder: "Fax"} %>
+  <%= f.input :phone_number, as: :string, label: "Phone", input_html: {class: "form-control masked exp_desp ", placeholder: "Phone"} %>
+  <%= f.input :department, as: :string, label: "Department", input_html: {class: "form-control masked exp_desp ", placeholder: "Department"} %>
+
 
 
 <%= f.fields_for :address do |addr| %>
-  <%= addr.input "line_1", label: "LINE 1" %>
-  <%= addr.input "line_2", label: "line 2" %>
+  <%= addr.input "line_1", label: "Address Line 1" %>
+  <%= addr.input "line_2", label: "Address Line 2" %>
   <%= addr.input "country", as: :text, label: "Country" %>
   <%= addr.input "state", label: "State" %>
   <%= addr.input "zip", label: "Zip" %>

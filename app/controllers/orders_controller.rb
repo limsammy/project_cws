@@ -1,13 +1,11 @@
 class OrdersController < ApplicationController
   def new
-    binding.pry
   	@order = Order.new
     @order.order_items.build
 
   end
 
   def create
-    binding.pry
     @order = Order.new(order_params) 
     if @order.save
     	redirect_to order_path(@order)

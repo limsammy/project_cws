@@ -1,4 +1,4 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_nested_form_for(@product) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -7,10 +7,6 @@
     <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]} %>
     <%= f.input :price %>
     <%= f.input :stock_in_hand %>
-    <%= f.fields_for :order_items do |a| %>
-      <%= a.input 'quantity', label: "Quantity" %>
-    <%end%>
-
   </div>
 
   <div class="form-actions">

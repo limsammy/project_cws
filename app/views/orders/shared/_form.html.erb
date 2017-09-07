@@ -1,25 +1,23 @@
-<%= f.input 'company_id' , label: "Company", collection: Company.all.map{ |a| [a.name, a.id]} %>
-<%= f.input 'client_id' , label: "Client", collection: Client.all.map{ |a| [a.name, a.id]} %>
 
-<%= f.input 'order_number', label: "Order Number" %>
-<%= f.input 'order_description', label: "Order Detail" %>
-<!-- <div id = "items" >
-	<h3> Order Items </h3>
-		<%= f.fields_for :order_items do |a| %>
-		  <%= a.input 'quantity', label: "Quantity" %>
-		<%end%>
+<div class="form-inputs">
+	<%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]} %>
+	<%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]} %>	
+	<%= f.input :order_number %>
+	<%= f.input :order_description %>
 </div>
-<p><%= f.link_to_add "Add a task", :order_items, "data-target" => "#items" %></p>
- -->
 
-<table id="tasks">
-  <%= f.fields_for :order_items do |a| %>
-    <tr class="fields">
-      <td><%= a.input 'quantity', label: "Quantity" %></td>
-      <td><%= a.link_to_remove "Remove " %></td>
-    </tr>
-  <% end %>
-</table>
-<p><%= f.link_to_add "Add", :order_items, :data => { :target => "#tasks" } %></p>
+<h4> Order Items </h4>
+<%= f.link_to_add "Add a task", :order_items %>
+<%= f.fields_for :order_items do |a| %>
+  <div class = "aaa"> 
+  	<%= a.label :product %>
+  	<%= a.collection_select :product_id, Product.all, :id, :name %>
+    <%= a.label :Quantity %>
+    <%= a.text_field :quantity %>
+    <%= a.label :Amount %>
+    <%= a.text_field :amount %>
 
+  </div>
+  <%= a.link_to_remove "Remove this task" %>
+<% end %>
 <%= f.submit 'Save' %>

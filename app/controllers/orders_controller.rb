@@ -44,7 +44,8 @@ class OrdersController < ApplicationController
                                    order_items_attributes: [
                                     :id,
                                     :quantity,
-                                    :_destroy
+                                    :amount,
+                                    :_destroy,
                                     ])
 
   end

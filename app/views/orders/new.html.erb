@@ -1,7 +1,5 @@
 <h1> Create Order </h1>
-<%= simple_nested_form_for @order, url: orders_path, method: :post do |f| %>
-  <%= render partial: 'orders/shared/form',  locals: {f:f} %>
+<%= render partial: 'orders/shared/form', order: @order %>
 
-<%end %>
 
 

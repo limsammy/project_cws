@@ -51,15 +51,22 @@ class ProductsController < ApplicationController
     end
   end
 
-
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def per_amount
+    no_of_item = params[:id]
+    render json: {value: no_of_item }
+  end
+
+  def per_price
+    unit_price = Product.find_by(id: params[:id]).price.to_i
+    render json: {value: unit_price}
   end
 
   private
@@ -73,6 +80,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:id,:name, :code, :company_id, :price, :stock_in_hand,
                                     order_items_attributes: [ 
                                       :id,
+                                      :unit_price,
                                       :quantity,
                                       :amount,
                                       :_destroy])

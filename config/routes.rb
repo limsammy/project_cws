@@ -11,7 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products
+  resources :products  do
+    collection do
+      get "per_amount"
+      get "per_price"
+    end
+  end
+
 
   resources :addresses do
   end

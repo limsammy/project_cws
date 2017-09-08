@@ -14,7 +14,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery_nested_form
+//= require bootstrap-datepicker
 //= require_tree .
+
 
 // $(document).on('change', '.quant', function(){
 // 	console.log("aaaaa");
@@ -22,3 +24,36 @@
 // 	id = $('.quant').val();
 // 	console.log(id);
 // })
+
+$(document).on('keyup	', '.quant', function(){
+  quantity = $(this).val();
+  unit_price = quantity * ($('#uprice').val());
+  $.ajax({
+  	url: "/products/per_amount",
+  	data: {id: quantity},
+  	dataType: "json",
+  	type: "GET",
+    success:function() {
+      $('#amt').val(unit_price);
+    }
+  });
+})
+
+$(document).on('change', '.product_id', function(){
+  product_id = $(this).val();
+  $.ajax({
+    url:  "/products/per_price",
+    data:  {id: product_id},
+    dataType: "json",
+    type: "GET",
+    success:function(data) {
+      $('#uprice').val(data.value);
+    }
+  });
+})
+
+$(document).ready(function(){
+  $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy', "autoclose": true
+  });
+});

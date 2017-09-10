@@ -1,0 +1,226 @@
+body {
+	background: #f2f2f2;
+}
+
+.full-width { width: 100%; }
+
+.full-height { height: 100%; }
+
+.no-margin { margin: 0; }
+
+.no-padding { padding: 0; }
+
+.no-p-t { padding-top: 0; }
+.no-p-l { padding-left: 0; }
+.no-p-r { padding-right: 0; }
+.no-p-b { padding-bottom: 0; }
+
+.no-b-r { border-radius: 0; }
+
+.padding-normal { padding: 1rem; }
+
+header, main, footer {
+    margin-left: 300px;
+}
+
+header, main {
+	margin-top: 65px;
+}
+
+main { 
+	padding: 20px; 
+	background: #f2f2f2;
+}
+
+.side-nav.fixed { 
+	top: auto; 
+	background: #4a5469;
+}
+
+.side-nav.fixed i {
+	background: transparent !important;
+}
+
+.side-nav.fixed a.collapsible-header.active {
+    background-color: #2b3037 !important;
+}
+
+.side-nav.fixed .collapsible-body {
+	background: #373E4B;
+}
+
+.side-nav.fixed * {
+    color: white !important;
+}
+
+nav.main-header {
+	background: #262b36;
+	position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+nav.breadcrumb-row {
+	background: transparent;
+	box-shadow: none;
+}
+
+nav.breadcrumb-row *:not(button), .breadcrumb:before {
+	font-size: 15px;
+    color: black !important;
+}
+
+nav.breadcrumb-row button.btn * {
+	color: white !important;
+    line-height: normal;
+    padding: 10px 0;
+}
+
+.basic.card {
+	box-shadow: none;
+}
+
+.btn.btn-primary {
+    background-color: #63708c;
+    box-shadow: none;
+    border: 1px solid #63708c;
+}
+
+.btn.btn-basic {
+	background: white;
+    color: #63708c;
+    border: 1px solid;
+    box-shadow: none;
+}
+
+.btn.btn-danger {
+	background: #F44336;
+	border: 1px solid #F44336;
+}
+
+.btn, .btn-large, .btn-flat {
+	padding: 0 1rem;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+thead { background: #d8dce3; }
+
+th, td { padding: 15px 10px ; border-radius: 0;}
+
+td { font-size: 15px; }
+
+table.highlight>tbody>tr:hover {
+    background-color: #e6e6e6;
+}
+
+.search-wrapper {
+	display: flex;
+    background: white;
+}
+
+.search-wrapper input[type=search], .search-wrapper input[search]:focus {
+    margin: 0;
+    padding: 0 10px;
+	border: 0 !important;
+    box-shadow: none !important;
+}
+
+.search-wrapper i {
+	height: auto !important;
+    line-height: normal !important;
+    padding: 10px;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.sales-report {
+	width: 49% !important;
+    float: right !important;
+}
+
+select { display: block !important; }
+
+input.custom-input, input.custom-input:focus, select.custom-input, textarea.custom-input {
+	border: 1px solid darkgray !important;
+    border-radius: 3px !important;
+    background: white !important;
+    margin: 6px 0 0 !important;
+    box-shadow: none !important;
+    padding: 14px !important;
+    height: auto !important;
+    width: auto !important;
+}
+
+.auth-form {
+	max-width: 450px;
+    width: 95%;
+}
+
+.auth-form > * {
+    padding: 10px 35px;
+}
+
+.auth-form .header {
+	padding-top: 30px;
+    padding-bottom: 30px;
+    background: #63708c;
+    letter-spacing: 2px;
+}
+
+.auth-form .content {
+	padding: 50px 35px;
+}
+
+form .field .col {
+	display: flex;
+    flex-direction: column;
+}
+
+.auth-form .primary-link {
+	color: #7381a0;
+    padding-bottom: 1px;
+    border-bottom: 1px solid;
+    margin: 0 5px;
+}
+
+.auth-form button {
+	width: 100%;
+    font-size: 1.2rem;
+    height: auto;
+    padding: 5px;
+    text-transform: capitalize;
+}
+
+.add-form button {
+    padding: 2px 30px;
+    height: auto !important;
+    width: auto;
+}
+
+.add-product {
+	max-width: 768px;
+    margin: auto;
+}
+
+.add-product .card-title {
+	padding: 4px 10px;
+}
+
+.tabs {
+	overflow: hidden;
+}
+
+.tabs .tab a, .tabs .tab a.hover {
+	color: white !important;
+    background: rgba(74, 84, 105, 0.5) !important;
+}
+
+.tabs .tab a.active {
+	background: #4a5469 !important;
+    color: white;
+}
+
+.tabs .indicator { display: none; }

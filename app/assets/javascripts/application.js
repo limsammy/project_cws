@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require jquery_nested_form
 //= require bootstrap-datepicker
+//= require_tree ../../../vendor/assets/js/.
 //= require_tree .
 
 
@@ -53,7 +54,7 @@ $(document).on('change', '.product_id', function(){
 })
 
 $(document).ready(function(){
-  $('.datepicker').datepicker({
+  $('#order_order_at').datepicker({
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });

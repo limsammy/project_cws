@@ -3,12 +3,43 @@
   <head>
     <title>ProjectCws</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%#= yield %>
+    <body>
+    <nav class="main-header">
+      <div class="row nav-wrapper">
+        <div class="col s12">
+          <a href="#" class="brand-logo">CWS</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="">RAHEEEL</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header>
+      <%if current_user.present?%>
+        <%= render "layouts/sidebar" %>
+      <%end%>
+
+    </header>
+    <main>
+      <div id="page_view">
+      <%= yield %>
+
+      </div>
+    </main>
+    <footer></footer>
+
+
+  </body>
   </body>
 </html>

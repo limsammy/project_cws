@@ -1,0 +1,54 @@
+<ul class="side-nav fixed">
+  <li>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li id="orders">
+        <a class="collapsible-header">
+          <i class="material-icons">shopping_cart</i>Orders
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li id="orders/list">
+              <a class="cursor-pointer">Orders List</a>
+            </li>
+            <li id="orders/add">
+              <a class="cursor-pointer" onclick="navigate('orders', 'orders/new')">Create New Order</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li id="products">
+        <a class="collapsible-header">
+          <i class="material-icons">layers</i>Products
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li id="products/list">
+              <a class="cursor-pointer" onclick="navigate('products', 'products/list')">Products List</a>
+            </li>
+            <li id="products/add">
+              <a class="cursor-pointer" onclick="navigate('products', 'products/new')">Add New Product</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li id="clients">
+        <a class="collapsible-header">
+          <i class="material-icons">people</i>Clients
+        </a>
+        <div class="collapsible-body">
+          <ul>
+            <li id="clients/companies">
+              <a class="cursor-pointer">Companies List</a>
+            </li>
+            <li id="clients/employees">
+              <a class="cursor-pointer">Employees List</a>
+            </li>
+            <li id="clients/add">
+              <a class="cursor-pointer" onclick="navigate('clients', 'clients/new')">Add New Client</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>

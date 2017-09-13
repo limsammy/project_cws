@@ -16,5 +16,8 @@
  */
   @import "bootstrap-sprockets";
   @import "bootstrap";
-  @import "materialize.min";
+  @import "bootstrap.min";
+  @import "bootstrap-extension";
+  @import "sidebar-nav.min";
+  @import "animate";
   @import "style";

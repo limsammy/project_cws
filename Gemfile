@@ -40,6 +40,7 @@ gem 'nested_form'
 gem 'bootstrap-sass'
 gem 'faker'
 gem 'bootstrap-datepicker-rails'
+gem 'font-awesome-sass'
 
 
 group :development, :test do

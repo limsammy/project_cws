@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery.min.js
 //= require tether.min.js
-//= require bootstrap.min.js
 //= require bootstrap-extension.min.js
 //= require sidebar-nav.min.js
 //= require jquery.slimscroll.js

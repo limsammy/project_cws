@@ -3,165 +3,33 @@
   <head>
     <title>ProjectCws</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <!-- <body>
-    <%#= yield %>
-  </body> -->
   <body>
-    <div id="wrapper">
-        <!-- Top Navigation -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-              <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i>
-              </a>
-                <!-- Logo -->
-                <div class="top-left-part">
-                    <a class="logo" href="index.html">
-                        <!-- Logo icon image, you can use font-icon also --><b><img src="../plugins/images/eliteadmin-logo.png" alt="home" /></b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs"><img src="../plugins/images/eliteadmin-text.png" alt="home" /></span> </a>
-                </div>
-                <!-- /Logo -->
-                <!-- This is for mobile view search and menu icon -->
-                <ul class="nav navbar-top-links navbar-left hidden-xs">
-                    <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a>
-                    </li>
-                    <li>
-                        <form role="search" class="app-search hidden-xs">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                    </li>
-                </ul>
-                <!-- This is the message dropdown -->
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <!-- /.dropdown -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
-                        <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a>
-                            </li>
-                            <li><a href="#"><i class="ti-wallet"></i> My Balance</a>
-                            </li>
-                            <li><a href="#"><i class="ti-email"></i> Inbox</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="ti-settings"></i> Account Setting</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-
-                    <!-- /.dropdown -->
-                </ul>
-            </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-        <!-- End Top Navigation -->
-        <!-- Left navbar-header -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
-                <ul class="nav" id="side-menu">
-                    <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                        <!-- input-group -->
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-            <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-            </span> </div>
-                        <!-- /input-group -->
-                    </li>
-                    <li class="user-pro">
-                        <a href="#" class="waves-effect"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"> Steve Gection<span class="fa arrow"></span></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a>
-                            </li>
-                            <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a>
-                            </li>
-                            <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a>
-                            </li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a>
-                            </li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
-                    <li> <a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard <span class="fa arrow"></span> <span class="label label-rouded label-custom pull-right">4</span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li> <a href="index.html">Demographical</a> </li>
-                            <li> <a href="index2.html">Minimalistic</a> </li>
-                            <li> <a href="index3.html">Analitical</a> </li>
-                            <li> <a href="index4.html">Simpler</a> </li>
-                        </ul>
-                    </li>
-                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Apps <span class="fa arrow"></span></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="chat.html">Chat-message</a>
-                            </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Inbox<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li> <a href="inbox.html">Mail box</a>
-                                    </li>
-                                    <li> <a href="inbox-detail.html">Inbox detail</a>
-                                    </li>
-                                    <li> <a href="compose.html">Compose mail</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Contacts<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li> <a href="contact.html">Contact1</a>
-                                    </li>
-                                    <li> <a href="contact2.html">Contact2</a>
-                                    </li>
-                                    <li> <a href="contact-detail.html">Contact Detail</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
+    <%if current_user.present? %>
+      <div id="wrapper">
+        <%= render partial: 'layouts/header'%>
+        <%= render partial: 'layouts/sidebar'%>
+            <div id="page-wrapper">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <%= yield %>
+                      </div>
+                  </div>
+              </div>
+              <footer class="footer text-center"> 2017 &copy; Elite Admin brought to you by themedesigner.in </footer>
+          </div>
+      </div>
+    <%else%>
+      <section id="wrapper" class="login-register">
+        <div class="login-box">
+            <div class="white-box">
+                <%= yield %>
             </div>
         </div>
-        <!-- Left navbar-header end -->
-        <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Starter Page </h4> </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="https://themeforest.net/item/elite-admin-the-ultimate-dashboard-web-app-kit-material-design/16750820?ref=suniljoshi" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-                        <ol class="breadcrumb">
-                            <li><a href="#">Dashboard</a>
-                            </li>
-                            <li class="active">Starter Page</li>
-                        </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Blank Starter page</h3> </div>
-                    </div>
-                </div>
-                <!-- .right-sidebar -->
-
-                <!-- /.right-sidebar -->
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; Elite Admin brought to you by themedesigner.in </footer>
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-</body>
+      </section>
+    <%end%>
+  </body>
 </html>

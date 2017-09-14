@@ -1,6 +1,6 @@
 <%= form_for(resource, as: resource_name, html: {class: "form-horizontal form-material", id: "loginform"}, url: session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <h3 class="box-title m-b-20">Sign Up</h3>
+  <h3 class="box-title m-b-20">Sign In</h3>
   <div class="form-group ">
     <div class="col-xs-12">
       <%= f.email_field :email, class: "form-control", type: "text", required: "", placeholder: "Email" %>

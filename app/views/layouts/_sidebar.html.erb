@@ -1,66 +1,75 @@
 <div class="navbar-default sidebar" role="navigation">
   <div class="sidebar-nav navbar-collapse slimscrollsidebar">
     <ul class="nav" id="side-menu">
-        <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-            <!-- input-group -->
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-        <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-        </span> </div>
-            <!-- /input-group -->
+        <li class="nav-small-cap m-t-10"></li>
+        <li>
+          <a href="/" "data-no-turbolink"="true" class="waves-effect">
+            <i class="fa fa-dashboard"></i>
+            <span class="hide-menu">
+              Dashboard
+            </span>
+          </a>
         </li>
-        <li class="user-pro">
-            <a href="#" class="waves-effect"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span class="hide-menu"> Steve Gection<span class="fa arrow"></span></span>
-            </a>
+        <li>
+          <%= link_to new_company_path, class: "waves-effect", 'data-no-turbolink' => true do %>
+            <i class="fa fa-dashboard"></i>
+            Create Company
+          <% end %>
+        </li>
+        <li>
+          <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
+            <i class="fa fa-dashboard"></i>
+            Send Invitation
+          <% end %>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Inventory <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
-                <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a>
+                <li>
+                    <%= link_to new_product_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                      Create Product
+                    <% end %>
                 </li>
-                <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a>
-                </li>
-                <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a>
-                </li>
-                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a>
-                </li>
-                <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a>
+                <li>
+                    <%= link_to products_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                       Products
+                    <% end %>
                 </li>
             </ul>
         </li>
-        <li class="nav-small-cap m-t-10">--- Main Menu</li>
-        <li> <a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard <span class="fa arrow"></span> <span class="label label-rouded label-custom pull-right">4</span></span></a>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Orders <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
-                <li> <a href="index.html">Demographical</a> </li>
-                <li> <a href="index2.html">Minimalistic</a> </li>
-                <li> <a href="index3.html">Analitical</a> </li>
-                <li> <a href="index4.html">Simpler</a> </li>
-            </ul>
-        </li>
-        <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Apps <span class="fa arrow"></span></span></a>
-            <ul class="nav nav-second-level">
-                <li><a href="chat.html">Chat-message</a>
+                <li>
+                    <%= link_to new_order_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                      Create Order
+                    <% end %>
                 </li>
-                <li><a href="javascript:void(0)" class="waves-effect">Inbox<span class="fa arrow"></span></a>
-                    <ul class="nav nav-third-level">
-                        <li> <a href="inbox.html">Mail box</a>
-                        </li>
-                        <li> <a href="inbox-detail.html">Inbox detail</a>
-                        </li>
-                        <li> <a href="compose.html">Compose mail</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="javascript:void(0)" class="waves-effect">Contacts<span class="fa arrow"></span></a>
-                    <ul class="nav nav-third-level">
-                        <li> <a href="contact.html">Contact1</a>
-                        </li>
-                        <li> <a href="contact2.html">Contact2</a>
-                        </li>
-                        <li> <a href="contact-detail.html">Contact Detail</a>
-                        </li>
-                    </ul>
+                <li>
+                    <%= link_to orders_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                       Orders
+                    <% end %>
                 </li>
             </ul>
         </li>
-
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Clients <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <%= link_to new_client_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                      Create Client
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to clients_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                       Clients
+                    <% end %>
+                </li>
+            </ul>
+        </li>
     </ul>
   </div>
 </div>

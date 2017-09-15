@@ -1,50 +1,51 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = Order.all
+  end
+
   def new
-  	@order = Order.new
+    @order = Order.new
     @order.order_items.build
-
-  end
-
-  def create
-    @order = Order.new(order_params) 
-    if @order.save
-    	redirect_to order_path(@order)
-    else
-    	render :new
-
-    end
-  end
-
-  def show
-  	@order = Order.find(params[:id])
   end
 
   def edit
     @order = Order.find(params[:id])
   end
 
-  def update
+  def show
     @order = Order.find(params[:id])
-    if @order.update_attributes(order_params)
-    	flash[:success]= "updated successfully"
-    	redirect_to order_path(@order)
+  end
+
+  def create
+    @order = Order.new(order_params)
+    if @order.save
+      redirect_to order_path(@order)
     else
-    	render :edit
+      render :new
     end
   end
 
-  def index
-    @orders = Order.all
+  def update
+    @order = Order.find(params[:id])
+    if @order.update_attributes(order_params)
+      flash[:success]= "updated successfully"
+      redirect_to order_path(@order)
+    else
+      render :edit
+    end
   end
-
 
   private
   def order_params
-    params.require(:order).permit(:id, :company_id, :client_id, :order_number,:order_description,
+    params.require(:order).permit(:id, :company_id, :client_id, :order_number, :order_at, :order_description,
                                    order_items_attributes: [
                                     :id,
+                                    :product_id,
+                                    :unit_price,
                                     :quantity,
-                                    :_destroy
+                                    :amount,
+                                    :_destroy,
                                     ])
 
   end

@@ -9,6 +9,9 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     if @company.save
       redirect_to company_path(@company)
+    else
+      flash[:error] = "Error while creating company"
+      render :new
     end
   end
 
@@ -21,6 +24,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "Successfully updated"
       redirect_to company_path(@company)
     else
+      flash[:error] = "Error in creating client"
       render :new
     end
   end

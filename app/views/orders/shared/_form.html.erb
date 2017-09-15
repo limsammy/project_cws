@@ -1,25 +1,27 @@
-<%= f.input 'company_id' , label: "Company", collection: Company.all.map{ |a| [a.name, a.id]} %>
-<%= f.input 'client_id' , label: "Client", collection: Client.all.map{ |a| [a.name, a.id]} %>
-
-<%= f.input 'order_number', label: "Order Number" %>
-<%= f.input 'order_description', label: "Order Detail" %>
-<!-- <div id = "items" >
-	<h3> Order Items </h3>
-		<%= f.fields_for :order_items do |a| %>
-		  <%= a.input 'quantity', label: "Quantity" %>
-		<%end%>
+<%= simple_nested_form_for(@order) do |f| %>
+<div class="form-inputs">
+  <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]} %>
+  <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]} %>
+  <%= f.input :order_number %>
+  <%= f.input :order_description %>
+  <%= f.input :order_at, as: :string, label: "Order Date", input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today), class: "datepicker"} %>
 </div>
-<p><%= f.link_to_add "Add a task", :order_items, "data-target" => "#items" %></p>
- -->
 
-<table id="tasks">
-  <%= f.fields_for :order_items do |a| %>
-    <tr class="fields">
-      <td><%= a.input 'quantity', label: "Quantity" %></td>
-      <td><%= a.link_to_remove "Remove " %></td>
-    </tr>
-  <% end %>
-</table>
-<p><%= f.link_to_add "Add", :order_items, :data => { :target => "#tasks" } %></p>
+<%= f.link_to_add "Add order", :order_items %>
+<h4> Order Items </h4>
+<%= f.fields_for :order_items do |a| %>
+  <div class = "aaa">
+    <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]},  :input_html => { :class => 'product_id' } %>
+    <%= a.input :unit_price, :input_html => { :id => 'uprice' }  %>
+    <%= a.input :quantity, :input_html => { :class => 'quant' }  %>
+    <%= a.input :amount , label: "Amount", :input_html => { :id => 'amt' } %>
 
+  </div>
+  <%= a.link_to_remove "Remove" %>
+<% end %>
 <%= f.submit 'Save' %>
+
+
+  <%#= render partial: 'orders/shared/form',  locals: {f:f} %>
+
+<%end %>

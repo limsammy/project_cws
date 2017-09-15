@@ -3,12 +3,33 @@
   <head>
     <title>ProjectCws</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%if current_user.present? %>
+      <div id="wrapper">
+        <%= render partial: 'layouts/header'%>
+        <%= render partial: 'layouts/sidebar'%>
+            <div id="page-wrapper">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-md-12">
+                        <%= yield %>
+                      </div>
+                  </div>
+              </div>
+              <footer class="footer text-center"> 2017 &copy; Elite Admin brought to you by themedesigner.in </footer>
+          </div>
+      </div>
+    <%else%>
+      <section id="wrapper" class="login-register">
+        <div class="login-box">
+            <div class="white-box">
+                <%= yield %>
+            </div>
+        </div>
+      </section>
+    <%end%>
   </body>
 </html>

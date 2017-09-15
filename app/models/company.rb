@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
-  validates :name, :fax , presence: true
+  validates :name, :fax , :phone_number, presence: true
+  validates :phone_number, length: { maximum: 10 }, presence: true
   has_many :users
   has_many :clients
   has_many :orders, dependent: :destroy

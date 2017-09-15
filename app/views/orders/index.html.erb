@@ -1,19 +1,25 @@
-<table>
-	<tr>
-		<td>
-			Order Number
-		</td>
-    <td> Order Detail </td>
-    <td> Action </td>
-  </tr>
-	<%= @orders.each_with_index do |i| %>
-		<tr>
-			<td>
-				<%= i.order_number %></td>
-			<td><%= i.order_description %></td>
-			<td><%= link_to 'show', order_path(i) %></td><br>
-	  </tr>
-	<%end%>
-		<br>
+<h3> ORDERS </h3>
+
+<table border = 1>
+  <thead >
+    <tr>
+      <th>Order Number</th>
+      <th>Order Detail </th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |i| %>
+      <tr>
+        <td><%= i.order_number %></td>
+        <td><%= i.order_description %></td>
+        <td><%= link_to 'Show', order_path(i) %></td>
+        <td><%= link_to 'Edit', edit_order_path(i) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+<%= will_paginate @orders %>
 

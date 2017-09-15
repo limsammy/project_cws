@@ -1,12 +1,24 @@
-Name <%= @company.name %>
-Department <%= @company.department %>
-phone <%= @company.phone_number %>
-fax <%= @company.fax %>
-Line 1 <%= @company.address.line_1 %>
-Line 2  <%= @company.address.line_2 %>
-Country <%= @company.address.country %>
-State <%= @company.address.state %>
-Zip <%= @company.address.zip %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @company.department %>
+</p>
+
+<p>
+  <strong>phone:</strong>
+  <%= @company.phone_number %>
+</p>
+
+<p>
+  <strong>fax:</strong>
+  <%= @company.fax %>
+</p>
 
 <%= link_to 'Edit', edit_company_path(@company)%>
+<%= link_to 'Back', companies_path %>
 

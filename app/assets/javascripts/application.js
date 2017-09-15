@@ -16,6 +16,7 @@
 //= require jquery_nested_form
 //= require bootstrap-datepicker
 //= require_tree .
+//= require select2
 
 
 // $(document).on('change', '.quant', function(){

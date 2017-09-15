@@ -1,9 +1,26 @@
-<% @companies.each_with_index do |i|  %>
 
-  <%= i.name %>
-  <%= i.department %>
-  <%= i.phone_number %>
-  <%= i.fax %>
-  <%= link_to 'show', company_path(i) %>
-  <br>
-<% end %>
+<h1>COMPANIES</h1>
+
+
+<table border = 1>
+  <thead >
+    <tr>
+      <th>Name</th>
+      <th>fax</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |i| %>
+      <tr>
+        <td><%= i.name %></td>
+        <td><%= i.fax %></td>
+        <td><%= link_to 'Show', company_path(i) %></td>
+        <td><%= link_to 'Edit', edit_company_path(i) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @companies %>

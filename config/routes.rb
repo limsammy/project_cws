@@ -23,7 +23,12 @@ Rails.application.routes.draw do
   end
 
   resources :companies do
+    collection do
+      get :find_states
+      get :find_cities
+    end
   end
+
   resources :clients do
   end
   resources :products do

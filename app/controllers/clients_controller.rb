@@ -30,7 +30,7 @@ class ClientsController < ApplicationController
   end
 
   def index
-    @clients = Client.all
+    @clients = Client.paginate(:page => params[:page], :per_page => 5)
   end
   private
   def client_params

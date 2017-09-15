@@ -21,11 +21,13 @@
 //= require waves.js
 //= require custom.min.js
 //= require jQuery.style.switcher.js
+//= require jquery.dataTables.min.js
 //= require rails-ujs
 //= require jquery_nested_form
 //= require bootstrap-datepicker
 //= require_tree ../../../vendor/assets/js/.
 //= require_tree .
+//= require select2
 
 
 // $(document).on('change', '.quant', function(){
@@ -67,3 +69,4 @@ $(document).ready(function(){
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });
+

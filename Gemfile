@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -42,6 +42,8 @@ gem 'bootstrap-sass'
 gem 'faker'
 gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-sass'
+gem 'city-state'
+gem "select2-rails"
 
 
 group :development, :test do
@@ -51,6 +53,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
+  gem 'my_zipcode_gem'
+
 end
 
 group :development do

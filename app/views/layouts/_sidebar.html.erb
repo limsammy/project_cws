@@ -10,11 +10,21 @@
             </span>
           </a>
         </li>
-        <li>
-          <%= link_to new_company_path, class: "waves-effect", 'data-no-turbolink' => true do %>
-            <i class="fa fa-dashboard"></i>
-            Create Company
-          <% end %>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Company <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <%= link_to new_company_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                      Create Company
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to companies_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-dashboard"></i>
+                       Companies
+                    <% end %>
+                </li>
+            </ul>
         </li>
         <li>
           <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>

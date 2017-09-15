@@ -1,17 +1,33 @@
-<table>
-	<tr>
-		<td>Name </td>
-    <td> Email</td>
-    <td> Mobile Number</td>
-    <td> Action </td>
-  </tr>
-  <% @clients.each_with_index do |a| %>
-    <tr>
-			<td><%= a.name %></td>
-			<td><%= a.email %></td>
-			<td><%= a.mob_number %></td>
-			<td>
-			<%= link_to 'Show', client_path(a) %></td>
-		</tr>
-	<% end %>
-</table>
+<div class="col-sm-12">
+    <div class="white-box">
+        <h3 class="box-title m-b-0">CLIENTS</h3>
+        <p class="text-muted m-b-30"></p>
+        <div class="table-responsive">
+            <table id="example23" class="display nowrap" cellspacing="0" width="100%">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Mobile</th>
+                      <th >View</th>
+                      <th>Edit</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @clients.each do |client| %>
+                  <tr>
+                      <td><%= client.name %></td>
+                      <td><%= client.email %></td>
+                      <td><%= client.mob_number %></td>
+                      <td><%= link_to 'Show', client %></td>
+                      <td><%= link_to 'Edit', edit_client_path(client) %></td>
+
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

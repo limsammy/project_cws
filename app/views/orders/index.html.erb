@@ -1,19 +1,82 @@
-<table>
-	<tr>
-		<td>
-			Order Number
-		</td>
-    <td> Order Detail </td>
-    <td> Action </td>
-  </tr>
-	<%= @orders.each_with_index do |i| %>
-		<tr>
-			<td>
-				<%= i.order_number %></td>
-			<td><%= i.order_description %></td>
-			<td><%= link_to 'show', order_path(i) %></td><br>
-	  </tr>
-	<%end%>
-		<br>
-</table>
 
+<h1>ORDERS</h1>
+<div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">ORDERS</h3>
+                            <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
+                            <div class="table-responsive">
+                                <table id="example23" class="display nowrap" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Number</th>
+                                            <th>Order Description</th>
+                                            <th>View</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      <% @orders.each do |order| %>
+                                        <tr>
+                                          <td><%= order.order_number %></td>
+                                          <td><%= order.order_description %></td>
+                                          <td><%= link_to 'Show', order %></td>
+                                          <td><%= link_to 'Edit', edit_order_path(order) %></td>
+                                        </tr>
+                                      <%end%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+<script>
+  $(document).ready(function() {
+      $('#myTable').DataTable();
+      $(document).ready(function() {
+          var table = $('#example').DataTable({
+              "columnDefs": [{
+                  "visible": false,
+                  "targets": 2
+              }],
+              "order": [
+                  [2, 'asc']
+              ],
+              "displayLength": 25,
+              "drawCallback": function(settings) {
+                  var api = this.api();
+                  var rows = api.rows({
+                      page: 'current'
+                  }).nodes();
+                  var last = null;
+                  api.column(2, {
+                      page: 'current'
+                  }).data().each(function(group, i) {
+                      if (last !== group) {
+                          $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                          last = group;
+                      }
+                  });
+              }
+          });
+          // Order by the grouping
+          $('#example tbody').on('click', 'tr.group', function() {
+            var currentOrder = table.order()[0];
+            if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+              table.order([2, 'desc']).draw();
+            } else {
+              table.order([2, 'asc']).draw();
+            }
+          });
+      });
+  });
+  $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+  });
+</script>
+    <!--Style Switcher -->
+<script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>

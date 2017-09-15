@@ -25,3 +25,70 @@
   @import "style";
   @import "blue";
 
+.login-register{
+   background-color: #000;
+  /* Safari 4-5, Chrome 1-9 */
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7f8588), to(#ffffff));
+
+  /* Safari 5.1, Chrome 10+ */
+  background: -webkit-linear-gradient(top, #7f8588, #ffffff);
+
+  /* Firefox 3.6+ */
+  background: -moz-linear-gradient(top, #7f8588, #ffffff);
+
+  /* IE 10 */
+  background: -ms-linear-gradient(top, #7f8588, #ffffff);
+
+  /* Opera 11.10+ */
+  background: -o-linear-gradient(top, #7f8588, #ffffff);
+
+}
+.gradient_overlay{
+  background-image: url(/assets/logo.png);
+    background-size: 41%;
+    background-repeat: no-repeat;
+    background-position: 54% -195px;
+    height: 100%;
+    margin: 0;
+    float: left;
+    width: 100%;
+
+}
+.login-box{
+    background: #fff;
+    max-width: 400px;
+    margin: 0 auto 0;
+    width: 100%;
+}
+.white-box {
+    margin-top: 133px;
+}
+.logo_img{
+  margin-top: -46px;
+}
+.top-left-part a{
+  background: transparent;
+}
+/*======Media query==============*/
+@media screen and (max-width:767px) and (min-width:320px){
+  .gradient_overlay{
+      background-position: center -110px;
+    background-size: 100%;
+  }
+  .login-register{
+    position: static;
+    display: inline-block;
+    width:100%;
+  }
+}
+@media screen and (max-width:991px) and (min-width:768px){
+  .gradient_overlay{
+      background-position: center -179px;
+    background-size: 63%;
+  }
+  .login-register{
+    position: static;
+    display: inline-block;
+    width:100%;
+  }
+}

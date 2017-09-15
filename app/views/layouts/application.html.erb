@@ -2,9 +2,11 @@
 <html>
   <head>
     <title>ProjectCws</title>
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
   </head>
   <body>
     <%if current_user.present? %>
@@ -24,11 +26,13 @@
       </div>
     <%else%>
       <section id="wrapper" class="login-register">
-        <div class="login-box">
-            <div class="white-box">
-                <%= yield %>
-            </div>
-        </div>
+        <div class="gradient_overlay">
+          <div class="login-box">
+              <div class="white-box">
+                  <%= yield %>
+              </div>
+          </div>
+        </div
       </section>
     <%end%>
   </body>

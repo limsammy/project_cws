@@ -3,8 +3,8 @@
 
 
 <%= f.fields_for :address do |addr| %>
-  <%= addr.input "line_1", label: "LINE 1" %>
-  <%= addr.input "line_2", label: "line 2" %>
+  <%= addr.input "line_1", label: "Address Line 1" %>
+  <%= addr.input "line_2", label: "Address Line 2" %>
   <%= addr.input "country", as: :text, label: "Country" %>
   <%= addr.input "state", label: "State" %>
   <%= addr.input "zip", label: "Zip" %>

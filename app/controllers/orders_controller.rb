@@ -35,6 +35,14 @@ class OrdersController < ApplicationController
       render :edit
     end
   end
+   def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
   def order_params

@@ -1,59 +1,16 @@
   <%= f.input :name, as: :string, label: "Company Name", input_html: {class: "form-control masked exp_desp ", placeholder: "company name"} %>
-  <%= f.input :fax, as: :string, label: "Fax", input_html: {class: "form-control masked exp_desp ", placeholder: "Fax"} %>
-  <%= f.input :phone_number, as: :string, label: "Phone Number", input_html: {class: "form-control masked exp_desp ", placeholder: "Enter your Number"} %>
+  <%= f.input :fax, label: "Fax", input_html: {class: "form-control masked exp_desp ", placeholder: "Fax"} %>
+  <%= f.input :phone_number, as: :string, label: "Phone Number",:include_blank => "Please select...", input_html: {class: "form-control masked exp_desp ", placeholder: "Enter your Number"} %>
 
 <%= f.fields_for :address do |addr| %>
   <%= addr.input "line_1", label: "LINE 1" %>
   <%= addr.input "line_2", label: "line 2" %>
-  <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select , input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
-  <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, input_html: {class: "state_dropdown ", placeholder: "Please select"} %>
-  <%= addr.input "city", collection: CS.get(:in, :up), as: :select, input_html: {class: "city_dropdown ", placeholder: "Please select"} %>
+  <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select ,:include_blank => "Select Country...", input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {class: "state_dropdown ", placeholder: "Please select"} %>
+  <%= addr.input "city", collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select City...", input_html: {class: "city_dropdown ", placeholder: "Please select"} %>
 
   <%= addr.input "zip", label: "Zip" %>
 <% end %>
 
 
 <%= f.submit "Save", class: "btn btn-info btn-lg"%>
-
-<script type="text/javascript">
-
-  $('.country_dropdown').select2();
-  $('.state_dropdown').select2();
-  $('.city_dropdown').select2();
-
-  $('#company_address_attributes_country').change(function() {
-    element = $(this).val()
-    $.ajax({
-      url: '/companies/find_states',
-      data: {country_value: element},
-      type: "GET",
-      success:function(data) {
-        var output = [];
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        $('#company_address_attributes_state').html(output);
-      }
-    });
-  });
-
-  $('#company_address_attributes_state').change(function() {
-    element = $(this).val()
-    country_value = $('#company_address_attributes_country').val()
-    $.ajax({
-      url: "/companies/find_cities",
-      data: {country_value: country_value, state_value: element},
-      type: "GET",
-      success: function (data) {
-        console.log(data)
-        var output = [];
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        $('#company_address_attributes_city').html(output);
-      }
-    });
-  });
-
-
- </script>

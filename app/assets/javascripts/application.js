@@ -71,7 +71,6 @@ function datatable(id, default_sort_column, non_sortable_columns, pageLength, ex
           {
             "targets": '_all',
             "defaultContent": "<i>Not set</i>",
-
           },
           {  // set default column settings
             'orderable': false,
@@ -110,7 +109,7 @@ function datatable(id, default_sort_column, non_sortable_columns, pageLength, ex
   }
 }
 
-$(document).on('keyup	', '.quant', function(){
+$(document).on('keyup', '.quant', function(){
   quantity = $(this).val();
   unit_price = quantity * ($('#uprice').val());
   $.ajax({
@@ -143,3 +142,44 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  $('.country_dropdown').select2();
+  $('.state_dropdown').select2();
+  $('.city_dropdown').select2();
+
+  $('#company_address_attributes_country').bind("change keyup",function(event) {
+    element = $(this).val()
+    $.ajax({
+      url: '/companies/find_states',
+      data: {country_value: element},
+      type: "GET",
+      success:function(data) {
+        var output = [];
+        output.push('<option value="">Select State </option>');
+        $.each(data, function(key, value){
+          output.push('<option value="'+ key +'">'+ value +'</option>');
+        });
+        $('#company_address_attributes_state').html(output);
+      }
+    });
+});
+
+  $('#company_address_attributes_state').bind("change keyup",function(event) {
+    element = $(this).val()
+    country_value = $('#company_address_attributes_country').val()
+    $.ajax({
+      url: "/companies/find_cities",
+      data: {country_value: country_value, state_value: element},
+      type: "GET",
+      success: function (data) {
+        var output = [];
+        output.push('<option value=""> </option>');
+
+        $.each(data, function(key, value){
+          output.push('<option value="'+ key +'">'+ value +'</option>');
+        });
+        $('#company_address_attributes_city').html(output);
+      }
+    });
+  });
+})

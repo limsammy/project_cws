@@ -6,18 +6,16 @@
 <%= f.fields_for :address do |addr| %>
   <%= addr.input "line_1", label: "LINE 1" %>
   <%= addr.input "line_2", label: "line 2" %>
-  <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select %>
-  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select %>
-  <%#= f.input :city, collection: CS.get(:in, :up), as: :select %>
-  <%#= addr.input "country",as: :text, label: "Country" %>
-  <%#= addr.input "state", label: "State" %>
+  <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, input_html: {class: "state_dropdown ", placeholder: "Please select"}%>
   <%= addr.input "zip", label: "Zip" %>
+  <%= f.submit "Save", class: "btn btn-info btn-lg" %>
 <%end%>
-<%= f.submit "Save" %>
-
-
 
 <script type="text/javascript">
+
+  $('.country_dropdown').select2();
+  $('.state_dropdown').select2();
   $('#client_address_attributes_country').change(function() {
     element = $(this).val()
     $.ajax({
@@ -26,6 +24,7 @@
       type: "GET",
       success:function(data) {
         var output = [];
+        output.push('<option value="">Please select </option>');
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });

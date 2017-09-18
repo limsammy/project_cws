@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "Successfully updated"
       redirect_to company_path(@company)
     else
-      flash[:error] = "Error in creating client"
+      flash[:error] = "Error in creating company"
       render :new
     end
   end
@@ -35,6 +35,15 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
+  end
+
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    respond_to do |format|
+      format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def find_states
@@ -48,7 +57,7 @@ class CompaniesController < ApplicationController
 
   private
     def company_params
-      params.require(:company).permit(:id, :name, :phone_number, :department, :phone_number, :fax, :city,
+      params.require(:company).permit(:id, :name, :phone_number, :department, :fax, :_destroy,
                                       address_attributes: [
                                         :id ,
                                         :line_1 ,

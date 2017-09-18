@@ -13,13 +13,17 @@
         <li>
           <%= link_to new_company_path, class: "waves-effect", 'data-no-turbolink' => true do %>
             <i class="fa fa-dashboard"></i>
-            Create Company
+            <span class="hide-menu">
+              Create Company
+            </span>
           <% end %>
         </li>
         <li>
           <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
             <i class="fa fa-dashboard"></i>
-            Send Invitation
+            <span class="hide-menu">
+              Send Invitation
+            </span>
           <% end %>
         </li>
         <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Inventory <span class="fa arrow"></span></span></a>

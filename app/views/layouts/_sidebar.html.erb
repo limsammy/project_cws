@@ -10,54 +10,6 @@
             </span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)" class="waves-effect">
-            <i class="fa fa-suitcase"></i>
-              <span class="hide-menu">Companies
-                <span class="fa arrow"></span>
-              </span>
-            </a>
-            <ul class="nav nav-second-level">
-              <li>
-                <%= link_to new_company_path, 'data-no-turbolink' => true do %>
-                  <i class=" fa fa-plus-square-o"></i>
-                  <span class="hide-menu">
-                    Create Company
-                  </span>
-                <% end %>
-              </li>
-              <li>
-                  <%= link_to companies_path, 'data-no-turbolink' => true do %>
-                    <i class="fa fa-list"></i>
-                     List
-                  <% end %>
-              </li>
-            </ul>
-        </li>
-        <li>
-          <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
-            <i class="fa fa-user"></i>
-            <span class="hide-menu">
-              Invite User
-            </span>
-          <% end %>
-        </li>
-        <li><a href="javascript:void(0)" class="waves-effect"><i class="fa fa-product-hunt"></i> <span class="hide-menu">Products <span class="fa arrow"></span></span></a>
-            <ul class="nav nav-second-level">
-                <li>
-                    <%= link_to new_product_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-plus-square-o"></i>
-                      Create
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to products_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-list"></i>
-                       List
-                    <% end %>
-                </li>
-            </ul>
-        </li>
         <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-qrcode"></i> <span class="hide-menu">Orders <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
                 <li>
@@ -89,6 +41,54 @@
                     <% end %>
                 </li>
             </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="waves-effect">
+            <i class="fa fa-suitcase"></i>
+              <span class="hide-menu">Companies
+                <span class="fa arrow"></span>
+              </span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to new_company_path, 'data-no-turbolink' => true do %>
+                  <i class=" fa fa-plus-square-o"></i>
+                  <span class="hide-menu">
+                    Create Company
+                  </span>
+                <% end %>
+              </li>
+              <li>
+                  <%= link_to companies_path, 'data-no-turbolink' => true do %>
+                    <i class="fa fa-list"></i>
+                     List
+                  <% end %>
+              </li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="fa fa-product-hunt"></i> <span class="hide-menu">Products <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <%= link_to new_product_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to products_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-list"></i>
+                       List
+                    <% end %>
+                </li>
+            </ul>
+        </li>
+        <li>
+          <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
+            <i class="fa fa-user"></i>
+            <span class="hide-menu">
+              Invite User
+            </span>
+          <% end %>
         </li>
     </ul>
   </div>

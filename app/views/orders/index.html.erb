@@ -1,19 +1,31 @@
-<table>
-	<tr>
-		<td>
-			Order Number
-		</td>
-    <td> Order Detail </td>
-    <td> Action </td>
-  </tr>
-	<%= @orders.each_with_index do |i| %>
-		<tr>
-			<td>
-				<%= i.order_number %></td>
-			<td><%= i.order_description %></td>
-			<td><%= link_to 'show', order_path(i) %></td><br>
-	  </tr>
-	<%end%>
-		<br>
-</table>
-
+<h1>ORDERS</h1>
+<div class="col-sm-12">
+  <div class="white-box">
+    <h3 class="box-title m-b-0">ORDERS</h3>
+      <div class="table-responsive">
+        <table id="orders_datatable" class="display nowrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Order Number</th>
+              <th>Order Description</th>
+              <th>View</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.order_number %></td>
+                <td><%= order.order_description %></td>
+                <td><%= link_to 'Show', order %></td>
+                <td><%= link_to 'Edit', edit_order_path(order) %></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<script>
+  datatable('orders_datatable', 1, [2,3], 20, [0,1])
+</script>

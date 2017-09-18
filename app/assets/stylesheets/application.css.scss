@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-datepicker3
+ *= require select2
+
  */
   @import "bootstrap-sprockets";
   @import "bootstrap";
@@ -22,7 +24,9 @@
   @import "bootstrap-extension";
   @import "sidebar-nav.min";
   @import "animate";
+  @import "spinners";
   @import "style";
+  @import "jquery.dataTables.min";
   @import "blue";
 
 .login-register{

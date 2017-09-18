@@ -1,12 +1,4 @@
-<div class="row">
-  <div class="col-md-2">
-  </div>
-  <div class="col-sm-12 col-md-8">
-    <h1>Create Company</h1>
-    <%= simple_nested_form_for @company, url: companies_path , method: :post  do |f| %>
-      <%= render partial:'companies/shared/form' , locals: {f: f} %>
-    <%end%>
-  </div>
-  <div class="col-md-2">
-  </div>
-</div>
+<h1>Create Company</h1>
+<%= simple_nested_form_for @company, html: {class: "form-material form-horizontal"}, url: companies_path , method: :post  do |f| %>
+  <%= render partial:'companies/shared/form' , locals: {f: f} %>
+<%end%>

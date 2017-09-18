@@ -21,19 +21,94 @@
 //= require waves.js
 //= require custom.min.js
 //= require jQuery.style.switcher.js
+//= require jquery.dataTables.min.js
 //= require rails-ujs
 //= require jquery_nested_form
 //= require bootstrap-datepicker
 //= require_tree ../../../vendor/assets/js/.
 //= require_tree .
+//= require select2
 
+function datatable(id, default_sort_column, non_sortable_columns, pageLength, extra){
+  var check_length = $('#'+id+'_wrapper').length
+  if (jQuery().dataTable && check_length==0) {
+        var table = jQuery('#'+id);
+        table.dataTable({
+          dom: 'lBfrtip',
+          buttons: [
+            {
+              extend: 'excelHtml5',
+              exportOptions: {
+                // columns: ':visible'
+                columns: ((extra == "nil") ? ":visible" : extra)
+              }
+            },
+            {
+              extend: 'pdfHtml5',
+              exportOptions: {
+                // columns: ':visible'
+                columns: ((extra == "nil") ? ":visible" : extra)
+              }
+            },
+          ],
+          "lengthMenu": [
+            [5, 15, 20, -1],
+            [5, 15, 20, "All"] // change per page values here
+          ],
+          // set the initial value
+          "pageLength": pageLength,
+          "paginationType": "full_numbers",
+          "language": {
+            "lengthMenu": "  _MENU_ records",
+            "paginate": {
+              "previous":"Prev",
+              "next": "Next",
+              "last": "Last",
+              "first": "First"
+            }
+          },
+          "columnDefs": [
+          {
+            "targets": '_all',
+            "defaultContent": "<i>Not set</i>",
 
-// $(document).on('change', '.quant', function(){
-// 	console.log("aaaaa");
-// 	var element = this;
-// 	id = $('.quant').val();
-// 	console.log(id);
-// })
+          },
+          {  // set default column settings
+            'orderable': false,
+            'targets': non_sortable_columns
+          }, {
+            "searchable": false,
+            "targets": [0]
+          }],
+          "order": [
+            [default_sort_column, "asc"]
+          ] // set first column as a default sort by asc
+        });
+
+        var tableWrapper = jQuery('#datatable_sample_wrapper');
+
+        table.find('.group-checkable').change(function () {
+          var set = jQuery(this).attr("data-set");
+          var checked = jQuery(this).is(":checked");
+          jQuery(set).each(function () {
+            if (checked) {
+              jQuery(this).attr("checked", true);
+              jQuery(this).parents('tr').addClass("active");
+            } else {
+              jQuery(this).attr("checked", false);
+              jQuery(this).parents('tr').removeClass("active");
+            }
+          });
+          jQuery.uniform.update(set);
+        });
+
+        table.on('change', 'tbody tr .checkboxes', function () {
+          jQuery(this).parents('tr').toggleClass("active");
+        });
+
+        tableWrapper.find('.dataTables_length select').addClass("form-control input-xsmall input-inline"); // modify table per page dropdown
+  }
+}
 
 $(document).on('keyup	', '.quant', function(){
   quantity = $(this).val();
@@ -67,3 +142,4 @@ $(document).ready(function(){
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });
+

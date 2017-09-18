@@ -1,8 +1,5 @@
 class OrdersController < ApplicationController
 
-  def index
-    @orders = Order.all
-  end
 
   def new
     @order = Order.new
@@ -24,6 +21,9 @@ class OrdersController < ApplicationController
     else
       render :new
     end
+  end
+  def index
+    @orders = Order.all
   end
 
   def update

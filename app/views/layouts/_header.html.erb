@@ -11,15 +11,13 @@
         </span>
       </a>
     </div>
-    <ul class="nav navbar-top-links navbar-left hidden-xs">
-      <li>
-        <a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light">
-          <i class="icon-arrow-left-circle ti-menu"></i>
-        </a>
+    <ul class="nav navbar-top-links navbar-left hidden-xs active">
+      <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="ti-menu icon-arrow-left-circle"></i></a>
       </li>
-      <li>
+      <li class="in">
         <form role="search" class="app-search hidden-xs">
-        <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+          <input type="text" placeholder="Search..." class="form-control"> <a href="" class="active"><i class="fa fa-search"></i></a>
+        </form>
       </li>
     </ul>
     <% if current_user.present?%>

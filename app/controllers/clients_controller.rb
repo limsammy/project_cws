@@ -29,6 +29,10 @@ class ClientsController < ApplicationController
     end
   end
 
+  def destroy
+    @client = Client.find(params[:id])
+  end
+
   def index
     @clients = Client.all
   end
@@ -40,6 +44,7 @@ class ClientsController < ApplicationController
       :name,
       :email,
       :mob_number,
+      :_destroy,
       address_attributes: [
         :id,
         :line_1,

@@ -1,9 +1,7 @@
-
-<h1>ORDERS</h1>
-<div class="col-sm-12">
-  <div class="white-box">
-    <h3 class="box-title m-b-0">ORDERS</h3>
-    <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
+  <div class="col-sm-12">
+    <div class="white-box">
+      <h3 class="box-title m-b-0">ORDERS</h3>
+      <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
       <div class="table-responsive">
         <table id="example23" class="display nowrap" cellspacing="0" width="100%">
           <thead>
@@ -12,6 +10,7 @@
               <th>Order Description</th>
               <th>View</th>
               <th>Edit</th>
+              <th> Delete </th>
             </tr>
           </thead>
           <tbody>
@@ -21,13 +20,14 @@
                 <td><%= order.order_description %></td>
                 <td><%= link_to 'Show', order %></td>
                 <td><%= link_to 'Edit', edit_order_path(order) %></td>
+                <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: 'Are yoy sure'} %>
               </tr>
             <%end%>
           </tbody>
         </table>
       </div>
+    </div>
   </div>
-</div>
 
 
 <script>

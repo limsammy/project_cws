@@ -8,7 +8,7 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     if @client.save
       flash[:success] = " Client Created"
-      redirect_to company_path(@client)
+      redirect_to client_path(@client)
     else
       flash[:error] = "Error while creating new client"
       render 'new'
@@ -26,11 +26,20 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     if @client.update_attributes(client_params)
       flash[:success] = "successfully updated"
+      redirect_to company_path(@client)
+    else
+      flash[:error] = "Error while editing client"
+      render 'edit'
     end
   end
 
   def destroy
     @client = Client.find(params[:id])
+    @client.destroy
+    respond_to do |format|
+      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def index

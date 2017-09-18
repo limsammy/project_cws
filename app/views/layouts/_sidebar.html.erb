@@ -10,65 +10,85 @@
             </span>
           </a>
         </li>
-        <li>
-          <%= link_to new_company_path, class: "waves-effect", 'data-no-turbolink' => true do %>
-            <i class="fa fa-dashboard"></i>
-            Create Company
-          <% end %>
-        </li>
-        <li>
-          <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
-            <i class="fa fa-dashboard"></i>
-            Send Invitation
-          <% end %>
-        </li>
-        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Inventory <span class="fa arrow"></span></span></a>
-            <ul class="nav nav-second-level">
-                <li>
-                    <%= link_to new_product_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                      Create Product
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to products_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                       Products
-                    <% end %>
-                </li>
-            </ul>
-        </li>
-        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Orders <span class="fa arrow"></span></span></a>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-qrcode"></i> <span class="hide-menu">Orders <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
                 <li>
                     <%= link_to new_order_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                      Create Order
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
                     <% end %>
                 </li>
                 <li>
                     <%= link_to orders_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                       Orders
+                      <i class="fa fa-list"></i>
+                       List
                     <% end %>
                 </li>
             </ul>
         </li>
-        <li><a href="javascript:void(0)" class="waves-effect"><i class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Clients <span class="fa arrow"></span></span></a>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-users"></i> <span class="hide-menu">Clients <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
                 <li>
                     <%= link_to new_client_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                      Create Client
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
                     <% end %>
                 </li>
                 <li>
                     <%= link_to clients_path, 'data-no-turbolink' => true do %>
-                      <i class="fa fa-dashboard"></i>
-                       Clients
+                      <i class="fa fa-list"></i>
+                       List
                     <% end %>
                 </li>
             </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="waves-effect">
+            <i class="fa fa-suitcase"></i>
+              <span class="hide-menu">Companies
+                <span class="fa arrow"></span>
+              </span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <%= link_to new_company_path, 'data-no-turbolink' => true do %>
+                  <i class=" fa fa-plus-square-o"></i>
+                  <span class="hide-menu">
+                    Create Company
+                  </span>
+                <% end %>
+              </li>
+              <li>
+                  <%= link_to companies_path, 'data-no-turbolink' => true do %>
+                    <i class="fa fa-list"></i>
+                     List
+                  <% end %>
+              </li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="fa fa-product-hunt"></i> <span class="hide-menu">Products <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <%= link_to new_product_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to products_path, 'data-no-turbolink' => true do %>
+                      <i class="fa fa-list"></i>
+                       List
+                    <% end %>
+                </li>
+            </ul>
+        </li>
+        <li>
+          <%= link_to send_invitation_users_path, class: "waves-effect", 'data-no-turbolink' => true do %>
+            <i class="fa fa-user"></i>
+            <span class="hide-menu">
+              Invite User
+            </span>
+          <% end %>
         </li>
     </ul>
   </div>

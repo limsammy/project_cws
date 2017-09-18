@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 	belongs_to :company, optional: true
 	belongs_to :client, optional: true
-	has_many :order_items
+	has_many :order_items, dependent: :destroy
 	accepts_nested_attributes_for :order_items,  allow_destroy: true
   validates :order_number, :order_description, :order_at, presence: true
 

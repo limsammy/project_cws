@@ -1,9 +1,33 @@
-<% @companies.each_with_index do |i|  %>
-
-  <%= i.name %>
-  <%= i.department %>
-  <%= i.phone_number %>
-  <%= i.fax %>
-  <%= link_to 'show', company_path(i) %>
-  <br>
-<% end %>
+<div class="col-sm-12">
+  <div class="white-box">
+      <h3 class="box-title m-b-0">COMPANIES</h3>
+      <p class="text-muted m-b-30"></p>
+      <div class="table-responsive custom_datatable">
+        <table id="companies_datatable" class="display nowrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Fax</th>
+                <th >View</th>
+                <th>Edit</th>
+                <th> Destroy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @companies.each do |company| %>
+              <tr>
+                  <td><%= company.name %></td>
+                  <td><%= company.fax %></td>
+                  <td><%= link_to 'Show', company %></td>
+                  <td><%= link_to 'Edit', edit_company_path(company) %></td>
+                  <td><%= link_to 'Destroy', company, method: :delete, data: {confirm: 'Are yoy sure'} %>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<script>
+  datatable('companies_datatable', 1, [2,3], 20, [0,1])
+</script>

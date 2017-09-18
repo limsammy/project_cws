@@ -3,7 +3,7 @@
   </div>
   <div class="col-sm-12 col-md-8">
     <h1>Create Client</h1>
-    <%= simple_nested_form_for @client, url: clients_path , method: :post  do |f| %>
+    <%= simple_nested_form_for @client,html: {class: "form-material form-horizontal"} ,url: clients_path , method: :post  do |f| %>
       <%= render partial:'clients/shared/form' , locals: {f: f} %>
     <%end%>
   </div>

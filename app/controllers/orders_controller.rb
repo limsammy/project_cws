@@ -1,8 +1,5 @@
 class OrdersController < ApplicationController
 
-  def index
-    @orders = Order.all
-  end
 
   def new
     @order = Order.new
@@ -25,6 +22,9 @@ class OrdersController < ApplicationController
       render :new
     end
   end
+  def index
+    @orders = Order.all
+  end
 
   def update
     @order = Order.find(params[:id])
@@ -33,6 +33,14 @@ class OrdersController < ApplicationController
       redirect_to order_path(@order)
     else
       render :edit
+    end
+  end
+   def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

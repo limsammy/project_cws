@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.order_items.build
+    @order.build_shipping_address
   end
 
   def edit
@@ -15,6 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @order = Order.new(order_params)
     if @order.save
       redirect_to order_path(@order)
@@ -53,7 +55,15 @@ class OrdersController < ApplicationController
                                     :unit_price,
                                     :quantity,
                                     :amount,
-                                    :_destroy,
+                                    :_destroy],
+                                   shipping_address_attributes: [
+                                    :id,
+                                    :line_1,
+                                    :line_2,
+                                    :country,
+                                    :state,
+                                    :zip,
+                                    :city
                                     ])
 
   end

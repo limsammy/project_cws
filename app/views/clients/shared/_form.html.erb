@@ -7,8 +7,8 @@
   <%= addr.input "line_1", label: "Address Line 1" %>
   <%= addr.input "line_2", label: "Address Line 2" %>
   <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
-  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, input_html: {class: "state_dropdown ", placeholder: "Please select"}%>
-  <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, input_html: {class: "city_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, input_html: {class: "state_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :city, collection: CS.get(:us, :ak).map{|k,v| [v,k]}, as: :select, input_html: {class: "city_dropdown ", placeholder: "Please select"}%>
   <%= addr.input "zip", label: "Zip" %>
   <%= f.submit "Save", class: "btn btn-info btn-lg" %>
 <%end%>

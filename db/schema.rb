@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914092850) do
+ActiveRecord::Schema.define(version: 20170919060809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20170914092850) do
   create_table "clients", force: :cascade do |t|
     t.string "name", null: false
     t.string "email"
-    t.integer "mob_number", null: false
+    t.string "mob_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id"
+    t.string "city"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -76,13 +77,10 @@ ActiveRecord::Schema.define(version: 20170914092850) do
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
-    t.bigint "company_id"
     t.decimal "price", precision: 10, scale: 5, null: false
     t.integer "stock_in_hand", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["code", "company_id"], name: "index_products_on_code_and_company_id", unique: true
-    t.index ["company_id"], name: "index_products_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,5 +121,4 @@ ActiveRecord::Schema.define(version: 20170914092850) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "companies"
-  add_foreign_key "products", "companies"
 end

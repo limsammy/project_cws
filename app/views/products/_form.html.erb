@@ -4,7 +4,6 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :code %>
-    <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]} %>
     <%= f.input :price %>
     <%= f.input :stock_in_hand %>
   </div>

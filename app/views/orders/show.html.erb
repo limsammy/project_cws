@@ -29,16 +29,15 @@ Order Date: <%=(@order.order_at).to_date.strftime("%d-%m-%Y")
   				  <td><%= i.product.name %></td>
   				  <td><%= i.unit_price%> </td>
   				  <td> <%= i.quantity%> </td>
-  					<td><%= i.amount%></td>
+  					<td>$<%= round_off(i.amount)%></td>
   			  </tr>
   			<%end%>
   		</tbody>
     </table>
   </div>
 
-	Total:  <%= @order.total_amount %>
+	Total: $ <%= round_off(@order.total_amount) %>
 <%end %>
 <br>
-
 <%= link_to 'Edit', edit_order_path(@order) %>
 

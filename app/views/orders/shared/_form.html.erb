@@ -12,7 +12,7 @@
     <div class = "aaa">
       <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, input_html: { :class => 'product_id' } %>
       <%= a.input :unit_price, input_html: { :id => 'uprice' }  %>
-      <%= a.input :quantity, input_html:{ :class => 'quant', autocomplete: :off }  %>
+      <%= a.input :quantity, input_html:{ class: 'quant', autocomplete: :off }  %>
       <%= a.input :amount , label: "Amount", input_html: { :id => 'amt' } %>
     </div>
     <%= a.link_to_remove "Remove" %>

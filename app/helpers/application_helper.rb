@@ -6,4 +6,7 @@ module ApplicationHelper
   def formatted_date(date)
     date.strftime('%d/%m/%Y')
   end
+  def round_off(a)
+    "%.2f" % a
+  end
 end

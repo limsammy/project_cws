@@ -112,12 +112,15 @@ function datatable(id, default_sort_column, non_sortable_columns, pageLength, ex
 $(document).on('keyup', '.quant', function(){
   quantity = $(this).val();
   unit_price = quantity * ($('#uprice').val());
+  console.log(quantity);
+  console.log(unit_price);
   $.ajax({
   	url: "/products/per_amount",
   	data: {id: quantity},
   	dataType: "json",
   	type: "GET",
     success:function() {
+      console.log($(this));
       $('#amt').val(unit_price);
     }
   });
@@ -125,12 +128,14 @@ $(document).on('keyup', '.quant', function(){
 
 $(document).on('change', '.product_id', function(){
   product_id = $(this).val();
+  console.log(product_id)
   $.ajax({
     url:  "/products/per_price",
     data:  {id: product_id},
     dataType: "json",
     type: "GET",
     success:function(data) {
+      console.log(data)
       $('#uprice').val(data.value);
     }
   });

@@ -10,10 +10,13 @@ class Order < ApplicationRecord
 
 
 	def total_amount
+    binding.pry
 		total = 0
 			order_items.each do |i|
-				total += i.amount.to_i
+				total += i.amount.to_f
 			end
 		return total
   end
+
+
 end

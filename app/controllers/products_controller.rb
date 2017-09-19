@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     respond_to do |format|
-      if @product.save  
+      if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -65,7 +65,8 @@ class ProductsController < ApplicationController
   end
 
   def per_price
-    unit_price = Product.find_by(id: params[:id]).price.to_i
+
+    unit_price = Product.find_by(id: params[:id]).price.to_f
     render json: {value: unit_price}
   end
 
@@ -78,7 +79,7 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
     params.require(:product).permit(:id,:name, :code, :company_id, :price, :stock_in_hand,
-                                    order_items_attributes: [ 
+                                    order_items_attributes: [
                                       :id,
                                       :unit_price,
                                       :quantity,

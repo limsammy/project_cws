@@ -6,67 +6,30 @@
     <%= f.input :order_description %>
     <%= f.input :order_at, as: :string, label: "Order Date", input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today), class: "datepicker"} %>
   </div>
+
   <h4> Order Items </h4>
   <%= f.link_to_add "Add order", :order_items %>
   <%= f.fields_for :order_items do |a| %>
     <div class = "aaa">
       <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, input_html: { :class => 'product_id' } %>
-      <%= a.input :unit_price, input_html: { :id => 'uprice' }  %>
+      <%= a.input :unit_price, input_html: { id: 'uprice' }  %>
       <%= a.input :quantity, input_html:{ class: 'quant', autocomplete: :off }  %>
       <%= a.input :amount , label: "Amount", input_html: { :id => 'amt' } %>
     </div>
     <%= a.link_to_remove "Remove" %>
   <% end %>
+
+
   <h4> Shipping Address </h4>
   <%= f.fields_for :shipping_address do |addr| %>
     <%= addr.input :line_1 %>
     <%= addr.input :line_2%>
-    <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
-    <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {class: "state_dropdown ", placeholder: "Please select"} %>
-    <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select City...", input_html: {class: "city_dropdown ", placeholder: "Please select"} %>
+    <%= addr.input :country,collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {:id => 'dropdown_country', class: "country_dropdown ", placeholder: "Please select"}%>
+    <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {:id => 'dropdown_state', class: "state_dropdown ", placeholder: "Please select"} %>
+    <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select City...", input_html: {:id => 'dropdown_city' ,class: "city_dropdown ", placeholder: "Please select"} %>
     <%= addr.input :zip%>
   <%end%>
   <%= f.submit 'Save',class: "btn btn-info btn-lg"%>
 <%end %>
 
-<script type="text/javascript">
 
-  $('.country_dropdown').select2();
-  $('.state_dropdown').select2();
-  $('#order_address_country').change(function() {
-    element = $(this).val()
-    $.ajax({
-      url: '/companies/find_states',
-      data: {country_value: element},
-      type: "GET",
-      success:function(data) {
-        var output = [];
-        output.push('<option value="">Please select </option>');
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        console.log(output);
-        $('#order_address_state').html(output);
-      }
-    });
-  });
-
-  $('#order_address_state').bind("change keyup",function(event) {
-    element = $(this).val()
-    country_value = $('#order_address_country').val()
-    $.ajax({
-      url: "/companies/find_cities",
-      data: {country_value: country_value, state_value: element},
-      type: "GET",
-      success: function (data) {
-        var output = [];
-        output.push('<option value=""> </option>');
-
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        $('#order_address_city').html(output);
-      }
-    });
-  });
-</script>

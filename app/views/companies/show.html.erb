@@ -14,6 +14,19 @@
   <%= @company.fax %>
 </p>
 <br>
+<p>
+  <strong>Address :</strong>
+  <%= @company.address.line_1 %>
+  <%= @company.address.line_2 %>
+</p>
+<br>
+
+<p>
+  <strong>Zip Code :</strong>
+  <%= @company.address.zip %>
+</p>
+<br>
+
 <%= link_to 'Edit', edit_company_path(@company)%>
 <%= link_to 'Back', companies_path %>
 

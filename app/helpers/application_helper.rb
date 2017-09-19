@@ -9,4 +9,8 @@ module ApplicationHelper
   def round_off(a)
     "%.2f" % a
   end
+
+  def assign_dollar
+    return "$"
+  end
 end

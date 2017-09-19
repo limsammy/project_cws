@@ -6,6 +6,17 @@ Order Detail: <%= @order.order_description %>
 <br>
 Order Date: <%=(@order.order_at).to_date.strftime("%d-%m-%Y")
  %>
+<p>
+  Address :
+  <%binding.pry %>
+  <%= @order.shipping_address.line_1 %>
+  <%= @order.shipping_address.line_2 %>
+</p>
+<p>
+  <strong>Zip Code :</strong>
+  <%= @order.shipping_address.zip %>
+</p>
+<br>
 
 <br>
 <br>
@@ -29,14 +40,14 @@ Order Date: <%=(@order.order_at).to_date.strftime("%d-%m-%Y")
   				  <td><%= i.product.name %></td>
   				  <td><%= i.unit_price%> </td>
   				  <td> <%= i.quantity%> </td>
-  					<td>$<%= round_off(i.amount)%></td>
+  					<td><%=assign_dollar%><%= round_off(i.amount)%></td>
   			  </tr>
   			<%end%>
   		</tbody>
     </table>
   </div>
 
-	Total: $ <%= round_off(@order.total_amount) %>
+	Total: <%= assign_dollar %> <%= round_off(@order.total_amount) %>
 <%end %>
 <br>
 <%= link_to 'Edit', edit_order_path(@order) %>

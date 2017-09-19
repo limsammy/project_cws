@@ -120,7 +120,7 @@ $(document).on('keyup', '.quant', function(){
   	dataType: "json",
   	type: "GET",
     success:function() {
-      console.log($(this));
+      console.log();
       $('#amt').val(unit_price);
     }
   });
@@ -152,7 +152,7 @@ $(document).ready(function(){
   $('.state_dropdown').select2();
   $('.city_dropdown').select2();
 
-  $('#company_address_attributes_country').bind("change keyup",function(event) {
+  $('#dropdown_country').bind("change keyup",function(event) {
     element = $(this).val()
     $.ajax({
       url: '/companies/find_states',
@@ -164,14 +164,14 @@ $(document).ready(function(){
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });
-        $('#company_address_attributes_state').html(output);
+        $('#dropdown_state').html(output);
       }
     });
 });
 
-  $('#company_address_attributes_state').bind("change keyup",function(event) {
+  $('#dropdown_state').bind("change keyup",function(event) {
     element = $(this).val()
-    country_value = $('#company_address_attributes_country').val()
+    country_value = $('#dropdown_country').val()
     $.ajax({
       url: "/companies/find_cities",
       data: {country_value: country_value, state_value: element},
@@ -183,7 +183,7 @@ $(document).ready(function(){
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });
-        $('#company_address_attributes_city').html(output);
+        $('#dropdown_city').html(output);
       }
     });
   });

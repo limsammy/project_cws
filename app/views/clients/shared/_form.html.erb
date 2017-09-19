@@ -6,51 +6,10 @@
 <%= f.fields_for :address do |addr| %>
   <%= addr.input "line_1", label: "Address Line 1" %>
   <%= addr.input "line_2", label: "Address Line 2" %>
-  <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
-  <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, input_html: {class: "state_dropdown ", placeholder: "Please select"}%>
-  <%= addr.input :city, collection: CS.get(:us, :ak).map{|k,v| [v,k]}, as: :select, input_html: {class: "city_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {id: " dropdown_country",class: "country_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, input_html: {id: "dropdown_state", class: "state_dropdown ", placeholder: "Please select"}%>
+  <%= addr.input :city, collection: CS.get(:us, :ak).map{|k,v| [v,k]}, as: :select, input_html: {id: "dropdown_city", class: "city_dropdown ", placeholder: "Please select"}%>
   <%= addr.input "zip", label: "Zip" %>
   <%= f.submit "Save", class: "btn btn-info btn-lg" %>
 <%end%>
 
-<script type="text/javascript">
-
-  $('.country_dropdown').select2();
-  $('.state_dropdown').select2();
-  $('#client_address_attributes_country').change(function() {
-    element = $(this).val()
-    $.ajax({
-      url: '/companies/find_states',
-      data: {country_value: element},
-      type: "GET",
-      success:function(data) {
-        var output = [];
-        output.push('<option value="">Please select </option>');
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        console.log(output);
-        $('#client_address_attributes_state').html(output);
-      }
-    });
-  });
-
-  $('#client_address_attributes_state').bind("change keyup",function(event) {
-    element = $(this).val()
-    country_value = $('#client_address_attributes_country').val()
-    $.ajax({
-      url: "/companies/find_cities",
-      data: {country_value: country_value, state_value: element},
-      type: "GET",
-      success: function (data) {
-        var output = [];
-        output.push('<option value=""> </option>');
-
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        $('#client_address_attributes_city').html(output);
-      }
-    });
-  });
-</script>

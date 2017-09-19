@@ -14,7 +14,17 @@
   <%= @client.mob_number %>
 </p>
 
-
+<p>
+  <strong>Address :</strong>
+  <%= @client.address.line_1 %>
+  <%= @client.address.line_2 %>
+</p>
+<p>
+  <strong>Zip Code :</strong>
+  <%= @client.address.zip %>
+</p>
+<br>
+<% binding.pry %>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

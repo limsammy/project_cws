@@ -1,35 +1,65 @@
 <%= simple_nested_form_for @order, html: {class: "form-material form-horizontal"} do |f| %>
   <div class="form-inputs">
-    <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]} %>
-    <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]} %>
-    <%= f.input :order_number %>
-    <%= f.input :order_description %>
-    <%= f.input :order_at, as: :string, label: "Order Date", input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today), class: "datepicker"} %>
+    <div class='col-md-12'>
+      <%= f.input :order_description,  placeholder: "description" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]}, prompt: "Select company" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]}, prompt: "Select customer" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.input :order_number, placeholder: "order number" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.input :order_at, as: :string, input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today),placeholder: "order date", class: "datepicker"} %>
+    </div>
   </div>
 
   <h4> Order Items </h4>
-  <%= f.link_to_add "Add order", :order_items %>
   <%= f.fields_for :order_items do |a| %>
-    <div class = "aaa">
-      <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, input_html: { :class => 'product_id' } %>
-      <%= a.input :unit_price, input_html: { id: 'uprice' }  %>
-      <%= a.input :quantity, input_html:{ class: 'quant', autocomplete: :off }  %>
-      <%= a.input :amount , label: "Amount", input_html: { :id => 'amt' } %>
+    <div class= "main row">
+      <div class='col-md-3'>
+        <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: "Select product", input_html: { :class => 'product_id' } %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :unit_price, placeholder: "unit price",input_html: {class: 'uprice' }  %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :quantity, placeholder: "quantity", input_html:{ class: 'quant', autocomplete: :off }  %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :amount ,placeholder: "amount", disabled: true, input_html: {class: 'amt' } %>
+      </div>
     </div>
     <%= a.link_to_remove "Remove" %>
   <% end %>
-
-
+  <%= f.link_to_add "Add product", :order_items %>
   <h4> Shipping Address </h4>
   <%= f.fields_for :shipping_address do |addr| %>
-    <%= addr.input :line_1 %>
-    <%= addr.input :line_2%>
-    <%= addr.input :country,collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {:id => 'dropdown_country', class: "country_dropdown ", placeholder: "Please select"}%>
-    <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {:id => 'dropdown_state', class: "state_dropdown ", placeholder: "Please select"} %>
-    <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select City...", input_html: {:id => 'dropdown_city' ,class: "city_dropdown ", placeholder: "Please select"} %>
-    <%= addr.input :zip%>
+    <div class='col-md-6'>
+      <%= addr.input :line_1 %>
+    </div>
+    <div class='col-md-6'>
+      <%= addr.input :line_2%>
+    </div>
+    <div class='col-md-4'>
+      <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select,  input_html: {class: "country_dropdown ", placeholder: "Please select"}%>
+    </div>
+    <div class='col-md-4'>
+      <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {class: "state_dropdown ", placeholder: "Please select"} %>
+    </div>
+    <div class='col-md-4'>
+      <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select City...", input_html: {class: "city_dropdown ", placeholder: "Please select"} %>
+    </div>
+    <div class='col-md-6'>
+      <%= addr.input :zip%>
+    </div>
   <%end%>
-  <%= f.submit 'Save',class: "btn btn-info btn-lg"%>
+  <div class='col-md-6'>
+    <%= f.submit 'Save',class: "btn btn-info btn-lg"%>
+  </div>
 <%end %>
 
 

@@ -110,33 +110,31 @@ function datatable(id, default_sort_column, non_sortable_columns, pageLength, ex
 }
 
 $(document).on('keyup', '.quant', function(){
-  quantity = $(this).val();
-  unit_price = quantity * ($('#uprice').val());
-  console.log(quantity);
-  console.log(unit_price);
+  var quantity = $(this).val();
+  var $this = $(this);
+  var price = $(this).parents('.main').find('.uprice').val();
+  var total_price = quantity * price;
   $.ajax({
   	url: "/products/per_amount",
   	data: {id: quantity},
   	dataType: "json",
   	type: "GET",
     success:function() {
-      console.log();
-      $('#amt').val(unit_price);
+      $this.parents('.main').find('.amt').val(total_price);
     }
   });
 })
 
 $(document).on('change', '.product_id', function(){
-  product_id = $(this).val();
-  console.log(product_id)
+  var product_id = $(this).val();
+  var $this = $(this);
   $.ajax({
     url:  "/products/per_price",
     data:  {id: product_id},
     dataType: "json",
     type: "GET",
     success:function(data) {
-      console.log(data)
-      $('#uprice').val(data.value);
+      $this.parents('.main').find('.uprice').first().val(data.value);
     }
   });
 })
@@ -160,7 +158,7 @@ $(document).ready(function(){
       type: "GET",
       success:function(data) {
         var output = [];
-        output.push('<option value="">Select State </option>');
+
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });
@@ -181,7 +179,6 @@ $(document).ready(function(){
         output.push('<option value=""> </option>');
 
         $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
         });
         $('#dropdown_city').html(output);
       }

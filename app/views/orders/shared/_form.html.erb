@@ -13,7 +13,7 @@
       <%= f.input :order_number, placeholder: "order number" %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :order_at, as: :string, input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today),placeholder: "order date", class: "datepicker"} %>
+      <%= f.input :ordered_at, as: :string, input_html: {value: @order.order_at.present? ? formatted_date(@order.order_at) : formatted_date(Date.today),placeholder: "order date", class: "datepicker"} %>
     </div>
   </div>
 

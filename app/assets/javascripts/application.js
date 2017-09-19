@@ -140,7 +140,7 @@ $(document).on('change', '.product_id', function(){
 })
 
 $(document).ready(function(){
-  $('#order_order_at').datepicker({
+  $('#order_ordered_at').datepicker({
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });

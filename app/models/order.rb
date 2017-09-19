@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_one :shipping_address, class_name: "Address", as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :shipping_address
 	accepts_nested_attributes_for :order_items,  allow_destroy: true
-  validates :order_number, :order_description, :order_at, presence: true
+  validates :order_number, :order_description, :ordered_at, presence: true
 
 	def total_amount
 		total = 0

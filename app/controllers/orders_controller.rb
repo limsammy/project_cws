@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    binding.pry
     @order = Order.new(order_params)
     if @order.save
       redirect_to order_path(@order)
@@ -47,7 +48,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:id, :company_id, :client_id, :order_number, :order_at, :order_description,
+    params.require(:order).permit(:id, :company_id, :client_id, :order_number, :ordered_at, :order_description,
                                    order_items_attributes: [
                                     :id,
                                     :product_id,

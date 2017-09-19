@@ -4,7 +4,7 @@ Order Number: <%= @order.order_number %>
 <br>
 Order Detail: <%= @order.order_description %>
 <br>
-Order Date: <%=(@order.order_at).to_date.strftime("%d-%m-%Y")
+Order Date: <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y")
  %>
 <p>
   Address :
@@ -40,7 +40,8 @@ Order Date: <%=(@order.order_at).to_date.strftime("%d-%m-%Y")
   				  <td><%= i.product.name %></td>
   				  <td><%= i.unit_price%> </td>
   				  <td> <%= i.quantity%> </td>
-  					<td><%=assign_dollar%><%= round_off(i.amount)%></td>
+            <%binding.pry%>
+  					<td><%=assign_dollar%><%= i.amount %></td>
   			  </tr>
   			<%end%>
   		</tbody>

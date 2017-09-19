@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20170919110331) do
     t.integer "addressable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "city"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -35,7 +34,6 @@ ActiveRecord::Schema.define(version: 20170919110331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id"
-    t.string "city"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -55,8 +53,7 @@ ActiveRecord::Schema.define(version: 20170919110331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "amount"
-    t.decimal "price"
-    t.string "unit_price"
+    t.decimal "unit_price"
     t.index ["client_id"], name: "index_order_items_on_client_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
@@ -69,8 +66,7 @@ ActiveRecord::Schema.define(version: 20170919110331) do
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "order_at"
-    t.string "street_address"
+    t.datetime "ordered_at"
     t.integer "address_id"
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["company_id"], name: "index_orders_on_company_id"

@@ -58,6 +58,9 @@
     margin: 0 auto;
     padding: 93px 0;
 }
+ label.required:after {
+     content: " *";
+ }
 .login-box{
     background: #fff;
     max-width: 400px;

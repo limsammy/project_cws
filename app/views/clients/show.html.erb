@@ -24,6 +24,13 @@
 
   </div>
 </div>
+<div class="form-group">
+  <label class="col-md-3" for="fn">Company Name</label>
+  <div class="col-md-9">
+   <span><%= company_name(@client) %></span>
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

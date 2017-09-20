@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
 
   def per_price
 
-    unit_price = Product.find_by(id: params[:id]).price.to_f
+    unit_price = (Product.find_by(id: params[:id]).price.to_f).round(2)
     render json: {value: unit_price}
   end
 

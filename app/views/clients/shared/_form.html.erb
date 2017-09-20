@@ -1,5 +1,5 @@
 <div class='col-md-6'>
-  <%= f.input :name, label: "Client Name", placeholder: "Client name" %>
+  <%= f.input :name, label: 'Client Name', placeholder: 'Client name' %>
 </div>
 <div class='col-md-6'>
   <%= f.input :email, label: "Email", placeholder: "Email" %>
@@ -22,7 +22,7 @@
   </div>
 
   <div class='col-md-4'>
-    <%= addr.input :country,collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select Country", input_html: {id: "dropdown_country",class: "country_dropdown ", }%>
+    <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select Country", input_html: {id: "dropdown_country",class: "country_dropdown", }%>
   </div>
   <div class='col-md-4'>
   <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select State", input_html: {id: "dropdown_state", class: "state_dropdown "}%>

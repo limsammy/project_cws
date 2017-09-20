@@ -10,6 +10,13 @@
 </p>
 
 <p>
+  <strong>Company</strong>
+  <%= Company.find_by(id: @client.company_id).name
+ %>
+  <% binding.pry %>
+</p>
+
+<p>
   <strong>Mobile Number:</strong>
   <%= @client.mob_number %>
 </p>

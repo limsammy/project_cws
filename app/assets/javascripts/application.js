@@ -113,7 +113,7 @@ $(document).on('keyup', '.quant', function(){
   var quantity = $(this).val();
   var $this = $(this);
   var price = $(this).parents('.main').find('.uprice').val();
-  var total_price = quantity * price;
+  var total_price = (quantity * price).toFixed(2);
   $.ajax({
   	url: "/products/per_amount",
   	data: {id: quantity},
@@ -152,7 +152,6 @@ $(document).ready(function(){
 
   $('#dropdown_country').bind("change keyup",function(event) {
     element = $(this).val()
-    console.log(element)
     $.ajax({
       url: '/companies/find_states',
       data: {country_value: element},
@@ -161,12 +160,10 @@ $(document).ready(function(){
         var output = [];
 
         output.push('<option value="">Select state</option>');
-        console.log(output);
 
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });
-        console.log(output)
         $('#dropdown_state').html(output);
       }
     });
@@ -175,8 +172,6 @@ $(document).ready(function(){
   $('#dropdown_state').bind("change keyup",function(event) {
     element = $(this).val()
     country_value = $('#dropdown_country').val()
-    console.log(element)
-    console.log(country_value)
     $.ajax({
       url: "/companies/find_cities",
       data: {country_value: country_value, state_value: element},
@@ -187,7 +182,6 @@ $(document).ready(function(){
         $.each(data, function(key, value){
           output.push('<option value="'+ key +'">'+ value +'</option>');
         });
-        console.log(output)
         $('#dropdown_city').html(output);
       }
     });

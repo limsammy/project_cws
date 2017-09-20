@@ -1,5 +1,4 @@
 <h3> ORDER DETAILS </h3>
-
 Order Number: <%= @order.order_number %>
 <br>
 Order Detail: <%= @order.order_description %>
@@ -8,7 +7,6 @@ Order Date: <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y")
  %>
 <p>
   Address :
-  <%binding.pry %>
   <%= @order.shipping_address.line_1 %>
   <%= @order.shipping_address.line_2 %>
 </p>
@@ -17,7 +15,6 @@ Order Date: <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y")
   <%= @order.shipping_address.zip %>
 </p>
 <br>
-
 <br>
 <br>
 <% if @order.order_items.present? %>
@@ -40,15 +37,14 @@ Order Date: <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y")
   				  <td><%= i.product.name %></td>
   				  <td><%= i.unit_price%> </td>
   				  <td> <%= i.quantity%> </td>
-            <%binding.pry%>
-  					<td><%=assign_dollar%><%= i.amount %></td>
+  					<td><%= assign_dollar %> <%= round_off(i.amount) %></td>
   			  </tr>
   			<%end%>
   		</tbody>
     </table>
   </div>
 
-	Total: <%= assign_dollar %> <%= @order.total_amount %>
+	Total: <%= assign_dollar %> <%= round_off(@order.total_amount) %>
 <%end %>
 <br>
 <%= link_to 'Edit', edit_order_path(@order) %>

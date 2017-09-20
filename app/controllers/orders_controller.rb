@@ -45,6 +45,13 @@ class OrdersController < ApplicationController
     end
   end
 
+  def status
+    @order = Order.find(params[:id])
+    if @order.update_attributes(status: params[:status].to_i)
+      render json: {status: @order.status}
+    end
+  end
+
   private
   def order_params
     params.require(:order).permit(:id, :company_id, :client_id, :order_number, :ordered_at, :order_description,

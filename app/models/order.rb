@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  enum status: [ 'ordered', 'paid', 'cancelled', 'completed' ]
 	belongs_to :company, optional: true
 	belongs_to :client, optional: true
 	has_many :order_items, dependent: :destroy

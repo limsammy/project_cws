@@ -34,7 +34,11 @@ Rails.application.routes.draw do
   end
   resources :products do
   end
-  resources :orders
+  resources :orders do
+    member do
+      put :status
+    end
+  end
 
   resources :orders do
   end

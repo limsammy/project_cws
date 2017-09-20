@@ -1,34 +1,47 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+<form class="form-horizontal form-material col-md-8 col-md-offset-2">
+<fieldset>
 
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
+<div class="form-group">
+  <label class="col-md-3" for="fn">Name</label>
+  <div class="col-md-9">
+   <span><%= @client.name %></span>
+  </div>
+</div>
 
-<p>
-  <strong>Company</strong>
-  <%= company_name(@client)%>
-</p>
+<div class="form-group">
+  <label class="col-md-3" for="fn">Email</label>
+  <div class="col-md-9">
+   <span><%= @client.email %></span>
 
-<p>
-  <strong>Mobile Number:</strong>
-  <%= @client.mob_number %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Address :</strong>
-  <%= @client.address.line_1 %>
-  <%= @client.address.line_2 %>
-</p>
-<p>
-  <strong>Zip Code :</strong>
-  <%= @client.address.zip %>
-</p>
-<br>
+<div class="form-group">
+  <label class="col-md-3" for="fn">Mobile Number</label>
+  <div class="col-md-9">
+   <span><%= @client.mob_number %></span>
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>
+</fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

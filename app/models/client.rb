@@ -9,3 +9,8 @@ class Client < ApplicationRecord
 	                  format: { with: VALID_EMAIL_REGEX },
 	                  uniqueness: true
 end
+
+
+def company_name(obj)
+  Company.find(obj.id).name
+end

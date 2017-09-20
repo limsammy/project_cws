@@ -20,15 +20,16 @@
   <div class='col-md-6'>
     <%= addr.input 'line_2', placeholder: 'line 2' %>
   </div>
-
+  <%country = @client.address.country.present? ? @client.address.country : 'US'%>
+  <%state = @client.address.state.present? ? @client.address.state : 'AL'%>
   <div class='col-md-4'>
-    <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: 'Select Country', input_html: {id: 'dropdown_country',class: 'country_dropdown', }%>
+    <%= addr.input :country, collection: country_select, as: :select, include_blank: 'Select Country', input_html: {id: 'dropdown_country',class: 'country_dropdown', }%>
   </div>
   <div class='col-md-4'>
-  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: 'Select State', input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
+  <%= addr.input :state, collection: state_select(country), as: :select, include_blank: 'Select State', input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
   </div>
   <div class='col-md-4'>
-  <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select,prompt: 'Select City',  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
+  <%= addr.input :city, collection: city_select(country, state), as: :select,prompt: 'Select City',  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
   </div>
   <div class='col-md-6'>
     <%= addr.input 'zip', placeholder: 'zip'%>

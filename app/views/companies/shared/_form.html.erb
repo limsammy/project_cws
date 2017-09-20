@@ -1,31 +1,36 @@
-<div class='col-md-4'>
-  <%= f.input :name, as: :string, label: 'Company Name', input_html: {class: 'form-control masked exp_desp ', placeholder: 'company name'} %>
+<div class='col-md-6'>
+  <%= f.input :name, as: :string,  input_html: {class: 'form-control masked exp_desp ', placeholder: 'name'} %>
 </div>
-<div class='col-md-4'>
-  <%= f.input :fax, label: 'Fax', input_html: {class: 'form-control masked exp_desp ', placeholder: 'Fax'} %>
+<div class='col-md-6'>
+  <%= f.input :fax,  input_html: {class: 'form-control masked exp_desp ', placeholder: 'fax'} %>
 </div>
-<div class='col-md-4'>
-  <%= f.input :phone_number, as: :string, label: 'Phone Number', input_html: {class: 'form-control masked exp_desp ', placeholder: 'Enter your Number'} %>
+<div class='col-md-6'>
+  <%= f.input :phone_number, as: :string,  input_html: {class: 'form-control masked exp_desp ', placeholder: 'phone number'} %>
 </div>
-
+<div class='col-md-6'>
+  <%= f.input :department, as: :string, input_html: {class: 'form-control masked exp_desp ', placeholder: 'department'} %>
+</div>
+<h3>Address</h3>
 <%= f.fields_for :address do |addr| %>
   <div class='col-md-6'>
-    <%= addr.input :line_1, label: 'Address Line 1', placeholder: ' Enter your Address ' %>
+    <%= addr.input :line_1, placeholder: 'line 1' %>
   </div>
   <div class='col-md-6'>
-    <%= addr.input :line_2, label: 'Address Line 2', placeholder: ' Enter your Address ' %>
+    <%= addr.input :line_2, placeholder: 'line 2' %>
+  </div>
+  <%country = @company.address.country.present? ? @company.address.country : 'US'%>
+  <%state = @company.address.state.present? ? @company.address.state : 'AL'%>
+  <div class='col-md-4'>
+    <%= addr.input :country, collection: country_select, as: :select , include_blank: 'Select Country...', input_html: {id: 'dropdown_country',class: 'country_dropdown '}%>
   </div>
   <div class='col-md-4'>
-    <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select , include_blank: 'Select Country...', input_html: {id: 'dropdown_country',class: 'country_dropdown ', placeholder: 'Please select'}%>
+    <%= addr.input :state, collection: state_select(country), as: :select,include_blank: 'Select State...', input_html: {id: 'dropdown_state',class: 'state_dropdown '} %>
   </div>
   <div class='col-md-4'>
-    <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select,include_blank: 'Select State...', input_html: {id: 'dropdown_state',class: 'state_dropdown '} %>
-  </div>
-  <div class='col-md-4'>
-    <%= addr.input :city, collection: CS.get(:ny, :us).map{|k,v| [v,k]}, as: :select, include_blank: 'Select City', input_html: {id: 'dropdown_city', class: 'city_dropdown ', placeholder: 'Please select'} %>
+    <%= addr.input :city, collection: city_select(country, state), as: :select, include_blank: 'Select City', input_html: {id: 'dropdown_city', class: 'city_dropdown ', placeholder: 'Please select'} %>
   </div>
   <div class='col-md-6'>
-    <%= addr.input :zip, label: 'Zip', placeholder: ' Enter zip code '%>
+    <%= addr.input :zip, placeholder: 'zip code '%>
   </div>
 <% end %>
 

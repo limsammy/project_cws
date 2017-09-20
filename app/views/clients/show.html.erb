@@ -11,8 +11,7 @@
 
 <p>
   <strong>Company</strong>
-  <%= Company.find_by(id: @client.company_id).name
- %>
+  <%= company_name(@client)%>
 </p>
 
 <p>

@@ -144,7 +144,6 @@ $(document).ready(function(){
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });
-
 $(document).ready(function(){
   $('.country_dropdown').select2();
   $('.state_dropdown').select2();
@@ -153,34 +152,35 @@ $(document).ready(function(){
   $('#dropdown_country').bind("change keyup",function(event) {
     element = $(this).val()
     $.ajax({
-      url: '/companies/find_states',
+      url: '/addresses/find_states',
       data: {country_value: element},
       type: "GET",
       success:function(data) {
-        var output = [];
-
-        output.push('<option value="">Select state</option>');
-
-        $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
+        var state_output = [];
+        var city_output = [];
+        $.each(data.states, function(key, value){
+          state_output.push('<option value="'+ key +'">'+ value +'</option>');
         });
-        $('#dropdown_state').html(output);
+        $('#dropdown_state').html(state_output);
+        $.each(data.cities, function(key, value)
+        {
+          city_output.push('<option value="'+ value +'">'+ value +'</option>');
+        });
+        $('#dropdown_city').html(city_output.join(''));
       }
     });
-});
-
+  });
   $('#dropdown_state').bind("change keyup",function(event) {
     element = $(this).val()
     country_value = $('#dropdown_country').val()
     $.ajax({
-      url: "/companies/find_cities",
+      url: "/addresses/find_cities",
       data: {country_value: country_value, state_value: element},
       type: "GET",
       success: function (data) {
         var output = [];
-        output.push('<option value="">Select City</option>');
         $.each(data, function(key, value){
-          output.push('<option value="'+ key +'">'+ value +'</option>');
+          output.push('<option value="'+ value +'">'+ value +'</option>');
         });
         $('#dropdown_city').html(output);
       }

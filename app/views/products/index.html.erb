@@ -10,7 +10,6 @@
               <th>code</th>
               <th>Price</th>
               <th>Stock</th>
-              <th>View</th>
               <th>Edit</th>
               <th> Delete </th>
             </tr>
@@ -18,11 +17,10 @@
             <tbody>
               <% @products.each do |product| %>
                 <tr>
-                  <td><%= product.name %></td>
+                  <td><%= link_to product.name, product %></td>
                   <td><%= product.code %></td>
                   <td><%= product.price %></td>
                   <td><%= product.stock_in_hand %></td>
-                  <td><%= link_to 'Show', product %></td>
                   <td><%= link_to 'Edit', edit_product_path(product) %></td>
                   <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
@@ -34,5 +32,5 @@
 </div>
 
 <script>
-  datatable('products_datatable', 1, [4,5,6], 20, [0,1,2,3])
+  datatable('products_datatable', 1, [4,5], 20, [0,1,2,3])
 </script>

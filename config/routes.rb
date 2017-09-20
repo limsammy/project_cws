@@ -20,13 +20,14 @@ Rails.application.routes.draw do
 
 
   resources :addresses do
-  end
-
-  resources :companies do
     collection do
       get :find_states
       get :find_cities
     end
+  end
+
+  resources :companies do
+
   end
 
   resources :clients do

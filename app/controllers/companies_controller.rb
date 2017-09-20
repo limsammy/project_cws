@@ -46,15 +46,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def find_states
-    @states = CS.states(params[:country_value])
-    render json: @states
-  end
-  def find_cities
-    @cities = CS.cities(params[:state_value], params[:country_value])
-    render json: @cities
-  end
-
   private
     def company_params
       params.require(:company).permit(:id, :client_id,:name, :phone_number, :department, :fax, :_destroy,

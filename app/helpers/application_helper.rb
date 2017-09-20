@@ -14,15 +14,15 @@ module ApplicationHelper
     return "$"
   end
 
-  def country_select(value)
-
+  def country_select
+    CS.get.map{|k,v| [v,k]}
   end
 
-  def state_select(value)
-
+  def state_select(country)
+    CS.get(:"#{country}").map{|k,v| [v,k]}
   end
 
-  def city_select
-
+  def city_select(country, state)
+    CS.get(:"#{country}", :"#{state}").map{|k| [k,k]}
   end
 end

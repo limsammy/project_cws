@@ -8,7 +8,6 @@
             <tr>
                 <th>Name</th>
                 <th>Fax</th>
-                <th >View</th>
                 <th>Edit</th>
                 <th> Destroy</th>
             </tr>
@@ -16,9 +15,8 @@
           <tbody>
             <% @companies.each do |company| %>
               <tr>
-                  <td><%= company.name %></td>
+                  <td><%= link_to company.name, company %></td>
                   <td><%= company.fax %></td>
-                  <td><%= link_to 'Show', company %></td>
                   <td><%= link_to 'Edit', edit_company_path(company) %></td>
                   <td><%= link_to 'Destroy', company, method: :delete, data: {confirm: 'Are yoy sure'} %>
               </tr>

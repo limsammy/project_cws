@@ -10,7 +10,6 @@
             <th>company</th>
             <th>Email</th>
             <th>Mobile</th>
-            <th >View</th>
             <th>Edit</th>
             <th> Delete </th>
           </tr>
@@ -18,11 +17,10 @@
         <tbody>
           <% @clients.each do |client| %>
             <tr>
-              <td><%= client.name %></td>
-              <td><%= Company.find_by(id: client.company_id).name %></td>
+              <td><%= link_to "#{client.name}", client %></td>
+              <td><%= company_name(client) %></td>
               <td><%= client.email %></td>
               <td><%= client.mob_number %></td>
-              <td><%= link_to 'Show', client %></td>
               <td><%= link_to 'Edit', edit_client_path(client) %></td>
               <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
@@ -33,5 +31,5 @@
   </div>
 </div>
 <script>
-  datatable('client_datatable', 1, [3,4,5], 20, [0,1,2])
+  datatable('client_datatable', 1, [4,5], 20, [0,1,2])
 </script>

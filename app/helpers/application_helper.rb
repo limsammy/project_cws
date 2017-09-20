@@ -7,7 +7,6 @@ module ApplicationHelper
     date.strftime('%d/%m/%Y')
   end
   def round_off(value)
-    binding.pry
     "%.2f" % value
   end
 

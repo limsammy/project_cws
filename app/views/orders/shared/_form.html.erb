@@ -17,24 +17,24 @@
     </div>
   </div>
 
-<h4> Order Items </h4>
-<%= f.fields_for :order_items do |a| %>
-  <div class= "main row">
-    <div class='col-md-3'>
-      <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: "Select product", input_html: { :class => 'product_id' } %>
+  <h4> Order Items </h4>
+  <%= f.fields_for :order_items do |a| %>
+    <div class= "main row">
+      <div class='col-md-3'>
+        <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: "Select product", input_html: { :class => 'product_id' } %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :unit_price, placeholder: "unit price",input_html: {class: 'uprice' }  %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :quantity, placeholder: "quantity", input_html:{ class: 'quant', autocomplete: :off }  %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>
+      </div>
     </div>
-    <div class='col-md-3'>
-      <%= a.input :unit_price, placeholder: "unit price",input_html: {class: 'uprice' }  %>
-    </div>
-    <div class='col-md-3'>
-      <%= a.input :quantity, placeholder: "quantity", input_html:{ class: 'quant', autocomplete: :off }  %>
-    </div>
-    <div class='col-md-3'>
-      <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>
-    </div>
-  </div>
-  <%= a.link_to_remove "Remove" %>
-<% end %>
+    <%= a.link_to_remove "Remove" %>
+  <% end %>
   <%= f.link_to_add "Add product", :order_items %>
   <h4> Shipping Address </h4>
   <%= f.fields_for :shipping_address do |addr| %>

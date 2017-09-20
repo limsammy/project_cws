@@ -13,7 +13,6 @@
   <strong>Company</strong>
   <%= Company.find_by(id: @client.company_id).name
  %>
-  <% binding.pry %>
 </p>
 
 <p>
@@ -31,7 +30,6 @@
   <%= @client.address.zip %>
 </p>
 <br>
-<% binding.pry %>
 
 <%= link_to 'Edit', edit_client_path(@client) %> |
 <%= link_to 'Back', clients_path %>

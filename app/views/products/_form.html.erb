@@ -1,18 +1,18 @@
-<%= simple_nested_form_for @product, html: {class: "form-material form-horizontal"} do |f| %>
+<%= simple_nested_form_for @product, html: {class: 'form-material form-horizontal'} do |f| %>
   <%= f.error_notification %>
-  <div class="form-inputs">
+  <div class='form-inputs'>
     <div class='col-md-6'>
-      <%= f.input :name, placeholder: "name" %>
+      <%= f.input :name, placeholder: 'name' %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :code, placeholder: "code" %>
+      <%= f.input :code, placeholder: 'code' %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :price, placeholder: "price" %>
+      <%= f.input :price, placeholder: 'price' %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :stock_in_hand, placeholder: "stock in hand" %>
+      <%= f.input :stock_in_hand, placeholder: 'stock in hand' %>
     </div>
   </div>
-  <%= f.submit 'Save',class: "btn btn-info btn-lg"%>
+  <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
 <% end %>

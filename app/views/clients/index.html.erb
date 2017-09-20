@@ -20,6 +20,7 @@
             <tr>
               <td><%= client.name %></td>
               <td><%= Company.find_by(id: client.company_id).name %></td>
+              <td><%= client.email %></td>
               <td><%= client.mob_number %></td>
               <td><%= link_to 'Show', client %></td>
               <td><%= link_to 'Edit', edit_client_path(client) %></td>

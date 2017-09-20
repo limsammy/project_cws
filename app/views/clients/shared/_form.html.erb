@@ -22,13 +22,13 @@
   </div>
 
   <div class='col-md-4'>
-    <%= addr.input :country, id: 'dropdown_country',collection: CS.get.map{|k,v| [v,k]}, as: :select, prompt: "Please select", input_html: {id: " dropdown_country",class: "country_dropdown ", }%>
+    <%= addr.input :country,collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select Country", input_html: {id: "dropdown_country",class: "country_dropdown ", }%>
   </div>
   <div class='col-md-4'>
-  <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select, prompt: "Please select", input_html: {id: "dropdown_state", class: "state_dropdown "}%>
+  <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select State", input_html: {id: "dropdown_state", class: "state_dropdown "}%>
   </div>
   <div class='col-md-4'>
-  <%= addr.input :city, collection: CS.get(:us, :ak).map{|k,v| [v,k]}, as: :select,prompt: "Please select",  input_html: {id: "dropdown_city", class: "city_dropdown "}%>
+  <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select,prompt: "Select City",  input_html: {id: "dropdown_city", class: "city_dropdown "}%>
   </div>
   <div class='col-md-6'>
     <%= addr.input "zip", placeholder: "zip"%>
@@ -37,4 +37,5 @@
     <%= f.submit "Save", class: "btn btn-info btn-lg" %>
   </div>
 <%end%>
+
 

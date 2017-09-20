@@ -48,7 +48,7 @@ Order Date: <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y")
     </table>
   </div>
 
-	Total: <%= assign_dollar %> <%= round_off(@order.total_amount) %>
+	Total: <%= assign_dollar %> <%= @order.total_amount %>
 <%end %>
 <br>
 <%= link_to 'Edit', edit_order_path(@order) %>

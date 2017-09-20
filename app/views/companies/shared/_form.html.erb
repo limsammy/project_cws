@@ -19,10 +19,10 @@
     <%= addr.input :country, collection: CS.get.map{|k,v| [v,k]}, as: :select , include_blank: "Select Country...", input_html: {id: "dropdown_country",class: "country_dropdown ", placeholder: "Please select"}%>
   </div>
   <div class='col-md-4'>
-    <%= addr.input :state, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => "Select State...", input_html: {id: "dropdown_state",class: "state_dropdown ", placeholder: "Please select"} %>
+    <%= addr.input :state, collection: CS.get(:us).map{|k,v| [v,k]}, as: :select,include_blank: "Select State...", input_html: {id: "dropdown_state",class: "state_dropdown ", placeholder: "Please select"} %>
   </div>
   <div class='col-md-4'>
-    <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, include_blank: "Select City...", input_html: {id: "dropdown_city", class: "city_dropdown ", placeholder: "Please select"} %>
+    <%= addr.input :city, collection: CS.get(:ny, :us).map{|k,v| [v,k]}, as: :select, include_blank: "Select City...", input_html: {id: "dropdown_city", class: "city_dropdown ", placeholder: "Please select"} %>
   </div>
   <div class='col-md-12'>
   <%= addr.input :zip, label: "Zip", placeholder: " Enter zip code "%>

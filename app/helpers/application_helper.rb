@@ -14,4 +14,16 @@ module ApplicationHelper
   def assign_dollar
     return "$"
   end
+
+  def country_select(value)
+
+  end
+
+  def state_select(value)
+
+  end
+
+  def city_select
+
+  end
 end

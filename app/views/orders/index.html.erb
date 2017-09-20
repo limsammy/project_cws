@@ -10,16 +10,19 @@
               <th>View</th>
               <th>Edit</th>
               <th> Delete </th>
+              <th> Status </th>
             </tr>
           </thead>
           <tbody>
             <% @orders.each do |order| %>
-              <tr>
+              <tr data-id="<%= order.id%>" data-status="<%= order.status %>">
                 <td><%= order.order_number %></td>
                 <td><%= order.order_description %></td>
                 <td><%= link_to 'Show', order %></td>
                 <td><%= link_to 'Edit', edit_order_path(order) %></td>
                 <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: 'Are yoy sure'} %>
+                <td><%= select_tag :status, options_for_select(Order.statuses.map {|k, v| [k, v]}, Order.statuses[order.status]), class: "order_status satus_drpdwn" %>
+                </td>
               </tr>
             <%end%>
           </tbody>
@@ -30,4 +33,28 @@
 </div>
 <script>
   datatable('orders_datatable', 1, [2,3], 20, [0,1])
+</script>
+
+
+<script>
+  $(function() {
+    $('.order_status').on('change', saveStatus);
+    function saveStatus() {
+      var $this = $(this);
+      var newStatus = $(this).val();
+      var table_row = $(this).closest('tr');
+      var currentStatus = table_row.attr('data-status');
+      var leadId = table_row.attr('data-id');
+      if (!(newStatus == "" && newStatus == currentStatus)) {
+        $.ajax({
+          url: '/orders/'+ leadId+'/status',
+          data: {status: newStatus},
+          dataType: "json",
+          type: "PUT",
+          success:function(data) {
+          }
+        });
+      }
+    }
+  });
 </script>

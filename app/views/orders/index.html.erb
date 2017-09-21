@@ -7,19 +7,19 @@
             <tr>
               <th>Order Description</th>
               <th>Order Number</th>
+              <th> Status </th>
               <th>Edit</th>
               <th> Delete </th>
-              <th> Status </th>
             </tr>
           </thead>
           <tbody>
             <% @orders.each do |order| %>
               <tr data-id="<%= order.id%>" data-status="<%= order.status %>">
-                <td><%= link_to order.order_description, order %></td>
+                <td><%= link_to order.description, order %></td>
                 <td><%= order.order_number %></td>
+                <td><%= select_tag :status, options_for_select(Order.statuses.map {|k, v| [k, v]}, Order.statuses[order.status]), class: "order_status satus_drpdwn" %>
                 <td><%= link_to 'Edit', edit_order_path(order) %></td>
                 <td><%= link_to 'Destroy', order, method: :delete, data: {confirm: 'Are yoy sure'} %>
-                <td><%= select_tag :status, options_for_select(Order.statuses.map {|k, v| [k, v]}, Order.statuses[order.status]), class: "order_status satus_drpdwn" %>
                 </td>
               </tr>
             <%end%>

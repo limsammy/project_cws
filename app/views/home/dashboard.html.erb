@@ -1,3 +1,24 @@
-<div id="user_nav">
-  Yet to be set
+<div class="row">
+  <div class="col-sm-6">
+      <div class="white-box">
+          <h3 class="box-title">Line Chart</h3>
+          <div>
+              <canvas id="chart1" height="150"></canvas>
+          </div>
+      </div>
+  </div>
+  <div class="col-sm-6">
+      <div class="white-box">
+          <h3 class="box-title">Bar Chart</h3>
+          <div>
+              <canvas id="chart2" height="150"></canvas>
+          </div>
+      </div>
+  </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var data1 = <%=@order_count%>;
+    linechart(data1)
+});
+</script>

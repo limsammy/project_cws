@@ -40,21 +40,25 @@
   <%country = @order.shipping_address.country.present? ? @order.shipping_address.country : 'US'%>
   <%state = @order.shipping_address.state.present? ? @order.shipping_address.state : 'AL'%>
   <%= f.fields_for :shipping_address do |addr| %>
+  <div class="row">
     <div class='col-md-6'>
       <%= addr.input :line_1 %>
     </div>
     <div class='col-md-6'>
       <%= addr.input :line_2%>
     </div>
-    <div class='col-md-4'>
-      <%= addr.input :country,collection: country_select, as: :select,include_blank: 'Select Country...',  input_html: {id: 'dropdown_country', class: 'country_dropdown '}%>
-    </div>
-    <div class='col-md-4'>
-      <%= addr.input :state, collection: state_select(country), as: :select, prompt: 'Select State...', input_html: {id: 'dropdown_state', class: 'state_dropdown ', placeholder: 'Please select'} %>
-    </div>
-    <div class='col-md-4'>
-      <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => 'Select City...', input_html: {id: 'dropdown_city', class: 'city_dropdown ', placeholder: 'Please select'} %>
-    </div>
+  </div>
+  <div class="row">
+      <div class='col-md-4  select_lbl'>
+        <%= addr.input :country,collection: country_select, as: :select,include_blank: 'Select Country...',  input_html: {id: 'dropdown_country', class: 'country_dropdown '}%>
+      </div>
+      <div class='col-md-4  select_lbl'>
+        <%= addr.input :state, collection: state_select(country), as: :select, prompt: 'Select State...', input_html: {id: 'dropdown_state', class: 'state_dropdown ', placeholder: 'Please select'} %>
+      </div>
+      <div class='col-md-4  select_lbl'>
+        <%= addr.input :city, collection: CS.get.map{|k,v| [v,k]}, as: :select, :include_blank => 'Select City...', input_html: {id: 'dropdown_city', class: 'city_dropdown ', placeholder: 'Please select'} %>
+      </div>
+  </div>
     <div class='col-md-6'>
       <%= addr.input :zip%>
     </div>

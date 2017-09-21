@@ -12,5 +12,5 @@ end
 
 
 def company_name(obj)
-  Company.find(obj.id).name
+  Company.find(obj.company_id).name
 end

@@ -10,7 +10,7 @@
       <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :order_number, placeholder: 'order number' %>
+      <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>
     </div>
     <div class='col-md-6'>
       <%= f.input :ordered_at, as: :string, input_html: {value: @order.ordered_at.present? ? formatted_date(@order.ordered_at) : formatted_date(Date.today),placeholder: 'order date', class: 'datepicker'} %>
@@ -63,5 +63,4 @@
     <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
   </div>
 <%end %>
-
 

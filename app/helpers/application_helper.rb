@@ -25,4 +25,8 @@ module ApplicationHelper
   def city_select(country, state)
     CS.get(:"#{country}", :"#{state}").map{|k| [k,k]}
   end
+
+  def order_number
+    "ORDER-" + "#{Order.count + 1}"
+  end
 end

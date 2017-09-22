@@ -44,6 +44,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-sass'
 gem 'city-state'
 gem "select2-rails"
+gem 'rspec-rails'
 
 
 group :development, :test do

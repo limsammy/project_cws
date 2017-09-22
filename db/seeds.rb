@@ -85,7 +85,7 @@ if Order.count == 0
       order_number: order_number,
       description: Faker::Commerce.product_name,
       company_id: Client.first.company_id,
-      company_id: Client.first.id,
+      client_id: Client.first.id,
       ordered_at: DateTime.now
     )
     order.shipping_address = Address.create!(
@@ -99,7 +99,7 @@ if Order.count == 0
   end
 end
 
-if Order.count == 0
+if OrderItem.count == 0
   Order.all.each do |order|
     10.times do
       OrderItem.create!(

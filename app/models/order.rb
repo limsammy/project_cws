@@ -9,6 +9,7 @@ class Order < ApplicationRecord
   validates :order_number, :order_description, :ordered_at, presence: true
   after_save :set_total_amt
 
+
 	def total_amount
 		total = 0
 			order_items.each do |i|

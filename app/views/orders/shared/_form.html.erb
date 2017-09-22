@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <div class='form-inputs'>
     <div class='col-md-12'>
-      <%= f.input :order_description,  placeholder: 'description' %>
+      <%= f.input :description,  placeholder: 'description' %>
     </div>
     <div class='col-md-6'>
       <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]}, prompt: 'Select Company' %>

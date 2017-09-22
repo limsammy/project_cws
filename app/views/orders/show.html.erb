@@ -14,19 +14,20 @@
           </span>
         </div>
       </div>
-      <div class="form-group">
-        <label class="col-md-3" for="fn">Address:</label>
-        <div class="col-md-9">
-          <p>Line 1 <%= @order.shipping_address.line_1 %></p>
-          <p> Line 2<%= @order.shipping_address.line_2 %></p>
-          <p> Zip<%= @order.shipping_address.zip %></p>
+      <%if @order.shipping_address.present?%>
+        <div class="form-group">
+          <label class="col-md-3" for="fn">Address:</label>
+          <div class="col-md-9">
+            <p>Line 1 <%= @order.shipping_address.line_1 %></p>
+            <p> Line 2<%= @order.shipping_address.line_2 %></p>
+            <p> Zip<%= @order.shipping_address.zip %></p>
+          </div>
         </div>
-      </div>
-
+      <%end%>
       <div class="form-group">
         <label class="col-md-3" for="fn">Order Detail:</label>
         <div class="col-md-9">
-          <span> <%= @order.order_description %>
+          <span> <%= @order.description %>
           </span>
         </div>
       </div>

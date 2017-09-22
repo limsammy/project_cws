@@ -8,6 +8,8 @@ script:
 - bundle exec rake db:test:prepare
 - bundle exec rspec
 before_script:
+- ls -al
+- ls -al config
 - bundle exec rake db:create
 bundler_args: "--binstubs=./bundler_stubs"
 

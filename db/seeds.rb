@@ -7,17 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 include ApplicationHelper
 
-
-# 1.time do
-#   Address.create!(
-#     line_1: Faker::Address.street_name,
-#     line_2: Faker::Address.street_address,
-#     country: Faker::Address.country,
-#     state: Faker::Address.state,
-#     zip: Faker::Address.zip,
-#     city: Faker::Address.city
-#   )
-# end
 if User.count == 0
   10.times do
     user = User.create!(

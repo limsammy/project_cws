@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :shipping_address
 	accepts_nested_attributes_for :order_items,  allow_destroy: true
   validates :order_number, :order_description, :ordered_at, presence: true
+  after_save :set_total_amt
 
 	def total_amount
 		total = 0
@@ -14,5 +15,9 @@ class Order < ApplicationRecord
 				total += i.amount.to_f
 			end
 		return total
+  end
+
+  def set_total_amt
+    update_column(:total_amount, total_amount)
   end
 end

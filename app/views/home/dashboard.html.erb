@@ -16,6 +16,16 @@
       </div>
   </div>
 </div>
+<div class="row">
+    <div class="col-md-6">
+      <h4 class="card-title graph-title">Orders by Month</h4>
+      <%= line_chart Order.orders_by_month, class: 'card-text' %>
+    </div>
+    <div class="col-md-6">
+      <h4 class="card-header graph-title">Orders by Day</h4>
+      <%= column_chart Order.orders_by_day_of_week, class: 'card-text' %>
+    </div>
+  </div>
 <script>
   $(document).ready(function(){
     var order_count = <%=@order_count%>;

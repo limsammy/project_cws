@@ -6,12 +6,14 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
-    if @client.save
-      flash[:success] = " Client Created"
-      redirect_to client_path(@client)
-    else
-      flash[:error] = "Error while creating new client"
-      render 'new'
+    respond_to do |format|
+      if @client.save
+        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.json { render :show, status: :created, location: @client }
+      else
+        format.html { render :new }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -24,12 +26,14 @@ class ClientsController < ApplicationController
   end
   def update
     @client = Client.find(params[:id])
-    if @client.update_attributes(client_params)
-      flash[:success] = "successfully updated"
-      redirect_to company_path(@client)
-    else
-      flash[:error] = "Error while editing client"
-      render 'edit'
+    respond_to do |format|
+      if @client.update(client_params)
+        format.html { redirect_to @client, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @client }
+      else
+        format.html { render :edit }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
+      end
     end
   end
 

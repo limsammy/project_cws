@@ -11,29 +11,36 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def create
+    @order = Order.new(order_params)
+    respond_to do |format|
+      if @order.save
+        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: @client }
+      else
+        format.html { render :new }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   def show
     @order = Order.find(params[:id])
   end
 
-  def create
-    @order = Order.new(order_params)
-    if @order.save
-      redirect_to order_path(@order)
-    else
-      render :new
-    end
-  end
   def index
     @orders = Order.all
   end
 
   def update
     @order = Order.find(params[:id])
-    if @order.update_attributes(order_params)
-      flash[:success]= "updated successfully"
-      redirect_to order_path(@order)
-    else
-      render :edit
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to @order, notice: 'Product was successfully updated.' }
+        format.json { render :show, status: :ok, location: @order }
+      else
+        format.html { render :edit }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
     end
   end
    def destroy

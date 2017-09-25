@@ -81,7 +81,7 @@ form label {
 }
 
 .logo_img{
-  margin-top: -80px;
+  background: transparent;
 }
 .top-left-part a{
   background: transparent;
@@ -110,10 +110,19 @@ a:hover{
   border: 1px solid transparent;
   text-align: center;
 }
+.center{
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+}
 
-
-
-
+.order_form.form-horizontal .form-group{
+  margin-bottom:0;
+}
+.out_of_stock_msg{
+  font-size: 11px;
+    color: #f00;
+}
 
 /*======Media query==============*/
 

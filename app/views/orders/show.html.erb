@@ -1,83 +1,74 @@
-<p id="notice"><%= notice %></p>
+<p id='notice'><%= notice %></p>
+<div class='row'>
+  <div class='col-md-12'>
+    <div class='white-box printableArea'>
+      <h3><b>ORDER DETAILS</b> <span class='pull-right'># <%= @order.order_number %></span></h3>
+      <hr>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='pull-right text-right'>
+              <address>
+                  <h3>To,</h3>
+                  <h4><p> <%= @order.shipping_address.line_1 %></p>
+                    <p> <%= @order.shipping_address.line_2 %></p>
+                    <p> Zip <%= @order.shipping_address.zip %></p></h4>
 
-<div class="row">
-  <div class="col-md-2">
-</div>
-<div class="col-sm-12 col-md-8 white-box">
-  <h3 class="text-center">  ORDER DETAILS  </h3>
-  <form class="form-horizontal form-material col-md-6 col-md-offset-3">
-    <fieldset>
-      <div class="form-group">
-        <label class="col-md-3" for="fn">Order Number:</label>
-        <div class="col-md-9">
-          <span> <%= @order.order_number %>
-          </span>
-        </div>
-      </div>
-      <%if @order.shipping_address.present?%>
-        <div class="form-group">
-          <label class="col-md-3" for="fn">Address:</label>
-          <div class="col-md-9">
-            <p>Line 1 <%= @order.shipping_address.line_1 %></p>
-            <p> Line 2<%= @order.shipping_address.line_2 %></p>
-            <p> Zip<%= @order.shipping_address.zip %></p>
+                  <p class='m-t-30'><b></b> <i class='fa fa-calendar'></i><%=(@order.ordered_at).to_date.strftime('%d-%m-%Y') %></p>
+              </address>
           </div>
         </div>
-      <%end%>
-      <div class="form-group">
-        <label class="col-md-3" for="fn">Order Detail:</label>
-        <div class="col-md-9">
-          <span> <%= @order.description %>
-          </span>
+        <div class='col-md-12'>
+            <div class='table-responsive m-t-40' style='clear: both;'>
+                <table class='table table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class='text-right'>Unit_price</th>
+                            <th class='text-right'>Quantity</th>
+                            <th class='text-right'>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <% @order.order_items.each_with_index do |i| %>
+                        <tr>
+                            <td><%= i.product.name %></td>
+                            <td class='text-right'><%= i.unit_price%> </td>
+                            <td class='text-right'><%= i.quantity%> </td>
+                            <td class='text-right'><%= assign_dollar %> <%= round_off(i.amount) %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='col-md-12'>
+            <div class='pull-right m-t-30 text-right'>
+
+                <h3><b>Total :</b> $13,986</h3> </div>
+            <div class='clearfix'></div>
+            <hr>
+            <div class='text-right'>
+                <button
+                 class='btn btn-danger' ><%= link_to 'Edit', edit_order_path(@order) %></button>
+                 <button id='print' class='btn btn-default btn-outline' type='button'> <span><i class='fa fa-print'></i> Print</span> </button>
+
+            </div>
         </div>
       </div>
-
-      <div class="form-group">
-        <label class="col-md-3" for="fn">Order Date:</label>
-        <div class="col-md-9">
-          <span>
-            <%=(@order.ordered_at).to_date.strftime("%d-%m-%Y") %>
-
-          </span>
-        </div>
-      </div>
-
-      <% if @order.order_items.present? %>
-        <div class = "table_responsives">
-        	<table border = "1", width = "400", class: "table table-bordered">
-        		<col width="500">
-        		<col width="530">
-        		<col width = "500">
-        		<col width = "500">
-
-        		<tr>
-        			<th height="40"> Product </th>
-        			<th height="40"> Unit Price </th>
-        			<th height="40"> Quantity </th>
-        			<th height="40"> Amount </th>
-        		</tr>
-        		<tbody>
-        			<% @order.order_items.each_with_index do |i| %>
-        				<tr>
-        				  <td><%= i.product.name %></td>
-        				  <td><%= i.unit_price%> </td>
-        				  <td> <%= i.quantity%> </td>
-        					<td><%= assign_dollar %> <%= round_off(i.amount) %></td>
-        			  </tr>
-        			<%end%>
-        		</tbody>
-          </table>
-        </div>
-
-      	Total: <%= assign_dollar %> <%= round_off(@order.total_amount) %><br>
-        <%= link_to 'Edit', edit_order_path(@order) %>
-      <%end %>
-    </fieldset>
-  </form>
+    </div>
+  </div>
 </div>
 
-
-
-
-
-
+<script>
+  $(document).ready(function() {
+    $('#print').click(function() {
+      var mode = 'iframe'; //popup
+      var close = mode == 'popup';
+      var options = {
+          mode: mode,
+          popClose: close
+      };
+      $('div.printableArea').printArea(options);
+    });
+  });
+</script>

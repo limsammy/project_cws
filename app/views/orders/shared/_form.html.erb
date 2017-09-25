@@ -1,4 +1,4 @@
-<%= simple_nested_form_for @order, html: {class: 'form-material form-horizontal'} do |f| %>
+<%= simple_nested_form_for @order, html: {class: 'form-material form-horizontal order_form'} do |f| %>
   <%= f.error_notification %>
   <div class='form-inputs'>
     <div class='col-md-12'>
@@ -29,6 +29,7 @@
       </div>
       <div class='col-md-3'>
         <%= a.input :quantity, placeholder: 'quantity', input_html:{ class: 'quant', autocomplete: :off }  %>
+      <span class = 'out_of_stock_msg'> Out Of Stock </span>
       </div>
       <div class='col-md-3'>
         <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>
@@ -36,7 +37,7 @@
     </div>
     <%= a.link_to_remove 'Remove' %>
   <% end %>
-  <%= f.link_to_add 'Add product', :order_items %>
+  <%= f.link_to_add 'Add product', :order_items , input_html: {class: 'add_prod' }%>
   <h4> Shipping Address </h4>
   <%country = @order.shipping_address.country.present? ? @order.shipping_address.country : 'US'%>
   <%state = @order.shipping_address.state.present? ? @order.shipping_address.state : 'AL'%>
@@ -68,4 +69,9 @@
     <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
   </div>
 <%end %>
+<script type="text/javascript">
+  $(window).load(function() {
+    $('.out_of_stock_msg').hide();
+  });
 
+</script>

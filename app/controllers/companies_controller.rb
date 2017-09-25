@@ -24,8 +24,8 @@ class CompaniesController < ApplicationController
   def update
     @company = Company.find(params[:id])
     respond_to do |format|
-      if @company.update(product_params)
-        format.html { redirect_to @company, notice: 'Product was successfully updated.' }
+      if @company.update(company_params)
+        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

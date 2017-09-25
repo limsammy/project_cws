@@ -60,8 +60,14 @@ class ProductsController < ApplicationController
   end
 
   def per_amount
-    no_of_item = params[:id]
-    render json: {value: no_of_item }
+    item_in_stock = Product.find_by(id: params[:product]).stock_in_hand.to_f
+    no_of_item = params[:id].to_f
+    if item_in_stock >= no_of_item
+      item_count = params[:id].to_f
+    else
+      item_count = -1
+    end
+    render json: {value: item_count }
   end
 
   def per_price

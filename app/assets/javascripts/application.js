@@ -17,6 +17,7 @@
 //= require bootstrap.min.js
 //= require bootstrap-extension.min.js
 //= require sidebar-nav.min.js
+//= require jquery.PrintArea.js
 //= require chart.min.js
 //= require jquery.slimscroll.js
 //= require waves.js
@@ -112,16 +113,23 @@ function datatable(id, default_sort_column, non_sortable_columns, pageLength, ex
 
 $(document).on('keyup', '.quant', function(){
   var quantity = $(this).val();
+  var product = $('.product_id').val();
   var $this = $(this);
   var price = $(this).parents('.main').find('.uprice').val();
-  var total_price = (quantity * price).toFixed(2);
   $.ajax({
-  	url: "/products/per_amount",
-  	data: {id: quantity},
-  	dataType: "json",
-  	type: "GET",
-    success:function() {
-      $this.parents('.main').find('.amt').val(total_price);
+    url: "/products/per_amount",
+    data: {id: quantity, product},
+    dataType: "json",
+    type: "GET",
+    success:function(data) {
+      console.log(data)
+      if (data.value == -1){
+        $('.out_of_stock_msg').show();
+      }else{
+        $('.out_of_stock_msg').hide();
+      }
+        var total_price = (quantity * price).toFixed(2);
+        $this.parents('.main').find('.amt').val(total_price);
     }
   });
 })
@@ -235,3 +243,7 @@ function drawchart(canvas, charttype, data1){
      new Chart(canvas).Bar(data1, chartoption1);
   }
 }
+
+$(document).on('click', '.add_prod', function(){
+  $('.out_of_stock_msg').hide();
+})

@@ -22433,8 +22433,11 @@ function chart(id, value1, value2, type){
 function drawchart(canvas, charttype, data1){
   if(charttype == "Line"){
      new Chart(canvas).Line(data1, chartoption1);
-  }else{
+  }else if (charttype == "Bar"){
      new Chart(canvas).Bar(data1, chartoption1);
+  }
+  else{
+     new Chart(canvas).Pie(data1, chartoption1);
   }
 }
 

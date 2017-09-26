@@ -56888,7 +56888,7 @@ form label {
 
 /* line 84, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
 .logo_img {
-  margin-top: -80px;
+  background: transparent;
 }
 
 /* line 87, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
@@ -56913,7 +56913,12 @@ a:hover {
   background: transparent;
 }
 
-/* line 105, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+/* line 103, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+.text_align {
+  font-size: 200%;
+}
+
+/* line 108, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
 #notice {
   background: transparent;
   border-color: #fb9678;
@@ -56924,33 +56929,37 @@ a:hover {
   text-align: center;
 }
 
+/* line 117, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+.center {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+}
+
+/* line 123, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+.order_form.form-horizontal .form-group {
+  margin-bottom: 0;
+}
+
+/* line 126, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+.out_of_stock_msg {
+  font-size: 11px;
+  color: #f00;
+}
+
 /*======Media query==============*/
 @media screen and (max-width: 1250px) and (min-width: 768px) {
-  /* line 122, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+  /* line 134, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
   .gradient_overlay {
     background-position: center -29px;
     background-size: 63%;
   }
 }
 @media screen and (max-width: 991px) and (min-width: 768px) {
-  /* line 129, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+  /* line 141, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
   .gradient_overlay {
     background-position: center -29px;
     background-size: 63%;
-  }
-
-  /* line 133, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
-  .login-register {
-    position: static;
-    display: inline-block;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 767px) and (min-width: 320px) {
-  /* line 141, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
-  .gradient_overlay {
-    background-position: center -71px;
-    background-size: 100%;
   }
 
   /* line 145, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
@@ -56959,8 +56968,22 @@ a:hover {
     display: inline-block;
     width: 100%;
   }
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  /* line 153, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+  .gradient_overlay {
+    background-position: center -71px;
+    background-size: 100%;
+  }
 
-  /* line 150, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+  /* line 157, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
+  .login-register {
+    position: static;
+    display: inline-block;
+    width: 100%;
+  }
+
+  /* line 162, /Users/sam/projects/project_cws/app/assets/stylesheets/application.css.scss */
   .white-box h1 {
     font-size: 34px;
   }

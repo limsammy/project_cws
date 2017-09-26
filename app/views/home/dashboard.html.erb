@@ -1,19 +1,80 @@
+
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <div class="white-box">
+      <div class="row row-in">
+        <div class="col-lg-4 col-sm-6 row-in-br">
+          <div class="col-in row">
+              <div class="col-md-7 col-sm-7 col-xs-7"> <i data-icon="E" class="linea-icon linea-basic"></i>
+                  <h5 class="text-muted vb">TOTAL CLIENTS</h5>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-5">
+                  <h2 class="counter text-right m-t-15 text-danger"><%= Client.count %></h2>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="progress">
+                      <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">100% Complete (success)</span> </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 row-in-br  b-r-none">
+            <div class="col-in row">
+                <div class="col-md-7 col-sm-7 col-xs-7"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
+                    <h5 class="text-muted vb">TOTAL ORDERS AMOUNT</h5> </div>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    <h2 class="counter text-right m-t-15 text-megna text_align">$<%= total_orders_amount %></h2> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 row-in-br">
+            <div class="col-in row">
+                <div class="col-md-7 col-sm-7 col-xs-7"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
+                    <h5 class="text-muted vb">TODAYS SALES</h5> </div>
+                <div class="col-md-5 col-sm-5 col-xs-5">
+                    <h2 class="counter text-right m-t-15 text-primary">$<%= today_sales %></h2> </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="white-box">
+      <h3 class="box-title">Order Placed</h3>
+      <div>
+          <canvas id="chart1" height="150"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm-6">
-      <div class="white-box">
-          <h3 class="box-title">Order Placed</h3>
-          <div>
-              <canvas id="chart1" height="150"></canvas>
-          </div>
+    <div class="white-box">
+      <h3 class="box-title">Products Ordered</h3>
+      <div>
+        <canvas id="chart2" height="150"></canvas>
       </div>
+    </div>
   </div>
   <div class="col-sm-6">
-      <div class="white-box">
-          <h3 class="box-title">Products Ordered</h3>
-          <div>
-              <canvas id="chart2" height="150"></canvas>
-          </div>
+    <div class="white-box">
+      <h3 class="box-title">Top Clients according to order</h3>
+      <div>
+        <canvas id="chart3" height="150"></canvas>
       </div>
+    </div>
   </div>
 </div>
 
@@ -23,15 +84,17 @@
     var order_date = <%=raw @order_date.to_json%>;
     var product_name = <%=raw @products_name.to_json%>;
     var product_quantity = <%= @products_quantity%>;
-    console.log('order_count')
-    console.log(order_count)
-    console.log('order_date')
-    console.log(order_date)
-    console.log('product_name')
-    console.log(product_name)
-    console.log('product_quantity')
-    console.log(product_quantity)
+    var client_name = <%= raw @clients_name %>;
+    var client_amount = <%= (@clients_amount) %>
     chart("chart1", order_count, order_date, "Line");
     chart("chart2", product_quantity, product_name, "Bar")
+    chart("chart3", client_amount, client_name, "Bar")
   });
 </script>
+
+
+
+
+
+
+

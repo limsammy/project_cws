@@ -29,4 +29,10 @@ module ApplicationHelper
   def order_number
     "ORDER-" + "#{Order.count + 1}"
   end
+  def total_orders_amount
+    Order.sum('total_amount').to_f.round(2)
+  end
+  def today_sales
+    Order.where(ordered_at: Date.today).sum('total_amount').to_f.round(2)
+  end
 end

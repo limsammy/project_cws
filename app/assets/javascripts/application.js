@@ -250,3 +250,13 @@ function drawchart(canvas, charttype, data1){
 $(document).on('click', '.add_prod', function(){
   $('.out_of_stock_msg').hide();
 })
+
+
+function print_page()
+  {
+    var restorepage = document.body.innerHTML
+    var printcontent = document.getElementById(print_data).innerHTML;
+    document.body.innerHTML = printcontent;
+    window.print();
+    document.body.innerHTML = restorepage;
+  }

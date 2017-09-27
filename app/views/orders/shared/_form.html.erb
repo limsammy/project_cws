@@ -37,7 +37,7 @@
     </div>
     <%= a.link_to_remove 'Remove' %>
   <% end %>
-  <%= f.link_to_add 'Add product', :order_items , input_html: {class: 'add_prod' }%>
+  <%= f.link_to_add 'Add product', :order_items , class: 'add_prod' %>
   <h4> Shipping Address </h4>
   <%country = @order.shipping_address.country.present? ? @order.shipping_address.country : 'US'%>
   <%state = @order.shipping_address.state.present? ? @order.shipping_address.state : 'AL'%>

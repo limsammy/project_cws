@@ -258,4 +258,3 @@ $(document).on('change', '.zip_code', function(){
       }
     });
 });
->>>>>>> 90c53ffec39fc1cd5726c5234efec2ac52ef7808

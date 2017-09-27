@@ -122,7 +122,6 @@ $(document).on('keyup', '.quant', function(){
     dataType: "json",
     type: "GET",
     success:function(data) {
-      console.log(data)
       if (data.value == -1){
         $('.out_of_stock_msg').show();
       }else{
@@ -153,49 +152,7 @@ $(document).ready(function(){
     format: 'dd/mm/yyyy', "autoclose": true
   });
 });
-$(document).ready(function(){
-  $('.country_dropdown').select2();
-  $('.state_dropdown').select2();
-  $('.city_dropdown').select2();
 
-  $('#dropdown_country').bind("change keyup",function(event) {
-    element = $(this).val()
-    $.ajax({
-      url: '/addresses/find_states',
-      data: {country_value: element},
-      type: "GET",
-      success:function(data) {
-        var state_output = [];
-        var city_output = [];
-        $.each(data.states, function(key, value){
-          state_output.push('<option value="'+ key +'">'+ value +'</option>');
-        });
-        $('#dropdown_state').html(state_output);
-        $.each(data.cities, function(key, value)
-        {
-          city_output.push('<option value="'+ value +'">'+ value +'</option>');
-        });
-        $('#dropdown_city').html(city_output.join(''));
-      }
-    });
-  });
-  $('#dropdown_state').bind("change keyup",function(event) {
-    element = $(this).val()
-    country_value = $('#dropdown_country').val()
-    $.ajax({
-      url: "/addresses/find_cities",
-      data: {country_value: country_value, state_value: element},
-      type: "GET",
-      success: function (data) {
-        var output = [];
-        $.each(data, function(key, value){
-          output.push('<option value="'+ value +'">'+ value +'</option>');
-        });
-        $('#dropdown_city').html(output);
-      }
-    });
-  });
-})
 var chartoption1 = {
   scaleShowGridLines : true,
   scaleGridLineColor : "rgba(0,0,0,.005)",
@@ -252,7 +209,18 @@ $(document).on('click', '.add_prod', function(){
 })
 
 
-function print_page()
+$(document).ready(function() {
+    $('#print').click(function() {
+      var mode = 'iframe';
+      var close = mode == 'popup';
+      var options = {
+          mode: mode,
+          popClose: close
+      };
+      $('div.printableArea').printArea(options);
+    });
+  });
+  function print_page()
   {
     var restorepage = document.body.innerHTML
     var printcontent = document.getElementById(print_data).innerHTML;
@@ -260,3 +228,34 @@ function print_page()
     window.print();
     document.body.innerHTML = restorepage;
   }
+
+$(document).on('change', '.zip_code', function(){
+    var zip_code = $('.zip_code').val();
+    $.ajax({
+      url:  "/clients/get_zip_data",
+      data:  {id: zip_code},
+      dataType: "json",
+      type: "GET",
+      success:function(data) {
+        if(data.value == 0){
+          $('.zipcode_error').show();
+        }
+        else{
+          $('.zipcode_error').hide();
+          Object.keys(data)[0]
+          var key = Object.keys(data)[0];
+          city = data[key];
+          Object.keys(data)[1]
+          var key = Object.keys(data)[1];
+          state = data[key];
+          Object.keys(data)[2]
+          var key = Object.keys(data)[2];
+          country = data[key];
+          $('#dropdown_city').val(city);
+          $('#dropdown_state').val(state);
+          $('#dd_country').val(state);
+        }
+      }
+    });
+});
+>>>>>>> 90c53ffec39fc1cd5726c5234efec2ac52ef7808

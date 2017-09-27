@@ -62,8 +62,6 @@ GEM
     chartkick (2.2.4)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
-    city-state (0.0.13)
-      rubyzip (~> 1.1)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -90,6 +88,7 @@ GEM
     ffi (1.9.18)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     groupdate (3.2.0)
@@ -259,12 +258,12 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   chartkick
-  city-state
   coffee-rails (~> 4.2)
   devise
   devise_invitable
   faker
   font-awesome-sass
+  geocoder
   groupdate
   jbuilder (~> 2.5)
   jquery-rails

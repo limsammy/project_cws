@@ -12,8 +12,10 @@
                     <h3>To,</h3>
                     <h4><p> <%= @order.shipping_address.line_1 %></p>
                       <p> <%= @order.shipping_address.line_2 %></p>
+                      <p> <%= @order.shipping_address.city %></p>
+                      <p> <%= @order.shipping_address.state %></p>
+                      <p> <%= @order.shipping_address.country%></p>
                       <p> Zip <%= @order.shipping_address.zip %></p></h4>
-
                     <p class='m-t-30'><b></b> <i class='fa fa-calendar'></i><%=(@order.ordered_at).to_date.strftime('%d-%m-%Y') %></p>
                 </address>
             </div>
@@ -47,39 +49,22 @@
     </div>
   </div>
 </div>
-
-        <div class='col-md-12'>
-            <div class='pull-right m-t-30 text-right'>
-
-                <h3><b>Total :</b> $13,986</h3> </div>
-            <div class='clearfix'></div>
-            <hr>
-            <div class='text-right'>
-                <button
-                 class='btn btn-danger' ><%= link_to 'Edit', edit_order_path(@order) %></button>
-                 <button id='print' class='btn btn-default btn-outline' type='button' onclick='print_page(print_data)'> <span><i class='fa fa-print'></i> Print</span> </button>
-
-            </div>
-        </div>
-<script>
-  $(document).ready(function() {
-    $('#print').click(function() {
-      var mode = 'iframe';
-      var close = mode == 'popup';
-      var options = {
-          mode: mode,
-          popClose: close
-      };
-      $('div.printableArea').printArea(options);
-    });
-  });
-
-  function print_page()
-  {
-    var restorepage = document.body.innerHTML
-    var printcontent = document.getElementById(print_data).innerHTML;
-    document.body.innerHTML = printcontent;
-    window.print();
-    document.body.innerHTML = restorepage;
-  }
-</script>
+<div class='col-md-12'>
+  <div class='pull-right m-t-30 text-right'>
+    <h3>
+      <b>Total :</b> $<%=order.total_amt.round(2)%>
+    </h3>
+  </div>
+  <div class='clearfix'></div>
+  <hr>
+  <div class='text-right'>
+    <button class='btn btn-danger' >
+      <%= link_to 'Edit', edit_order_path(@order) %>
+    </button>
+    <button id='print' class='btn btn-default btn-outline' type='button' onclick='print_page(print_data)'>
+      <span>
+        <i class='fa fa-print'></i> Print
+      </span>
+    </button>
+  </div>
+</div>

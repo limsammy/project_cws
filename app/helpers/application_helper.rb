@@ -14,9 +14,7 @@ module ApplicationHelper
     return "$"
   end
 
-  def country_select
-    CS.get.map{|k,v| [v,k]}
-  end
+
 
   def state_select(country)
     CS.get(:"#{country}").map{|k,v| [v,k]}

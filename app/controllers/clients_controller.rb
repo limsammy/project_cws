@@ -49,6 +49,23 @@ class ClientsController < ApplicationController
   def index
     @clients = Client.all
   end
+
+  def get_zip_data
+    zip_data = Zipcode.find_by_code params[:id]
+    if zip_data.present?
+
+      city = zip_data.city
+      state = zip_data.state.name
+      coordinates = "#{zip_data.lat},#{zip_data.lon}"
+      coordinates_info= Geocoder.search(coordinates)
+      country = coordinates_info.first.data["formatted_address"].split(',').last.strip
+      render json: {city: city, state: state, country: country }
+    else
+      render json: {value: 0}
+    end
+  end
+
+
   private
   def client_params
     params.require(:client).permit(
@@ -65,6 +82,7 @@ class ClientsController < ApplicationController
         :country,
         :state,
         :zip,
+        :city
         ])
   end
 end

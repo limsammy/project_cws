@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   end
 
   resources :clients do
+    collection do
+      get :get_zip_data
+    end
   end
   resources :products do
   end

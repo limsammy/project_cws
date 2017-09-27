@@ -42,11 +42,11 @@ gem 'bootstrap-sass'
 gem 'faker'
 gem 'bootstrap-datepicker-rails'
 gem 'font-awesome-sass'
-gem 'city-state'
 gem "select2-rails"
 gem 'rspec-rails'
 gem 'groupdate'
-gem 'chartkick'
+gem 'my_zipcode_gem'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,7 +55,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'pry-rails'
-  gem 'my_zipcode_gem'
+
 
 end
 

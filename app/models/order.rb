@@ -10,7 +10,7 @@ class Order < ApplicationRecord
   after_save :set_total_amt
 
 
-	def total_amount
+	def order_total_amt
 		total = 0
 			order_items.each do |i|
 				total += i.amount.to_f
@@ -19,6 +19,6 @@ class Order < ApplicationRecord
   end
 
   def set_total_amt
-    update_column(:total_amount, total_amount)
+    update_column(:total_amount, order_total_amt)
   end
 end

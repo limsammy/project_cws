@@ -114,9 +114,9 @@ a:hover{
   text-align: center;
 }
 .center{
-    width: 100%;
-    text-align: center;
-    margin-left: auto;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
 }
 
 .order_form.form-horizontal .form-group{
@@ -124,7 +124,7 @@ a:hover{
 }
 .out_of_stock_msg{
   font-size: 11px;
-    color: #f00;
+  color: #f00;
 }
 
 .vb{
@@ -132,6 +132,16 @@ a:hover{
 }
 .order_title{
   font-size:17px;
+}
+.zipcode_error{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: red
+}
+.form-group{
+  position: relative;
 }
 /*======Media query==============*/
 

@@ -71,4 +71,12 @@
       $('div.printableArea').printArea(options);
     });
   });
+
+  function print_Page()
+  {
+    var printButton = document.getElementById("print");
+    printButton.style.visibility = 'hidden';
+    window.print();
+    printButton.style.visibility = 'visible';
+  }
 </script>

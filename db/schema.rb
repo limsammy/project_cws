@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922045723) do
+ActiveRecord::Schema.define(version: 20170927053352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20170922045723) do
     t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "counties", force: :cascade do |t|
+    t.integer "state_id"
+    t.string "abbr"
+    t.string "name"
+    t.string "county_seat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_counties_on_name"
+    t.index ["state_id"], name: "index_counties_on_state_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -81,6 +92,14 @@ ActiveRecord::Schema.define(version: 20170922045723) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "abbr", limit: 2
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["abbr"], name: "index_states_on_abbr"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: ""
@@ -112,6 +131,22 @@ ActiveRecord::Schema.define(version: 20170922045723) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "zipcodes", force: :cascade do |t|
+    t.string "code"
+    t.string "city"
+    t.integer "state_id"
+    t.integer "county_id"
+    t.string "area_code"
+    t.decimal "lat", precision: 15, scale: 10
+    t.decimal "lon", precision: 15, scale: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_zipcodes_on_code"
+    t.index ["county_id"], name: "index_zipcodes_on_county_id"
+    t.index ["lat", "lon"], name: "index_zipcodes_on_lat_and_lon"
+    t.index ["state_id"], name: "index_zipcodes_on_state_id"
   end
 
   add_foreign_key "order_items", "orders"

@@ -229,7 +229,7 @@ $(document).ready(function() {
     document.body.innerHTML = restorepage;
   }
 
-$(document).on('change', '.zip_code', function(){
+$(document).on('keyup', '.zip_code', function(){
     var zip_code = $('.zip_code').val();
     $.ajax({
       url:  "/clients/get_zip_data",
@@ -253,7 +253,7 @@ $(document).on('change', '.zip_code', function(){
           country = data[key];
           $('#dropdown_city').val(city);
           $('#dropdown_state').val(state);
-          $('#dd_country').val(state);
+          $('#dd_country').val(country);
         }
       }
     });

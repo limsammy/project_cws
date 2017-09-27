@@ -13,37 +13,29 @@
 <h3>Address</h3>
 <%= f.fields_for :address do |addr| %>
   <div class='col-md-6'>
-    <%= addr.input :line_1, placeholder: 'line 1' %>
+    <%= addr.input 'line_1',placeholder: 'line 1' %>
   </div>
   <div class='col-md-6'>
-    <%= addr.input :line_2, placeholder: 'line 2' %>
+    <%= addr.input 'line_2', placeholder: 'line 2' %>
   </div>
-  <div class= 'row'>
-    <div class='col-md-6'>
-      <%= addr.input 'zip', placeholder: 'zip', input_html: {class: 'zip_code'}%>
-      <span class = "zipcode_error ">Enter Valid Zip Code
-      </spam>
-    </div>
-    <div class='col-md-6 select_lbl'>
-      <%= addr.input :city, input_html: {id: 'dropdown_city', class: 'city_dropdown '} %>
-    </div>
+  <div class='col-md-6'>
+    <%= addr.input 'zip', placeholder: 'zip', input_html: {class: 'zip_code'}%>
+    <span class = "zipcode_error">Enter Valid Zip Code
+    </span>
   </div>
-  <div class= 'row'>
-    <div class='col-md-6 select_lbl'>
-      <%= addr.input :state, input_html: {id: 'dropdown_state',class: 'state_dropdown '} %>
-    </div>
-    <div class='col-md-6 select_lbl'>
-      <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
-    </div>
+  <div class='col-md-6 select_lbl'>
+  <%= addr.input :city,  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
   </div>
-
-
-<% end %>
-
-<div class='col-md-12'>
-  <%= f.submit 'Save', class: 'btn btn-info btn-lg'%>
-</div>
-
+  <div class='col-md-6 select_lbl'>
+  <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
+  </div>
+  <div class='col-md-6 select_lbl'>
+    <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
+  </div >
+  <div class='col-md-12'>
+    <%= f.submit 'Save', class: 'btn btn-info btn-lg' %>
+  </div>
+<%end%>
 
 <script type="text/javascript">
   $(window).load(function() {

@@ -53,7 +53,6 @@ class ClientsController < ApplicationController
   def get_zip_data
     zip_data = Zipcode.find_by_code params[:id]
     if zip_data.present?
-
       city = zip_data.city
       state = zip_data.state.name
       coordinates = "#{zip_data.lat},#{zip_data.lon}"

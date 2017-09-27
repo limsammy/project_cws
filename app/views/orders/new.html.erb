@@ -2,12 +2,11 @@
   <div class="col-md-2">
   </div>
   <div class="col-sm-12 col-md-8 white-box">
-    <h1 class="text-center"> Create Order </h1>
-    <%= render partial: 'orders/shared/form', order: @order %>
+    <h1 class="text-center">Create Client</h1>
+    <%= simple_nested_form_for @order,html: {class: "form-material form-horizontal"} ,url: orders_path , method: :post  do |f| %>
+      <%= render partial:'orders/shared/form' , locals: {f: f} %>
+    <%end%>
   </div>
   <div class="col-md-2">
   </div>
 </div>
-
-
-

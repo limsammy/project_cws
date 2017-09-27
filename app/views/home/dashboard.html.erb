@@ -5,11 +5,11 @@
       <div class="row row-in">
         <div class="col-lg-4 col-sm-6 row-in-br">
           <div class="col-in row">
-              <div class="col-md-7 col-sm-7 col-xs-7"> <i  class=" fa fa-users "></i>
+              <div class="col-md-6 col-sm-6 col-xs-6"> <i  class=" fa fa-users "></i>
                   <h5 class="text-muted vb">TOTAL CLIENTS</h5>
               </div>
-              <div class="col-md-5 col-sm-5 col-xs-5">
-                  <h2 class="counter text-right m-t-15 text-danger"><%= Client.count %></h2>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                  <h2 class=" order_title counter text-right m-t-15 text-danger"><%= Client.count %></h2>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="progress">
@@ -20,10 +20,10 @@
         </div>
         <div class="col-lg-4 col-sm-6 row-in-br  b-r-none">
             <div class="col-in row">
-                <div class="col-md-7 col-sm-7 col-xs-7"> <i class="fa fa-dollar" data-icon="&#xe01b;"></i>
-                    <h5 class="text-muted vb">TOTAL ORDERS AMOUNT</h5> </div>
-                <div class="col-md-5 col-sm-5 col-xs-5">
-                    <h2 class="counter text-right m-t-15 text-megna text_align">$<%= total_orders_amount %></h2> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-dollar" data-icon="&#xe01b;"></i>
+                    <h5 class="text-muted vb">ORDERS AMOUNT</h5> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h2 class="order_title counter text-right m-t-15 text-megna text_align"><%= total_orders_amount %></h2> </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="progress">
                         <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
@@ -33,10 +33,10 @@
         </div>
         <div class="col-lg-4 col-sm-6 row-in-br">
             <div class="col-in row">
-                <div class="col-md-7 col-sm-7 col-xs-7"> <i class="fa fa-money" data-icon="&#xe00b;"></i>
+                <div class="col-md-6 col-sm-6 col-xs-6"> <i class="fa fa-money" data-icon="&#xe00b;"></i>
                     <h5 class="text-muted vb">TODAYS SALES</h5> </div>
-                <div class="col-md-5 col-sm-5 col-xs-">
-                    <h2 class="counter text-right m-t-15 text-primary">$<%= today_sales %></h2> </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h2 class="order_title counter text-right m-t-15 text-primary">$<%= today_sales %></h2> </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="progress">
                         <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create_invitation
-    @user = User.invite!(email: params[:email], first_name: params[:first_name])
+    @user = User.invite!(email: params[:email])
     redirect_to root_path
   end
 end

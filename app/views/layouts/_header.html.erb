@@ -27,6 +27,13 @@
         <li class="dropdown ">
           <a class="fa fa-user dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs"><%= current_user.email %></b> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
+            <li>
+              <%= link_to current_user  do%>
+                <i class="fa fa-user"></i>
+                Profile
+              <%end%>
+            </li>
+            <li>
               <%=link_to destroy_user_session_path, :method=> :delete do %>
                 <i class="fa fa-power-off"></i>
                 Logout

@@ -1,0 +1,47 @@
+
+<form class="form-horizontal form-material col-md-8 col-md-offset-2 white-box">
+  <h3> USERS DETAILS </h3>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">First Name:</label>
+      <div class="col-md-9">
+        <span> <%= current_user.first_name %>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Last Name:</label>
+      <div class="col-md-9">
+        <span> <%= current_user.last_name %>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Mobile Number:</label>
+      <div class="col-md-9">
+        <span>
+          <%= current_user.mob_no %>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Email:</label>
+      <div class="col-md-9">
+        <span> <%= current_user.email %>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Department</label>
+      <div class="col-md-9">
+        <span>
+         <%= current_user.department %>
+        </span>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_user_path(current_user) %> |
+    <%= link_to 'Back', root_path %>
+  </fieldset>
+</form>

@@ -123,9 +123,9 @@ $(document).on('keyup', '.quant', function(){
     type: "GET",
     success:function(data) {
       if (data.value == -1){
-        $('.out_of_stock_msg').show();
+        $('.out_of_stock_msg').removeClass("hidden");
       }else{
-        $('.out_of_stock_msg').hide();
+        $('.out_of_stock_msg').addClass("hidden");
       }
         var total_price = (quantity * price).toFixed(2);
         $this.parents('.main').find('.amt').val(total_price);
@@ -231,30 +231,60 @@ $(document).ready(function() {
 
 $(document).on('keyup', '.zip_code', function(){
     var zip_code = $('.zip_code').val();
-    $.ajax({
-      url:  "/clients/get_zip_data",
-      data:  {id: zip_code},
-      dataType: "json",
-      type: "GET",
-      success:function(data) {
-        if(data.value == 0){
-          $('.zipcode_error').show();
+    if(zip_code ){
+      $.ajax({
+        url:  "/clients/get_zip_data",
+        data:  {id: zip_code},
+        dataType: "json",
+        type: "GET",
+        success:function(data) {
+          if(data.value == 0){
+            $('.zipcode_error').removeClass("hidden");
+          }
+          else{
+            $('.zipcode_error').addClass("hidden");
+            Object.keys(data)[0]
+            var key = Object.keys(data)[0];
+            city = data[key];
+            Object.keys(data)[1]
+            var key = Object.keys(data)[1];
+            state = data[key];
+            Object.keys(data)[2]
+            var key = Object.keys(data)[2];
+            country = data[key];
+            $('#dropdown_city').val(city);
+            $('#dropdown_state').val(state);
+            $('#dd_country').val(country);
+          }
         }
-        else{
-          $('.zipcode_error').hide();
-          Object.keys(data)[0]
-          var key = Object.keys(data)[0];
-          city = data[key];
-          Object.keys(data)[1]
-          var key = Object.keys(data)[1];
-          state = data[key];
-          Object.keys(data)[2]
-          var key = Object.keys(data)[2];
-          country = data[key];
-          $('#dropdown_city').val(city);
-          $('#dropdown_state').val(state);
-          $('#dd_country').val(country);
-        }
-      }
-    });
+      });
+    }
+    else{
+      $('.zipcode_error').hide();
+      $('#dropdown_city').val(null);
+      $('#dropdown_state').val(null);
+      $('#dd_country').val(null);
+
+    }
 });
+
+$(function() {
+    $('.order_status').on('change', saveStatus);
+    function saveStatus() {
+      var $this = $(this);
+      var newStatus = $(this).val();
+      var table_row = $(this).closest('tr');
+      var currentStatus = table_row.attr('data-status');
+      var leadId = table_row.attr('data-id');
+      if (!(newStatus == "" && newStatus == currentStatus)) {
+        $.ajax({
+          url: '/orders/'+ leadId+'/status',
+          data: {status: newStatus},
+          dataType: "json",
+          type: "PUT",
+          success:function(data) {
+          }
+        });
+      }
+    }
+  });

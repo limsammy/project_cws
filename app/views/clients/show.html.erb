@@ -1,41 +1,37 @@
 <p id="notice"><%= notice %></p>
 <form class="form-horizontal form-material col-md-8 col-md-offset-2 white-box">
-<fieldset>
+  <fieldset>
 
-<h3 class="text-center">  CLIENT DETAILS  </h3>
-<div class="form-group">
-  <label class="col-md-3" for="fn">Name</label>
-  <div class="col-md-9">
-   <span><%= @client.name %></span>
-  </div>
-</div>
+    <h3 class="text-center">  CLIENT DETAILS  </h3>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Name</label>
+      <div class="col-md-9">
+       <span><%= @client.name %></span>
+      </div>
+    </div>
 
-<div class="form-group">
-  <label class="col-md-3" for="fn">Email</label>
-  <div class="col-md-9">
-   <span><%= @client.email %></span>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Email</label>
+      <div class="col-md-9">
+       <span><%= @client.email %></span>
+      </div>
+    </div>
 
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-3" for="fn">Mobile Number</label>
-  <div class="col-md-9">
-   <span><%= @client.mob_number %></span>
-
-  </div>
-</div>
-<div class="form-group">
-  <label class="col-md-3" for="fn">Company Name</label>
-  <div class="col-md-9">
-   <span><%= company_name(@client) %></span>
-
-  </div>
-</div>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
-</fieldset>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Mobile Number</label>
+      <div class="col-md-9">
+       <span><%= @client.mob_number %></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Company Name</label>
+      <div class="col-md-9">
+       <span><%= company_name(@client) %></span>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_client_path(@client) %> |
+    <%= link_to 'Back', clients_path %>
+  </fieldset>
 </form>
 
 

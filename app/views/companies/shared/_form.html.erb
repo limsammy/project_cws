@@ -20,7 +20,7 @@
   </div>
   <div class='col-md-6'>
     <%= addr.input 'zip', placeholder: 'zip', input_html: {class: 'zip_code'}%>
-    <span class = "zipcode_error">Enter Valid Zip Code
+    <span class = "zipcode_error hidden">Enter Valid Zip Code
     </span>
   </div>
   <div class='col-md-6 select_lbl'>
@@ -37,9 +37,3 @@
   </div>
 <%end%>
 
-<script type="text/javascript">
-  $(window).load(function() {
-    $('.zipcode_error').hide();
-  });
-
-</script>

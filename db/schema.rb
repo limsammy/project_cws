@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20170928072718) do
     t.integer "invitation_limit"
     t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.binary "profile_image"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true

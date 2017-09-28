@@ -3,6 +3,11 @@
   <h3> USERS DETAILS </h3>
   <fieldset>
     <div class="form-group">
+      <label class="col-md-3" for="fn">Profile Picture</label>
+      <div class="col-md-9">
+        <%= image_tag(current_user.profile_image, :alt => "profile image") %>
+      </div>
+    <div class="form-group">
       <label class="col-md-3" for="fn">First Name:</label>
       <div class="col-md-9">
         <span> <%= current_user.first_name %>

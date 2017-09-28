@@ -5,14 +5,6 @@
     <%= label_tag "Email" %><br />
     <%= text_field_tag :email, nil, class: 'form-control masked exp_desp ' %>
 
-    <div id="my_camera"></div>
-    <br>
-    <input type=button value="Take Snapshot" onClick="take_snapshot()" class="btn btn-success btn-s">
-    <div class="field">
-      <%= hidden_field_tag :profile_image %>
-      <div id="results">Your captured image will appear here...</div>
-    </div>
-
     <%= submit_tag "Invite User", class: "btn btn-success btn-sm"  %>
   </div>
 </div>

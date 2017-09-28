@@ -16,35 +16,42 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98340752-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-98340752-2');
+    </script>
   </head>
   <body>
     <%if current_user.present? %>
-      <div id="wrapper">
-        <%= render partial: 'layouts/header'%>
-        <%= render partial: 'layouts/sidebar'%>
-            <div id="page-wrapper">
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-md-12">
-                        <%= yield %>
-                      </div>
-                  </div>
-              </div>
+    <div id="wrapper">
+      <%= render partial: 'layouts/header'%>
+      <%= render partial: 'layouts/sidebar'%>
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <%= yield %>
+            </div>
           </div>
-          <footer style="width:100%" class="footer center"> 2017 &copy; cWs | build-v1.1 'Dashberry' </footer>
+        </div>
       </div>
-    <%else%>
-      <section id="wrapper" class="login-register">
-        <div class="gradient_overlay">
-          <div class="login-box">
-              <div class="white-box mg_top145">
-                  <%= yield %>
-              </div>
-          </div>
-        </div
-      </section>
-      <footer style="width:100%" class="footer center "> 2017 &copy; cWs | build-v1.0 </footer>
-    <%end%>
-  </body>
+    <footer style="width:100%" class="footer center"> 2017 &copy; cWs | build-v1.1 'Dashberry' </footer>
+  </div>
+  <%else%>
+  <section id="wrapper" class="login-register">
+    <div class="gradient_overlay">
+      <div class="login-box">
+        <div class="white-box mg_top145">
+          <%= yield %>
+        </div>
+      </div>
+    </div
+  </section>
+<footer style="width:100%" class="footer center "> 2017 &copy; cWs | build-v1.0 </footer>
+<%end%>
+</body>
 </html>
-

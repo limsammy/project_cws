@@ -1,68 +1,62 @@
 
-    <div class='col-md-12'>
-      <%= f.input :description,  placeholder: 'description' %>
+<div class='col-md-12'>
+  <%= f.input :description,  placeholder: 'description' %>
+</div>
+<div class='col-md-6'>
+  <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]}, prompt: 'Select Company' %>
+</div>
+<div class='col-md-6'>
+  <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+</div>
+<div class='col-md-6'>
+  <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>
+</div>
+<div class='col-md-6'>
+  <%= f.input :ordered_at, as: :string, input_html: {value: @order.ordered_at.present? ? formatted_date(@order.ordered_at) : formatted_date(Date.today),placeholder: 'order date', class: 'datepicker'} %>
+</div>
+<h4> Order Items </h4>
+  <%= f.fields_for :order_items do |a| %>
+    <div class= 'main row'>
+      <div class='col-md-3'>
+        <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: 'Select product', input_html: { :class => 'product_id' } %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :unit_price, placeholder: 'unit price',input_html: {class: 'uprice' }  %>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :quantity, placeholder: 'quantity', input_html:{ class: 'quant', autocomplete: :off }  %>
+      <span class = 'out_of_stock_msg hidden'> Out Of Stock </span>
+      </div>
+      <div class='col-md-3'>
+        <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>
+      </div>
+    </div>
+    <%= a.link_to_remove 'Remove' %>
+  <% end %>
+<%= f.link_to_add 'Add product', :order_items , class: 'add_prod' %>
+<h4> Shipping Address </h4>
+  <%= f.fields_for :shipping_address do |addr| %>
+    <div class='col-md-6'>
+      <%= addr.input :line_1 %>
     </div>
     <div class='col-md-6'>
-      <%= f.input :company_id, collection: Company.all.map{|a| [a.name, a.id]}, prompt: 'Select Company' %>
+      <%= addr.input :line_2%>
     </div>
     <div class='col-md-6'>
-      <%= f.input :client_id, collection: Client.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+      <%= addr.input 'zip', placeholder: 'Enter Zipcode ', input_html: {class: 'zip_code'}%>
+      <span class = "zipcode_error hidden">Enter Valid Zip Code
+      </span>
     </div>
-    <div class='col-md-6'>
-      <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>
+    <div class='col-md-6  select_lbl'>
+      <%= addr.input :city, input_html: {id: 'dropdown_city', class: 'city_dropdown '} %>
     </div>
-    <div class='col-md-6'>
-      <%= f.input :ordered_at, as: :string, input_html: {value: @order.ordered_at.present? ? formatted_date(@order.ordered_at) : formatted_date(Date.today),placeholder: 'order date', class: 'datepicker'} %>
+    <div class='col-md-6  select_lbl'>
+      <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '} %>
     </div>
-  <h4> Order Items </h4>
-    <%= f.fields_for :order_items do |a| %>
-      <div class= 'main row'>
-        <div class='col-md-3'>
-          <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: 'Select product', input_html: { :class => 'product_id' } %>
-        </div>
-        <div class='col-md-3'>
-          <%= a.input :unit_price, placeholder: 'unit price',input_html: {class: 'uprice' }  %>
-        </div>
-        <div class='col-md-3'>
-          <%= a.input :quantity, placeholder: 'quantity', input_html:{ class: 'quant', autocomplete: :off }  %>
-        <span class = 'out_of_stock_msg'> Out Of Stock </span>
-        </div>
-        <div class='col-md-3'>
-          <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>
-        </div>
-      </div>
-      <%= a.link_to_remove 'Remove' %>
-    <% end %>
-  <%= f.link_to_add 'Add product', :order_items , class: 'add_prod' %>
-  <h4> Shipping Address </h4>
-    <%= f.fields_for :shipping_address do |addr| %>
-      <div class='col-md-6'>
-        <%= addr.input :line_1 %>
-      </div>
-      <div class='col-md-6'>
-        <%= addr.input :line_2%>
-      </div>
-      <div class='col-md-6'>
-        <%= addr.input 'zip', placeholder: 'Enter Zipcode zip', input_html: {class: 'zip_code'}%>
-        <span class = "zipcode_error">Enter Valid Zip Code
-        </span>
-      </div>
-      <div class='col-md-6  select_lbl'>
-        <%= addr.input :city, input_html: {id: 'dropdown_city', class: 'city_dropdown '} %>
-      </div>
-      <div class='col-md-6  select_lbl'>
-        <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '} %>
-      </div>
-      <div class='col-md-6  select_lbl'>
-        <%= addr.input :country, :as => :string, input_html: {id: 'dd_country', class: 'state_dropdown '} %>
-      </div>
-    <%end%>
-  <div class='col-md-12 select_lbl'>
-    <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
-  </div>
-<script type="text/javascript">
-  $(window).load(function() {
-    $('.out_of_stock_msg').hide();
-  });
-
-</script>
+    <div class='col-md-6  select_lbl'>
+      <%= addr.input :country, :as => :string, input_html: {id: 'dd_country', class: 'state_dropdown '} %>
+    </div>
+  <%end%>
+<div class='col-md-12 select_lbl'>
+  <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
+</div>

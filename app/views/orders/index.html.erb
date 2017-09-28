@@ -33,26 +33,3 @@
   datatable('orders_datatable', 1, [2,3], 20, [0,1])
 </script>
 
-
-<script>
-  $(function() {
-    $('.order_status').on('change', saveStatus);
-    function saveStatus() {
-      var $this = $(this);
-      var newStatus = $(this).val();
-      var table_row = $(this).closest('tr');
-      var currentStatus = table_row.attr('data-status');
-      var leadId = table_row.attr('data-id');
-      if (!(newStatus == "" && newStatus == currentStatus)) {
-        $.ajax({
-          url: '/orders/'+ leadId+'/status',
-          data: {status: newStatus},
-          dataType: "json",
-          type: "PUT",
-          success:function(data) {
-          }
-        });
-      }
-    }
-  });
-</script>

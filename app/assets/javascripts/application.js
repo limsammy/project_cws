@@ -27,6 +27,7 @@
 //= require rails-ujs
 //= require jquery_nested_form
 //= require bootstrap-datepicker
+//= require webcam.min
 //= require_tree ../../../vendor/assets/js/.
 //= require_tree .
 //= require select2

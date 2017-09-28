@@ -47,6 +47,9 @@ gem 'rspec-rails'
 gem 'groupdate'
 gem 'my_zipcode_gem'
 gem 'geocoder'
+gem 'carrierwave'
+gem 'carrierwave-base64'
+gem 'rmagick' # have any error? see this link: http://stackoverflow.com/a/5207041
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

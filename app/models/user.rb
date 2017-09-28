@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :invitable
   has_one :address, as: :addressable, dependent: :destroy
 
+  mount_base64_uploader :profile_image, ProfileImageUploader
 end

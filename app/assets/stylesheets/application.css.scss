@@ -49,30 +49,34 @@
 
 }
 .gradient_overlay{
-     background-image: url(/assets/logo.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 100% -49%;
-    height: 100%;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 93px 0;
+  background-image: url(/assets/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 100% -110%;
+  height: auto;
+  width: 100%;
+  max-width: 501px;
+  margin: 0 auto;
+  padding-top: 38px;
+  padding-bottom:50px;
 }
- label.required:after {
-     content: " *";
- }
+label.required:after {
+  content: " *";
+}
+
 .login-box{
-    background: #fff;
-    max-width: 400px;
-    margin: 0 auto 0;
-    width: 100%;
+  background: #fff;
+  max-width: 400px;
+  margin: 0 auto 0;
+  width: 100%;
 }
+
 .white-box {
-    margin-top: 20px;
+  margin-top: 20px;
 }
-.mg_top145{
-  margin-top: 145px;
+
+.mg_top83{
+  margin-top: 83px;
 }
 
 form label {
@@ -80,9 +84,31 @@ form label {
   font-size: 30;
 }
 
+footer.my_footer {
+  background: #6d6d6d;
+  color: #fff;
+  bottom: 0px;
+  height: 130px;
+  top:100%;
+}
+
+.footer_in{
+  background: #6d6d6d;
+  color: #fff;
+  bottom: 0px;
+  height: 100px;
+  position:absolute;
+}
+
+footer.my_footer p ,.footer_in p{
+  margin-bottom:0px;
+  margin-top: 17px;
+}
+
 .logo_img{
   background: transparent;
 }
+
 .top-left-part a{
   background: transparent;
 }
@@ -92,8 +118,8 @@ form label {
 }
 .satus_drpdwn{
   border: none;
-    background: none;
-    font-size: 15px;
+  background: none;
+  font-size: 15px;
 }
 
 a:hover{
@@ -143,31 +169,54 @@ a:hover{
 .form-group{
   position: relative;
 }
+
+.logofooter img{
+  max-width:100%;
+  max-height:100%;
+}
+
 /*======Media query==============*/
 
-@media screen and (max-width:1250px) and (min-width:768px){
-   .gradient_overlay{
-      background-position: center -29px;
+@media screen and (max-width:1400px) and (min-width:768px){
+  .gradient_overlay{
+    background-position: center -105px;
     background-size: 63%;
+    padding-top: 16px;
   }
 }
 
 @media screen and (max-width:991px) and (min-width:768px){
   .gradient_overlay{
-      background-position: center -29px;
+    background-position: center -29px;
     background-size: 63%;
+    padding-top: 131px;
   }
   .login-register{
     position: static;
     display: inline-block;
     width:100%;
   }
+  .footer {
+    bottom: -146px;
+  }
 }
 
 @media screen and (max-width:767px) and (min-width:320px){
+
+  .footer_in{
+    min-height:300px;
+    top:100%;
+  }
+
+  .footer.my_footer{
+     min-height:300px;
+     top:100%;
+  }
+
   .gradient_overlay{
-      background-position: center -71px;
+      background-position:center -121px;
     background-size: 100%;
+    padding-top: 100px;
   }
   .login-register{
     position: static;
@@ -177,6 +226,9 @@ a:hover{
   .white-box h1{
     font-size:34px;
   }
+  .footer {
+    bottom: -313px;
+    }
 }
 
 

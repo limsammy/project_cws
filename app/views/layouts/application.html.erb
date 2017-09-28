@@ -37,21 +37,27 @@
               <%= yield %>
             </div>
           </div>
+    <footer class="footer my_footer center ">
+   <%= render partial: 'layouts/footer'%>
+   <!-- 2017 &copy; cWs | build-v1.0 -->
+</footer>
         </div>
       </div>
-    <footer style="width:100%" class="footer center"> 2017 &copy; cWs | build-v1.1 'Dashberry' </footer>
   </div>
   <%else%>
   <section id="wrapper" class="login-register">
     <div class="gradient_overlay">
       <div class="login-box">
-        <div class="white-box mg_top145">
+        <div class="white-box mg_top83">
           <%= yield %>
         </div>
       </div>
     </div
   </section>
-<footer style="width:100%" class="footer center "> 2017 &copy; cWs | build-v1.0 </footer>
+<footer class="footer_in center ">
+   <%= render partial: 'layouts/footer'%>
+   <!-- 2017 &copy; cWs | build-v1.0 -->
+</footer>
 <%end%>
 </body>
 </html>

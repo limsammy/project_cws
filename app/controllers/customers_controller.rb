@@ -2,7 +2,9 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    @customer.contacts.build
     @customer.build_address
+    #@customer.build_contact
   end
 
   def create
@@ -55,14 +57,22 @@ class CustomersController < ApplicationController
   private
     def customer_params
       params.require(:customer).permit(:id, :contact_id,:name, :phone_number, :department, :fax, :_destroy,
-                                      address_attributes: [
-                                        :id ,
-                                        :line_1 ,
-                                        :line_2 ,
-                                        :country ,
-                                        :state ,
-                                        :zip,
-                                        :city])
+                        address_attributes: [
+                          :id,
+                          :line_1 ,
+                          :line_2 ,
+                          :country ,
+                          :state ,
+                          :zip,
+                          :city],
+                        contacts_attributes: [
+                            :id,
+                            :name,
+                            :email,
+                            :mob_number,
+                            :_destroy
+                          ]
+                      )
 
     end
 end

@@ -42,8 +42,29 @@
       <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
     </div >
   </div >
+
+<%end%>
+
+<h4> Contact </h4>
+<%= f.fields_for :contacts do |c| %>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%=c.input :name, label: 'Name', placeholder: 'Contact name' %>
+    </div>
+    <div class='col-md-6'>
+      <%= c.input :email, label: 'Email', placeholder: 'Email' %>
+    </div>
+  </div>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%=c.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
+    </div>
+  </div>
+  <%= c.link_to_remove 'Remove' %>
+<% end %>
+
+<%= f.link_to_add 'Add contact', :contacts , class: 'add_prod' %>
+
   <div class='col-md-12'>
     <%= f.submit 'Save', class: 'btn btn-info btn-lg' %>
   </div>
-<%end%>
-

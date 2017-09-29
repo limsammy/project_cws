@@ -27,13 +27,13 @@ if User.count == 0
   end
 end
 
-if Company.count == 0
+if Customer.count == 0
   10.times do
-    Company.create!(
+    Customer.create!(
       name: Faker::Company.name,
       phone_number: Faker::Number.number(10),
-      department: Faker::Company.profession,
-      fax: Faker::Company.ein
+      department: "Developer",
+      fax: Faker::Number.number(10)
     )
   end
 end
@@ -49,15 +49,15 @@ if Product.count == 0
   end
 end
 
-if Client.count == 0
+if Contact.count == 0
   10.times do
-    client=Client.create!(
+    contact=Contact.create!(
       name: Faker::Name.first_name,
       email: Faker::Internet.email,
       mob_number: Faker::Number.number(10),
-      company_id: Company.first.id
+      customer_id: Customer.first.id
     )
-    client.address = Address.create!(
+    contact.address = Address.create!(
       line_1: Faker::Address.street_name,
       line_2: Faker::Address.street_address,
       country: Faker::Address.country,
@@ -73,8 +73,8 @@ if Order.count == 0
     order = Order.create!(
       order_number: order_number,
       description: Faker::Commerce.product_name,
-      company_id: Client.first.company_id,
-      client_id: Client.first.id,
+      customer_id: Customer.first.id,
+      contact_id: Contact.first.id,
       ordered_at: DateTime.now
     )
     order.shipping_address = Address.create!(

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170929093723) do
     t.string "mob_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "company_id"
+    t.integer "customer_id"
   end
 
   create_table "counties", force: :cascade do |t|

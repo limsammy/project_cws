@@ -5,12 +5,7 @@ class Customer < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :contacts, dependent: :destroy
   has_many :orders, dependent: :destroy
-  has_one :shipping_address, class_name: "Address", as: :addressable, dependent: :destroy
-  has_one :billing_address, class_name: "Address", as: :addressable, dependent: :destroy
-  has_one :additional_address, class_name: "Address", as: :addressable, dependent: :destroy
-  accepts_nested_attributes_for :shipping_address
-  accepts_nested_attributes_for :billing_address
-  accepts_nested_attributes_for :additional_address
+  has_one :address, class_name: "Address", as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :contacts,  allow_destroy: true
   accepts_nested_attributes_for :address
 end

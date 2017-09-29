@@ -1,0 +1,42 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+
+<form class="form-horizontal form-material col-md-6 col-md-offset-3 white-box">
+  <h3> CATEGORY DETAILS </h3>
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Name:</label>
+      <div class="col-md-9">
+        <span> <%= @category.name %>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Code:</label>
+      <div class="col-md-9">
+        <span> <%= @category.item_code %>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Cover Slip</label>
+      <div class="col-md-9">
+        <span>
+          <%= @category.cover_slip %>
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Note</label>
+      <div class="col-md-9">
+        <span>
+         <%= @category.note %>
+        </span>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_category_path(@category) %> |
+
+  </fieldset>
+</form>

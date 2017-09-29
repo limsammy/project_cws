@@ -1,0 +1,35 @@
+<div class="col-sm-12">
+  <div class="white-box">
+    <h3 class="box-title m-b-0 text-center">Categories</h3>
+      <div class="table-responsive custom_datatable">
+        <table id="products_datatable" class="display nowrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item code</th>
+              <th>Cover Slip</th>
+              <th>Note</th>
+              <th>Edit</th>
+              <th> Delete </th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @categories.each do |category| %>
+                <tr>
+                  <td><%= link_to category.name, category %></td>
+                  <td><%= category.item_code %></td>
+                  <td><%= category.cover_slip %></td>
+                  <td><%= category.note %></td>
+                  <td><%= link_to 'Edit', edit_category_path(category) %></td>
+                  <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <%end%>
+            </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
+<script>
+  datatable('products_datatable', 1, [4,5], 20, [0,1,2,3])
+</script>

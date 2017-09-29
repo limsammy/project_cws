@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+<form class="form-horizontal form-material col-md-8 col-md-offset-2 white-box">
+  <fieldset>
+
+    <h3 class="text-center">  CONTACT DETAILS  </h3>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Name</label>
+      <div class="col-md-9">
+       <span><%= @contact.name %></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Email</label>
+      <div class="col-md-9">
+       <span><%= @contact.email %></span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Mobile Number</label>
+      <div class="col-md-9">
+       <span><%= @contact.mob_number %></span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-3" for="fn">Customer Name</label>
+      <div class="col-md-9">
+       <span><%= customer_name(@contact) %></span>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_contact_path(@contact) %> |
+    <%= link_to 'Back', contacts_path %>
+  </fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

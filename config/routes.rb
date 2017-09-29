@@ -26,11 +26,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :companies do
+  resources :customers do
 
   end
 
-  resources :clients do
+  resources :contacts do
     collection do
       get :get_zip_data
     end
@@ -46,5 +46,6 @@ Rails.application.routes.draw do
   resources :orders do
   end
   resources :profiles
+  resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

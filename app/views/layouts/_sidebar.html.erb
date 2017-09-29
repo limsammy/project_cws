@@ -26,16 +26,16 @@
                 </li>
             </ul>
         </li>
-        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-users"></i> <span class="hide-menu">Clients <span class="fa arrow"></span></span></a>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-users"></i> <span class="hide-menu">Contacts <span class="fa arrow"></span></span></a>
             <ul class="nav nav-second-level">
                 <li>
-                    <%= link_to new_client_path, 'data-no-turbolink' => true do %>
+                    <%= link_to new_contact_path, 'data-no-turbolink' => true do %>
                       <i class="fa fa-plus-square-o"></i>
                       Create
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to clients_path, 'data-no-turbolink' => true do %>
+                    <%= link_to contacts_path, 'data-no-turbolink' => true do %>
                       <i class="fa fa-list"></i>
                        List
                     <% end %>
@@ -51,15 +51,15 @@
             </a>
             <ul class="nav nav-second-level">
               <li>
-                <%= link_to new_company_path, 'data-no-turbolink' => true do %>
+                <%= link_to new_customer_path, 'data-no-turbolink' => true do %>
                   <i class=" fa fa-plus-square-o"></i>
                   <span class="hide-menu">
-                    Create Company
+                    Create Customer
                   </span>
                 <% end %>
               </li>
               <li>
-                  <%= link_to companies_path, 'data-no-turbolink' => true do %>
+                  <%= link_to customers_path, 'data-no-turbolink' => true do %>
                     <i class="fa fa-list"></i>
                      List
                   <% end %>

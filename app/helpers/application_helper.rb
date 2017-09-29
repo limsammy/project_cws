@@ -1,6 +1,6 @@
 module ApplicationHelper
   def companies_list(user)
-  	user.company.all.map{ |a| a.name}
+  	user.customer.all.map{ |a| a.name}
   end
 
   def formatted_date(date)

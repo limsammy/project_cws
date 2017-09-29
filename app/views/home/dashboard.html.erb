@@ -5,10 +5,10 @@
         <div class="col-lg-4 col-sm-6 row-in-br">
           <div class="col-in row">
               <div class="col-md-6 col-sm-6 col-xs-6"> <i  class=" fa fa-users "></i>
-                  <h5 class="text-muted vb">TOTAL CLIENTS</h5>
+                  <h5 class="text-muted vb">TOTAL CONTACTS</h5>
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
-                  <h2 class=" order_title counter text-right m-t-15 text-danger"><%= Client.count %></h2>
+                  <h2 class=" order_title counter text-right m-t-15 text-danger"><%= Contact.count %></h2>
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="progress">
@@ -68,7 +68,7 @@
   </div>
   <div class="col-sm-6">
     <div class="white-box">
-      <h3 class="box-title">Top Clients according to order</h3>
+      <h3 class="box-title">Top Contacts according to order</h3>
       <div>
         <canvas id="chart3" height="150"></canvas>
       </div>
@@ -82,10 +82,10 @@
     var order_date = <%=raw @order_date.to_json%>;
     var product_name = <%=raw @products_name.to_json%>;
     var product_quantity = <%= @products_quantity%>;
-    var client_name = <%= raw @clients_name %>;
-    var client_amount = <%= (@clients_amount) %>
+    var contact_name = <%= raw @contacts_name %>;
+    var contact_amount = <%= (@contacts_amount) %>
     chart("chart1", order_count, order_date, "Line");
     chart("chart2", product_quantity, product_name, "Bar")
-    chart("chart3", client_amount, client_name, "Bar")
+    chart("chart3", contact_amount, contact_name, "Bar")
   });
 </script>

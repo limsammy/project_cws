@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+        format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:id, :company_id, :client_id, :order_number, :ordered_at, :description,
+    params.require(:order).permit(:id, :customer_id, :contact_id, :order_number, :ordered_at, :description,
                                    order_items_attributes: [
                                     :id,
                                     :product_id,

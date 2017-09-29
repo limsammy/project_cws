@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   enum status: [ 'ordered', 'paid', 'cancelled', 'completed' ]
-	belongs_to :company, optional: true
-	belongs_to :client, optional: true
+	belongs_to :customer, optional: true
+	belongs_to :contact, optional: true
 	has_many :order_items, dependent: :destroy
   has_one :shipping_address, class_name: "Address", as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :shipping_address

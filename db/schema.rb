@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927053352) do
+ActiveRecord::Schema.define(version: 20170929093723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,22 +28,22 @@ ActiveRecord::Schema.define(version: 20170927053352) do
     t.string "city"
   end
 
-  create_table "clients", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "item_code"
+    t.string "cover_slip"
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
     t.string "email"
     t.string "mob_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "company_id"
-  end
-
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "department"
-    t.string "phone_number"
-    t.string "fax"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "counties", force: :cascade do |t|
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170927053352) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_counties_on_name"
     t.index ["state_id"], name: "index_counties_on_state_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "department"
+    t.string "phone_number"
+    t.string "fax"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -72,15 +81,15 @@ ActiveRecord::Schema.define(version: 20170927053352) do
   create_table "orders", force: :cascade do |t|
     t.string "order_number", null: false
     t.string "description", null: false
-    t.bigint "company_id"
-    t.bigint "client_id"
+    t.bigint "customer_id"
+    t.bigint "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "ordered_at"
     t.integer "status", default: 0, null: false
     t.decimal "total_amount"
-    t.index ["client_id"], name: "index_orders_on_client_id"
-    t.index ["company_id"], name: "index_orders_on_company_id"
+    t.index ["contact_id"], name: "index_orders_on_contact_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -151,6 +160,6 @@ ActiveRecord::Schema.define(version: 20170927053352) do
 
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "clients"
-  add_foreign_key "orders", "companies"
+  add_foreign_key "orders", "contacts"
+  add_foreign_key "orders", "customers"
 end

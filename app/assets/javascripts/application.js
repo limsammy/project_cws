@@ -233,7 +233,7 @@ $(document).on('keyup', '.zip_code', function(){
     var zip_code = $('.zip_code').val();
     if(zip_code ){
       $.ajax({
-        url:  "/clients/get_zip_data",
+        url:  "/contacts/get_zip_data",
         data:  {id: zip_code},
         dataType: "json",
         type: "GET",

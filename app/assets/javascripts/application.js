@@ -118,7 +118,7 @@ $(document).on('keyup', '.quant', function(){
   var price = $(this).parents('.main').find('.uprice').val();
   $.ajax({
     url: "/products/per_amount",
-    data: {id: quantity, product},
+    data: {id: quantity, product: product},
     dataType: "json",
     type: "GET",
     success:function(data) {

@@ -288,3 +288,17 @@ $(function() {
       }
     }
   });
+$(document).on('click', '.remove1', function(){
+  $('.remove1').hide();
+})
+
+$(document).on('click', '.remove2', function(){
+  $('.remove2').hide();
+})
+
+$(document).on('click', '.remove3', function(){
+  $('.remove3').hide();
+})
+$(document).on('click', '.remove4', function(){
+  $('.remove4').hide();
+})

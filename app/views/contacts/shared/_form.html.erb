@@ -10,9 +10,6 @@
   <div class='col-md-6'>
     <%= f.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
   </div>
-  <div class='col-md-6'>
-    <%= f.input 'customer_id' , label: 'Customer', collection: Customer.all.map{ |a| [a.name, a.id]} %>
-  </div>
 </div>
 <h3>
   Address

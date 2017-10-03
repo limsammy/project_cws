@@ -14,8 +14,18 @@
     <%= f.input :department, as: :string, input_html: {class: 'form-control masked exp_desp ', placeholder: 'department'} %>
   </div>
 </div>
-<h3>Address</h3>
-<%= f.fields_for :address do |addr| %>
+
+<%= f.fields_for :contacts do |c| %>
+  <h3> Contact</h3>
+  <%=c.input :name, label: 'Name', placeholder: 'Contact name' %>
+  <%= c.input :email, label: 'Email', placeholder: 'Email' %>
+  <%=c.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
+  <%= c.link_to_remove 'Remove' %>
+<% end %>
+<%= f.link_to_add 'Add contact', :contacts , class: 'remove4' %>
+<br>
+<%= f.fields_for :billing_address do |addr| %>
+    <h3> Billing Address</h3>
   <div  class="row">
     <div class='col-md-6'>
       <%= addr.input 'line_1',placeholder: 'line 1' %>
@@ -26,7 +36,7 @@
   </div>
   <div  class="row">
     <div class='col-md-6'>
-      <%= addr.input 'zip', placeholder: 'zip', input_html: {class: 'zip_code'}%>
+      <%= addr.input 'zip', placeholder: 'zip', autocomplete: :off , input_html: {class: 'zip_code'}%>
       <span class = "zipcode_error hidden">Enter Valid Zip Code
       </span>
     </div>
@@ -42,29 +52,79 @@
       <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
     </div >
   </div >
+  <%= addr.link_to_remove 'Remove' %>
+<%end%>
+<%= f.link_to_add 'Add billing Address', :billing_address, class: 'remove1' %>
+<br>
 
+<%= f.fields_for :shipping_address do |addr| %>
+  <h3>Shipping Address</h3>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%= addr.input 'line_1',placeholder: 'line 1' %>
+    </div>
+    <div class='col-md-6'>
+      <%= addr.input 'line_2', placeholder: 'line 2' %>
+    </div>
+  </div>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%= addr.input 'zip', placeholder: 'zip',  autocomplete: :off ,input_html: {class: 'zip_code'}%>
+      <span class = "zipcode_error hidden">Enter Valid Zip Code
+      </span>
+    </div>
+    <div class='col-md-6 select_lbl'>
+    <%= addr.input :city,  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
+    </div>
+  </div>
+  <div  class="row">
+    <div class='col-md-6 select_lbl'>
+    <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
+    </div>
+    <div class='col-md-6 select_lbl'>
+      <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
+    </div >
+  </div >
+  <%= addr.link_to_remove 'Remove' %>
 <%end%>
 
-<h4> Contact </h4>
-<%= f.fields_for :contacts do |c| %>
-  <div  class="row">
-    <div class='col-md-6'>
-      <%=c.input :name, label: 'Name', placeholder: 'Contact name' %>
-    </div>
-    <div class='col-md-6'>
-      <%= c.input :email, label: 'Email', placeholder: 'Email' %>
-    </div>
-  </div>
-  <div  class="row">
-    <div class='col-md-6'>
-      <%=c.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
-    </div>
-  </div>
-  <%= c.link_to_remove 'Remove' %>
-<% end %>
+<%= f.link_to_add 'Add Shipping Address', :shipping_address, class: 'remove2' %>
+<br>
 
-<%= f.link_to_add 'Add contact', :contacts , class: 'add_prod' %>
+
+<%= f.fields_for :additional_address do |addr| %>
+  <h3>Additional Address</h3>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%= addr.input 'line_1',placeholder: 'line 1' %>
+    </div>
+    <div class='col-md-6'>
+      <%= addr.input 'line_2', placeholder: 'line 2' %>
+    </div>
+  </div>
+  <div  class="row">
+    <div class='col-md-6'>
+      <%= addr.input 'zip', placeholder: 'zip', autocomplete: :off , input_html: {class: 'zip_code'}%>
+      <span class = "zipcode_error hidden">Enter Valid Zip Code
+      </span>
+    </div>
+    <div class='col-md-6 select_lbl'>
+    <%= addr.input :city,  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
+    </div>
+  </div>
+  <div  class="row">
+    <div class='col-md-6 select_lbl'>
+    <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
+    </div>
+    <div class='col-md-6 select_lbl'>
+      <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
+    </div >
+  </div >
+  <%= addr.link_to_remove 'Remove' %>
+<%end%>
+<%= f.link_to_add 'Add Additional Address', :additional_address, class: 'remove3' %>
 
   <div class='col-md-12'>
     <%= f.submit 'Save', class: 'btn btn-info btn-lg' %>
   </div>
+

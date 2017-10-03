@@ -123,7 +123,7 @@ $(document).on('keyup', '.quant', function(){
     type: "GET",
     success:function(data) {
       if (data.value == -1){
-        $('.out_of_stock_msg').removeClass("hidden");
+        $this.parents('.main').find('.out_of_stock_msg').removeClass("hidden");
       }else{
         $('.out_of_stock_msg').addClass("hidden");
       }
@@ -229,18 +229,16 @@ $(document).ready(function() {
     document.body.innerHTML = restorepage;
   }
 
-$(document).on('keyup', '#customer_billing_address_attributes_zip, #customer_shipping_address_attributes_zip , #customer_additional_address_attributes_zip', function(){
+$(document).on('keyup', '#customer_billing_address_attributes_zip, #customer_shipping_address_attributes_zip , #customer_additional_address_attributes_zip, #contact_address_attributes_zip, #contact_address_attributes_zip , #order_shipping_address_attributes_zip', function(){
     var zip_code = $(this).val();
     var $this = $(this)
     if(zip_code ){
       $.ajax({
-        url:  "/contacts/get_zip_data",
+        url:  "/addresses/get_zip_data",
         data:  {id: zip_code},
         dataType: "json",
         type: "GET",
         success:function(data) {
-          console.log('data')
-          console.log(data)
           if(data.value == 0){
             $this.parents('.main').find('.zipcode_error').removeClass("hidden");
           }

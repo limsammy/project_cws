@@ -1,48 +1,33 @@
 <div  class="row">
   <div class='col-md-6'>
-    <%= f.input :name, label: 'Name', placeholder: 'Contact name' %>
+    <%= f.input :name,  placeholder: 'Contact name' %>
   </div>
   <div class='col-md-6'>
-    <%= f.input :email, label: 'Email', placeholder: 'Email' %>
+    <%= f.input :email, placeholder: 'Email' %>
   </div>
 </div>
 <div  class="row">
   <div class='col-md-6'>
-    <%= f.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
+    <%= f.input :mob_number,  placeholder: 'Mobile Number' %>
+  </div>
+  <div class='col-md-6'>
+    <%= f.input :fax,  placeholder: 'Fax' %>
   </div>
 </div>
+
+<div  class="row">
+  <div class='col-md-6'>
+    <%= f.input :title, placeholder: 'Title' %>
+  </div>
+  <div class='col-md-6'>
+    <%= f.input :department, placeholder: 'Department' %>
+  </div>
+</div>
+
 <h3>
   Address
 </h3>
 <%= f.fields_for :address do |addr| %>
-  <div  class="row">
-    <div class='col-md-6'>
-      <%= addr.input 'line_1',placeholder: 'line 1' %>
-    </div>
-    <div class='col-md-6'>
-      <%= addr.input 'line_2', placeholder: 'line 2' %>
-    </div>
-  </div>
-  <div  class="row">
-    <div class='col-md-6'>
-      <%= addr.input 'zip', placeholder: 'zip', input_html: {class: 'zip_code'}%>
-      <span class = "zipcode_error hidden", type: "hidden" >Enter Valid Zip Code
-      </span>
-    </div>
-    <div class='col-md-6 select_lbl'>
-    <%= addr.input :city,  input_html: {id: 'dropdown_city', class: 'city_dropdown '}%>
-    </div>
-  </div>
-  <div  class="row">
-    <div class='col-md-6 select_lbl'>
-    <%= addr.input :state, input_html: {id: 'dropdown_state', class: 'state_dropdown '}%>
-    </div>
-    <div class='col-md-6 select_lbl'>
-      <%= addr.input :country, :as => :string, input_html: {id: 'dd_country'}%>
-    </div >
-  </div>
-  <div class='col-md-12'>
-    <%= f.submit 'Save', class: 'btn btn-info btn-lg' %>
-  </div>
+  <%= render partial:'customers/shared/address', locals: {addr: addr}  %>
 <%end%>
 

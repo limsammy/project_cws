@@ -11,10 +11,8 @@ class CustomersController < ApplicationController
   end
 
   def create
-    binding.pry
     @customer = Customer.new(customer_params)
      respond_to do |format|
-      binding.pry
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }

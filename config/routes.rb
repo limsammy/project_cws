@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get :find_states
       get :find_cities
+      get :get_zip_data
     end
   end
 
@@ -32,7 +33,6 @@ Rails.application.routes.draw do
 
   resources :contacts do
     collection do
-      get :get_zip_data
     end
   end
   resources :products do

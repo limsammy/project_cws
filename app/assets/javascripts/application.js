@@ -229,8 +229,9 @@ $(document).ready(function() {
     document.body.innerHTML = restorepage;
   }
 
-$(document).on('keyup', '.zip_code', function(){
-    var zip_code = $('.zip_code').val();
+$(document).on('keyup', '#customer_billing_address_attributes_zip, #customer_shipping_address_attributes_zip , #customer_additional_address_attributes_zip', function(){
+    var zip_code = $(this).val();
+    var $this = $(this)
     if(zip_code ){
       $.ajax({
         url:  "/contacts/get_zip_data",
@@ -238,8 +239,10 @@ $(document).on('keyup', '.zip_code', function(){
         dataType: "json",
         type: "GET",
         success:function(data) {
+          console.log('data')
+          console.log(data)
           if(data.value == 0){
-            $('.zipcode_error').removeClass("hidden");
+            $this.parents('.main').find('.zipcode_error').removeClass("hidden");
           }
           else{
             $('.zipcode_error').addClass("hidden");
@@ -252,9 +255,9 @@ $(document).on('keyup', '.zip_code', function(){
             Object.keys(data)[2]
             var key = Object.keys(data)[2];
             country = data[key];
-            $('#dropdown_city').val(city);
-            $('#dropdown_state').val(state);
-            $('#dd_country').val(country);
+            $this.parents('.main').find('#dropdown_city').val(city);
+            $this.parents('.main').find('#dropdown_state').val(state);
+            $this.parents('.main').find('#dd_country').val(country);
           }
         }
       });

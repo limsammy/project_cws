@@ -2,16 +2,16 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
-    #@customer.build_contact
-    binding.pry
-    @customer.build_shipping_address
-    @customer.build_billing_address
-    @customer.build_additional_address
+    # @customer.contacts.build
+    # @customer.build_shipping_address
+    # @customer.build_billing_address
+    # @customer.build_additional_address
 
 
   end
 
   def create
+    binding.pry
     @customer = Customer.new(customer_params)
      respond_to do |format|
       binding.pry

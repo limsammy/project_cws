@@ -305,3 +305,7 @@ $(document).on('click', '.remove3', function(){
 $(document).on('click', '.remove4', function(){
   $('.remove4').hide();
 })
+
+$(document).ready(function() {
+  $('#product_category_id').select2();
+});

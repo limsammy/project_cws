@@ -188,9 +188,13 @@ a:hover{
   text-align: center;
   font-size: 24px;
   font-weight: normal;
-
-
 }
+
+
+.sidebar{
+  box-shadow:0px 0px 0px;
+}
+
 
 // THIS IS NOT BEING APPLIED FOR BOTTOM LEFT GRADIENT MOVED UP
 .navbar-default.sidebar {

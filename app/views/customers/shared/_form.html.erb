@@ -18,7 +18,7 @@
 <%= f.fields_for :contacts do |c| %>
   <h3> Contact</h3>
   <%= c.input :name, label: 'Name', placeholder: 'Contact name' %>
-  <%= c.input :name, label: 'Title', placeholder: 'Title' %>
+  <%= c.input :title, label: 'Title', placeholder: 'Title' %>
   <%= c.input :email, label: 'Email', placeholder: 'Email' %>
   <%= c.input :mob_number, label: 'Mobile Number', placeholder: 'Mobile Number' %>
   <%= c.link_to_remove 'Remove' %>

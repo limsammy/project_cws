@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   end
 
   resources :customers do
+     collection do
+      get :select_product
+
+    end
 
   end
 

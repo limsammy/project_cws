@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20171003082639) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.bigint "company_id"
+    t.bigint "customer_id"
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", null: false
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20171003082639) do
     t.integer "invitation_limit"
     t.integer "invited_by_id"
     t.string "invited_by_type"
-    t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

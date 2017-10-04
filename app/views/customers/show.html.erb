@@ -6,8 +6,8 @@
     <div class="form-group">
       <label class="col-md-3" for="fn">Name</label>
       <div class="col-md-9">
-<!--         <span> <%= @customer.name %>
- -->        </span>
+        <span> <%= @customer.name %>
+        </span>
       </div>
     </div>
     <div class="form-group">
@@ -70,8 +70,28 @@
       </div>
     </div>
 
+    <table border = "1">
+      <tr>
+        <td>Name </td>
+        <td>Email </td>
+        <td>Mobile </td>
+        <td> Order </td>
+      </tr>
+      <tbody>
+        <% @customer.contacts.each do |item| %>
+          <tr>
+            <td><%= item.name %> </td>
+            <td><%= item.email %> </td>
+            <td><%= item.mob_number %> </td>
+            <td><%= link_to 'Order', select_product_customers_path %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-     <%= link_to 'Edit', edit_customer_path(@customer)%>|
+
+
+    <%= link_to 'Edit', edit_customer_path(@customer)%>|
     <%= link_to 'Back', customers_path %>
   </fieldset>
 </form>

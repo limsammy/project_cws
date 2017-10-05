@@ -18,7 +18,7 @@
           <% @contacts.each do |contact| %>
             <tr>
               <td><%= link_to "#{contact.name}", contact %></td>
-              <td><%= customer_name(contact) %></td>
+
               <td><%= contact.email %></td>
               <td><%= contact.mob_number %></td>
               <td><%= link_to 'Edit', edit_contact_path(contact) %></td>

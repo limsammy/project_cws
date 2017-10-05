@@ -69,29 +69,40 @@
         </span>
       </div>
     </div>
-
-    <table border = "1">
-      <tr>
-        <td>Name </td>
-        <td>Email </td>
-        <td>Mobile </td>
-        <td> Order </td>
-      </tr>
-      <tbody>
-        <% @customer.contacts.each do |item| %>
-          <tr>
-            <td><%= item.name %> </td>
-            <td><%= item.email %> </td>
-            <td><%= item.mob_number %> </td>
-            <td><%= link_to 'Order', select_product_customers_path %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-
-
+    <div class="col-sm-12">
+  <div class="white-box">
+    <h3 class="box-title m-b-0 text-center">Contacts</h3>
+      <div class="table-responsive custom_datatable">
+        <table id="products_datatable" class="display nowrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Order</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customer.contacts.each do |item| %>
+              <tr>
+                <td><%= item.name %> </td>
+                <td><%= item.email %> </td>
+                <td><%= item.mob_number %> </td>
+                <td><%= link_to 'Order', select_product_contact_path(item, customers_id: @customer.id) %></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
     <%= link_to 'Edit', edit_customer_path(@customer)%>|
     <%= link_to 'Back', customers_path %>
   </fieldset>
 </form>
+
+
+
+<script>
+  datatable('products_datatable', 1, [0], 20, [0,1,2,3])
+</script>

@@ -307,3 +307,4 @@ $(document).on('click', '.remove4', function(){
 $(document).ready(function() {
   $('#product_category_id').select2();
 });
+

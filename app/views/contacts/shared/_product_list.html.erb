@@ -1,0 +1,13 @@
+<table  id="list_product_datatable">
+  <tr>
+    <td>Product Name</td>
+  </tr>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= check_box_tag product.id %><%= product.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

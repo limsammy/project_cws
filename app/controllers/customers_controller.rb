@@ -57,12 +57,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  def select_product
-    @categories = Category.all
-    @products = Category.find(2).products
-
-  end
-
   private
     def customer_params
       params.require(:customer).permit(:id, :contact_id,:name, :phone_number, :department, :fax, :_destroy,

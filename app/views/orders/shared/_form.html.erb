@@ -2,10 +2,18 @@
   <%= f.input :description,  placeholder: 'description' %>
 </div>
 <div class='col-md-6'>
-  <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+  <% if(params[:contact_id].present?) %>
+    <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, selected: params[:customer_id]  %>
+  <% else %>
+    <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+  <% end %>
 </div>
 <div class='col-md-6'>
-  <%= f.input :contact_id, label: "Customer", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+  <% if(params[:contact_id].present?) %>
+    <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, selected: params[:contact_id] %>
+  <% else %>
+      <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+  <% end %>
 </div>
 <div class='col-md-6'>
   <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>

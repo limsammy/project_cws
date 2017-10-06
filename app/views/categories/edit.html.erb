@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-2 white-box">
+  <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12 white-box">
     <h1 class="text-center">Edit Category</h1>
     <%= simple_nested_form_for @category, html: {class: "form-material form-horizontal"} do |f| %>
       <%= render partial:'categories/shared/form' , locals: {f: f} %>

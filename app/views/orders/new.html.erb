@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-sm-12 col-md-12 col-lg-8 col-lg-offset-2 white-box">
-    <h1 class="text-center">Create Order</h1>
-    <%= simple_nested_form_for @order,html: {class: "form-material form-horizontal"} ,url: orders_path , method: :post  do |f| %>
-      <%= render partial:'orders/shared/form' , locals: {f: f} %>
-    <%end%>
+  <div class="col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 white-box cstm-white-box">
+      <h1 class="text-center">Create Order</h1>
+      <%= simple_nested_form_for @order,html: {class: "form-material form-horizontal"} ,url: orders_path , method: :post  do |f| %>
+        <%= render partial:'orders/shared/form' , locals: {f: f} %>
+      <%end%>
   </div>
 </div>
 

@@ -81,7 +81,6 @@ label.required:after {
 
 form label {
   font-weight:bold;
-  font-size: 30;
 }
 
 footer.my_footer {
@@ -215,12 +214,23 @@ a:hover{
   color: #fff;
   background-color: rgb(68, 131, 202);
   text-align:center;
+  margin-bottom: 10px;
 }
 
 .cstm_chkout{
   display:inline-block;
   float:right;
 }
+.cstm-btn-pos{
+  position: absolute;
+  bottom: 34px;
+  left:0;
+}
+.cstm-white-box{
+  position: relative;
+  padding-bottom: 60px;
+}
+
 
 /*======Media query==============*/
 

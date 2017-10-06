@@ -31,6 +31,6 @@
   <%= f.fields_for :address do |addr| %>
     <%= render partial:'customers/shared/address', locals: {addr: addr}  %>
   <%end%>
-<div class='col-md-12 select_lbl'>
+<div class='col-md-12 text-center cstm-btn-pos'>
   <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
 </div>

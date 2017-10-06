@@ -37,15 +37,27 @@ if Customer.count == 0
     )
   end
 end
-
-if Product.count == 0
+if Category.count == 0
   10.times do
-    Product.create!(
-      name: Faker::Food.dish,
-      price: Faker::Number.decimal(2),
-      code: SecureRandom.hex(16).upcase,
-      stock_in_hand: Faker::Number.between(1, 10),
+    Category.create!(
+      name: Faker::Dessert.variety,
+      item_code: Faker::Number.number(10),
+      cover_slip: Faker::Dessert.topping,
+      note: Faker::Dessert.flavor
     )
+  end
+end
+if Product.count == 0
+  Category.all.each do |category|
+    10.times do
+      Product.create!(
+        name: Faker::Food.dish,
+        price: Faker::Number.decimal(2),
+        code: SecureRandom.hex(16).upcase,
+        stock_in_hand: Faker::Number.between(1, 10),
+        category_id: category.id
+      )
+    end
   end
 end
 

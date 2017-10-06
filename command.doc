@@ -1,0 +1,7 @@
+Steps to setup the project:-
+
+1.After creation of databse run the following commands:-
+
+i. ralis db:seed
+ii. bundle exec rake zipcodes:update
+

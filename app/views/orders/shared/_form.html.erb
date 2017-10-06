@@ -1,29 +1,35 @@
-<div class='col-md-12'>
-  <%= f.input :description,  placeholder: 'description' %>
+<div  class="row">
+  <div class='col-md-12'>
+    <%= f.input :description,  placeholder: 'description' %>
+  </div>
 </div>
-<div class='col-md-6'>
-  <% if(params[:contact_id].present?) %>
-    <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, selected: params[:customer_id]  %>
-  <% else %>
-    <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
-  <% end %>
+<div  class="row">
+  <div class='col-md-6'>
+    <% if(params[:contact_id].present?) %>
+      <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, selected: params[:customer_id]  %>
+    <% else %>
+      <%= f.input :customer, collection: Customer.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+    <% end %>
+  </div>
+  <div class='col-md-6'>
+    <% if(params[:contact_id].present?) %>
+      <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, selected: params[:contact_id] %>
+    <% else %>
+        <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+    <% end %>
+  </div>
 </div>
-<div class='col-md-6'>
-  <% if(params[:contact_id].present?) %>
-    <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, selected: params[:contact_id] %>
-  <% else %>
-      <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
-  <% end %>
-</div>
-<div class='col-md-6'>
-  <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>
-</div>
-<div class='col-md-6'>
-  <%= f.input :ordered_at, as: :string, input_html: {value: @order.ordered_at.present? ? formatted_date(@order.ordered_at) : formatted_date(Date.today),placeholder: 'order date', class: 'datepicker'} %>
+<div  class="row">
+  <div class='col-md-6'>
+    <%= f.input :order_number, as: :string, input_html: {value: @order.order_number.present? ? @order.order_number : order_number , placeholder: 'order number'} %>
+  </div>
+  <div class='col-md-6'>
+    <%= f.input :ordered_at, as: :string, input_html: {value: @order.ordered_at.present? ? formatted_date(@order.ordered_at) : formatted_date(Date.today),placeholder: 'order date', class: 'datepicker'} %>
+  </div>
 </div>
 <h4> Order Items </h4>
   <%= f.fields_for :order_items do |a| %>
-    <div class= 'main row'>
+    <div class= 'row'>
       <div class='col-md-3'>
         <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: 'Select product', input_html: { :class => 'product_id' } %>
       </div>
@@ -32,7 +38,7 @@
       </div>
       <div class='col-md-3'>
         <%= a.input :quantity, placeholder: 'quantity', input_html:{ class: 'quant', autocomplete: :off }  %>
-      <span class = 'out_of_stock_msg hidden'> Out Of Stock </span>
+        <span class = 'out_of_stock_msg hidden'> Out Of Stock </span>
       </div>
       <div class='col-md-3'>
         <%= a.input :amount ,placeholder: 'amount', readonly: true, input_html: {class: 'amt' } %>

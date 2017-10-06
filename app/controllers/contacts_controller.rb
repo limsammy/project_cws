@@ -54,14 +54,11 @@ class ContactsController < ApplicationController
     @product_id =[]
     @categories = Category.all
     @products = @categories.first.products
-    # @products = Category.find(2).products
   end
-
   def find_product
     @product_id = params[:product_id]
     @products = Category.find(params[:category_id]).try(:products)
   end
-
   private
   def contact_params
     params.require(:contact).permit(

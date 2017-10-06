@@ -15,7 +15,7 @@
     <% if(params[:contact_id].present?) %>
       <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, selected: params[:contact_id] %>
     <% else %>
-        <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+        <%= f.input :contact_id, label: "Contact", collection: Contact.all.map{|a| [a.name, a.id]}, prompt: 'Select Contact' %>
     <% end %>
   </div>
 </div>
@@ -29,7 +29,7 @@
 </div>
 <h4> Order Items </h4>
   <%= f.fields_for :order_items do |a| %>
-    <div class= 'row'>
+    <div class= 'main row'>
       <div class='col-md-3'>
         <%= a.input :product_id, collection: Product.all.map{|a| [a.name, a.id]}, prompt: 'Select product', input_html: { :class => 'product_id' } %>
       </div>

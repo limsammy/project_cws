@@ -22,7 +22,7 @@
       <%= f.input :category_id, collection: Category.all.map{|i| [i.name, i.id]} %>
     </div>
   </div>
-  <div class='col-md-12 select_lbl'>
+  <div class='col-md-12'>
     <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
   </div>
 <%end %>

@@ -1,0 +1,63 @@
+<div class="row ">
+  <div class="col-md-12 line_desp white-box">
+    <h3> CATEGORIES </h3>
+
+      <% @categories.each do |item| %>
+        <div class="col-md-3">
+          <%= link_to item.name, '#', id: item.id, class: 'list_prod include_product card card-block cstm_card'%>
+        </div>
+      <% end %>
+
+  </div>
+</div>
+<% selected_item =  selected_item.present? ? selected_item : ''%>
+<div id="list_product_datatable">
+  <%= render partial: 'contacts/shared/product_list', locals: { products: @products, selected_item: selected_item  } %>
+</div>
+
+<button name="button" type="submit" id='add_item', class="btn btn-info">Add Products</button>
+<div class="cstm_chkout">
+  <%= button_to '#', class: "btn btn-success waves-effect waves-light add_order" do %>
+    <span class="btn-label"><i class="fa fa-check"></i></span>
+    Checkout
+</div>
+<%end%>
+
+<script>
+  var selected = [];
+  $('#add_item').click(function() {
+    $('#list_product_datatable input:checked').each(function() {
+        selected.push($(this).attr("id"));
+    });
+  });
+
+  $(document).on('click', '.include_product', function(){
+    console.log("clicked")
+    console.log("clicked1")
+      var selected_list = selected;
+      var s = '<%= selected_item %>'
+      var id = '<%= params[:id] %>'
+      $.ajax({
+        url: '/contacts/'+ id + '/find_product',
+        data: {
+          category_id: this.id,
+          product_id: selected
+        },
+        type: "get"
+      });
+
+    })
+
+  $(document).on('click','.add_order', function(){
+    var product_list = selected;
+    var contact_id = '<%= params[:id] %>'
+    var customer_id = '<%=  params[:customers_id] %>'
+    $.ajax({
+        url: '/orders/new',
+        data: {product_id: product_list, contact_id: contact_id, customer_id: customer_id },
+        type: "get"
+      });
+
+    })
+
+</script>

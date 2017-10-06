@@ -3,8 +3,19 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.order_items.build
+    if params[:product_id].present?
+      params[:product_id].each do |product_id|
+        product = Product.find(product_id)
+        @order.order_items.build(product_id: product.id, unit_price: product.price)
+      end
+    else
+      @order.order_items.build
+    end
     @order.build_shipping_address
+    respond_to do | format|
+      format.js { render js: "window.location = '#{new_order_path(contact_id: params[:contact_id], product_id: params[:product_id])}'"}
+      format.html { render :action => 'new' }
+    end
   end
 
   def edit
@@ -23,6 +34,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
   def show
     @order = Order.find(params[:id])
   end
@@ -43,7 +55,8 @@ class OrdersController < ApplicationController
       end
     end
   end
-   def destroy
+
+  def destroy
     @order = Order.find(params[:id])
     @order.destroy
     respond_to do |format|

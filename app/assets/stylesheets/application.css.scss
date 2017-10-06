@@ -201,6 +201,27 @@ a:hover{
   // margin-bottom: 20%;
 }
 
+.line_desp{
+  margin-top:10px;
+  padding-left:0px;
+}
+
+.line_desp h3{
+  font-weight:500;
+  padding-left:7.5px;
+}
+
+.line_desp .cstm_card{
+  color: #fff;
+  background-color: rgb(68, 131, 202);
+  text-align:center;
+}
+
+.cstm_chkout{
+  display:inline-block;
+  float:right;
+}
+
 /*======Media query==============*/
 
 @media screen and (max-width:1400px) and (min-width:768px){

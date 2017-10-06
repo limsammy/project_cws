@@ -50,6 +50,15 @@ class ContactsController < ApplicationController
     @contacts = Contact.all
   end
 
+  def select_product
+    @product_id =[]
+    @categories = Category.all
+    @products = @categories.first.products
+  end
+  def find_product
+    @product_id = params[:product_id]
+    @products = Category.find(params[:category_id]).try(:products)
+  end
   private
   def contact_params
     params.require(:contact).permit(:id, :customer_id, :name, :email, :fax, :department, :title, :mob_number, :_destroy, address_attributes: [:id, :line_1, :line_2, :country, :state, :zip, :city])

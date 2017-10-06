@@ -14,7 +14,6 @@
     <%= f.input :fax,  placeholder: 'Fax' %>
   </div>
 </div>
-
 <div  class="row">
   <div class='col-md-6'>
     <%= f.input :title, placeholder: 'Title' %>
@@ -23,11 +22,15 @@
     <%= f.input :department, placeholder: 'Department' %>
   </div>
 </div>
-
+<div>
+  <%= f.input :customer_id, collection: Customer.all.map{|a| [a.name, a.id]}, prompt: 'Select Customer' %>
+</div>
 <h3>
   Address
 </h3>
-<%= f.fields_for :address do |addr| %>
-  <%= render partial:'customers/shared/address', locals: {addr: addr}  %>
-<%end%>
-
+  <%= f.fields_for :address do |addr| %>
+    <%= render partial:'customers/shared/address', locals: {addr: addr}  %>
+  <%end%>
+<div class='col-md-12 select_lbl'>
+  <%= f.submit 'Save',class: 'btn btn-info btn-lg'%>
+</div>

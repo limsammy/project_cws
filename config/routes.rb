@@ -28,11 +28,20 @@ Rails.application.routes.draw do
   end
 
   resources :customers do
+     collection do
+
+    end
 
   end
 
   resources :contacts do
+    member do
+      get :select_product
+      get :find_product
+      get :adding_order
+    end
     collection do
+      get :product_save
     end
   end
   resources :products do

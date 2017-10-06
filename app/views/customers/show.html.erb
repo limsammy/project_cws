@@ -10,33 +10,36 @@
  -->        </span>
       </div>
     </div>
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Shipping Address</label>
-      <div class="col-md-9">
-        <p>Line1: <%= @customer.shipping_address.line_1 %></p>
-        <p> Line2: <%= @customer.shipping_address.line_2 %></p>
-        <p> Zip:<%= @customer.shipping_address.zip %></p>
+    <%if @customer.shipping_address.present?%>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Shipping Address</label>
+        <div class="col-md-9">
+          <p>Line1: <%= @customer.shipping_address.line_1 %></p>
+          <p> Line2: <%= @customer.shipping_address.line_2 %></p>
+          <p> Zip:<%= @customer.shipping_address.zip %></p>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Billing Address</label>
-      <div class="col-md-9">
-        <p>Line1: <%= @customer.billing_address.line_1 %></p>
-        <p> Line2: <%= @customer.billing_address.line_2 %></p>
-        <p> Zip:<%= @customer.billing_address.zip %></p>
+    <%end%>
+    <%if @customer.billing_address.present?%>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Billing Address</label>
+        <div class="col-md-9">
+          <p>Line1: <%= @customer.billing_address.line_1 %></p>
+          <p> Line2: <%= @customer.billing_address.line_2 %></p>
+          <p> Zip:<%= @customer.billing_address.zip %></p>
+        </div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Additional Address</label>
-      <div class="col-md-9">
-        <p>Line1: <%= @customer.additional_address.line_1 %></p>
-        <p> Line2: <%= @customer.additional_address.line_2 %></p>
-        <p> Zip:<%= @customer.additional_address.zip %></p>
+    <%end%>
+    <%if @customer.billing_address.present?%>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Additional Address</label>
+        <div class="col-md-9">
+          <p>Line1: <%= @customer.additional_address.line_1 %></p>
+          <p> Line2: <%= @customer.additional_address.line_2 %></p>
+          <p> Zip:<%= @customer.additional_address.zip %></p>
+        </div>
       </div>
-    </div>
-
+    <%end%>
     <div class="form-group">
       <label class="col-md-3" for="fn">phone:</label>
       <div class="col-md-9">

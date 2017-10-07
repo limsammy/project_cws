@@ -13,10 +13,20 @@ describe "User logs in and creates a customer" do
       click_on "Log in"
 
       click_on "Customers"
-
       click_on "Create Customer"
 
       expect(current_path).to eq(new_customer_path)
+
+      fill_in "customer[name]", with: 'Yale Medical Center'
+      fill_in "customer[phone_number]", with: '5039392923'
+      fill_in "customer[fax]", with: '5039392923'
+      fill_in "customer[department]", with: 'Pathology'
+
+      click_on "Add contact"
+
+      show_page
+      expect(page).to have_content("Contact")
+      expect(page).to have_content("Name")
     end
   end
 end

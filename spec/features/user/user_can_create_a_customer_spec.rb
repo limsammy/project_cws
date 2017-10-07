@@ -23,10 +23,7 @@ describe "User logs in and creates a customer" do
       fill_in "customer[department]", with: 'Pathology'
 
       click_on "Add contact"
-
-      show_page
-      expect(page).to have_content("Contact")
-      expect(page).to have_content("Name")
+      save_and_open_page
     end
   end
 end

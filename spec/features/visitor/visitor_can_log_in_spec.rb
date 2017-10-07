@@ -13,6 +13,7 @@ describe "Visitor can log in" do
       click_on "Log in"
 
       expect(current_path).to eq(root_path)
+      expect(page).to have_content('Dashboard')
     end
   end
 end

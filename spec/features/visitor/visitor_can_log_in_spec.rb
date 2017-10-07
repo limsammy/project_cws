@@ -3,38 +3,16 @@ require 'rails_helper'
 describe "Visitor can log in" do
   context "visitor tries to visit website" do
     scenario "user clicks signs in and state is saved" do
-      user = create(:user)
-      category = create(:category)
-      item1 = create(:item, category: category)
-      item2 = create(:item, category: category)
+      user = User.create!(email: 'example@mail.com', password: '123456')
 
-      visit items_path
+      visit root_path
 
-      within ".index_item_#{item1.id}" do
-        click_on "Add to Cart"
-      end
+      fill_in "user[email]", with: user.email
+      fill_in "user[password]", with: user.password
 
-      within ".index_item_#{item2.id}" do
-        click_on "Add to Cart"
-      end
+      click_on "Log in"
 
-      visit cart_path
-
-      click_on "Login or Create Account to Checkout"
-
-      fill_in "session[username]", with: user.username
-      fill_in "session[password]", with: user.password
-      click_button "Login"
-
-      visit cart_path
-
-      click_on "Checkout"
-
-      expect(current_path).to eq(orders_path)
-
-      expect(page).to have_content("Order was successfully placed")
-      expect(page).to have_content("#{Order.last.id}")
-      expect(page).to have_content("ordered")
+      expect(current_path).to eq(root_path)
     end
   end
 end

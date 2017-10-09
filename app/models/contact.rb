@@ -1,6 +1,7 @@
 class Contact < ApplicationRecord
 	has_one :address, as: :addressable, dependent: :destroy
-	has_many :orders, dependent: :destroy
+  has_many :orders, dependent: :destroy
+	belongs_to :customer
 	accepts_nested_attributes_for :address
 	validates :name, presence: true
 	validates :mob_number, length: { minimum:10, maximum:15}, presence: true

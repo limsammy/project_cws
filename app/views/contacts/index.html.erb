@@ -7,24 +7,30 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Customer</th>
             <th>Email</th>
             <th>Mobile</th>
+            <th>Customer</th>
+            <th>Order</th>
             <th>Edit</th>
-            <th> Delete </th>
-            <th> Order </th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
           <% @contacts.each do |contact| %>
             <tr>
               <td><%= link_to "#{contact.name}", contact %></td>
-
               <td><%= contact.email %></td>
               <td><%= contact.mob_number %></td>
+              <td><%= contact.customer.try(:name) %></td>
+              <td>
+                <%= link_to select_product_contact_path(contact) do %>
+                  <i class="fa fa-shopping-cart">
+                    Order
+                  </i>
+                <%end%>
+              </td>
               <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
               <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              <td> <td><%= link_to 'Order', select_product_contact_path(contact) %></td>
             </tr>
           <%end%>
         </tbody>

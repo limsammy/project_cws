@@ -12,6 +12,7 @@
             <th>Mobile</th>
             <th>Edit</th>
             <th> Delete </th>
+            <th> Order </th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
               <td><%= contact.mob_number %></td>
               <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
               <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td> <td><%= link_to 'Order', select_product_contact_path(contact) %></td>
             </tr>
           <%end%>
         </tbody>

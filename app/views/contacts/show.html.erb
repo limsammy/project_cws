@@ -23,48 +23,50 @@
        <span><%= @contact.mob_number %></span>
       </div>
     </div>
-
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Line 1</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.line_1 %></span>
+    <% if(@contact.address.present?) %>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Line 1</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.line_1 %></span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Line 2</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.line_2 %></span>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Zip</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.zip%></span>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Line 2</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.line_2 %></span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-3" for="fn">City</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.city%></span>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Zip</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.zip%></span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-3" for="fn">State</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.state%></span>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">City</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.city%></span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-md-3" for="fn">Country</label>
-      <div class="col-md-9">
-       <span><%= @contact.address.country%></span>
+      <div class="form-group">
+        <label class="col-md-3" for="fn">State</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.state%></span>
+        </div>
       </div>
-    </div>
+
+      <div class="form-group">
+        <label class="col-md-3" for="fn">Country</label>
+        <div class="col-md-9">
+         <span><%= @contact.address.country%></span>
+        </div>
+      </div>
+    <%end %>
     <%= link_to 'Edit', edit_contact_path(@contact) %> |
     <%= link_to 'Back', contacts_path %>
   </fieldset>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectCws</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-84d33c02c557f070209c6d8a8fe63c54a9ca51e88e86fbf9e25d03950786d72c.ico" />
+    
+    <link rel="stylesheet" media="all" href="/assets/application-5de05585e61d27c5e33df64225995b16ebd7d93b396aedf13fceed43943b260e.css" data-turbolinks-track="reload" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"/>
+    <script src="/assets/application-a1102c5b92d07a5c6d6c9dde291f00745c4512b4f04c63336ad5ae6f80338d36.js" data-turbolinks-track="reload"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98340752-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-98340752-2');
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <nav class="navbar navbar-default navbar-static-top m-b-0">
+  <div class="navbar-header">
+    <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse">
+      <i class="ti-menu"></i>
+    </a>
+    <div class="top-left-part logo_img">
+      <a class="logo" href="/">
+        <b>
+          <img src="/assets/mobile-0d740da7358179733afd580dddfc717ebabcba480571274e59a300c065fe7c84.png" alt="Mobile" />
+        </b>
+        <span class="hidden-xs">
+          <img src="/assets/header_logo1-d64aee79386ad63db7ee0a56469ab0130966245819b77e68e61bcc1c41138ef7.png" alt="Header logo1" />
+        </span>
+      </a>
+    </div>
+    <ul class="nav navbar-top-links navbar-left hidden-xs active">
+      <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+      </li>
+      <li class="in">
+        <form role="search" class="app-search hidden-xs">
+          <input type="text" placeholder="Search..." class="form-control"> <a href="" class="active"><i class="fa fa-search"></i></a>
+        </form>
+      </li>
+    </ul>
+      <ul class="nav navbar-top-links navbar-right pull-right">
+        <li class="dropdown ">
+          <a class="fa fa-user dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><b class="hidden-xs">example@mail.com</b> </a>
+          <ul class="dropdown-menu dropdown-user animated flipInY">
+            <li>
+              <a href="/users/1">
+                <i class="fa fa-user"></i>
+                Profile
+</a>            </li>
+            <li>
+              <a rel="nofollow" data-method="delete" href="/users/sign_out">
+                <i class="fa fa-power-off"></i>
+                Logout
+</a>            </li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+</nav>
+
+      <div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+    <ul class="nav" id="side-menu">
+        <li class="nav-small-cap m-t-10"></li>
+        <li>
+          <a href="/" "data-no-turbolink"="true" class="waves-effect">
+            <i class="fa fa-dashboard"></i>
+            <span class="hide-menu">
+              Dashboard
+            </span>
+          </a>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-qrcode"></i> <span class="hide-menu">Orders <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a data-no-turbolink="true" href="/orders/new">
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+</a>                </li>
+                <li>
+                    <a data-no-turbolink="true" href="/orders">
+                      <i class="fa fa-list"></i>
+                       List
+</a>                </li>
+            </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="waves-effect">
+            <i class="fa fa-suitcase"></i>
+              <span class="hide-menu">Customers
+                <span class="fa arrow"></span>
+              </span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a data-no-turbolink="true" href="/customers/new">
+                  <i class=" fa fa-plus-square-o"></i>
+                  <span class="hide-menu">
+                    Create Customer
+                  </span>
+</a>              </li>
+              <li>
+                  <a data-no-turbolink="true" href="/customers">
+                    <i class="fa fa-list"></i>
+                     List
+</a>              </li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-users"></i> <span class="hide-menu">Contacts <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a data-no-turbolink="true" href="/contacts/new">
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+</a>                </li>
+                <li>
+                    <a data-no-turbolink="true" href="/contacts">
+                      <i class="fa fa-list"></i>
+                       List
+</a>                </li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class=" fa fa-users"></i> <span class="hide-menu">Categories <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a data-no-turbolink="true" href="/categories/new">
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+</a>                </li>
+                <li>
+                    <a data-no-turbolink="true" href="/categories">
+                      <i class="fa fa-list"></i>
+                       List
+</a>                </li>
+            </ul>
+        </li>
+        <li><a href="javascript:void(0)" class="waves-effect"><i class="fa fa-product-hunt"></i> <span class="hide-menu">Products <span class="fa arrow"></span></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a data-no-turbolink="true" href="/products/new">
+                      <i class="fa fa-plus-square-o"></i>
+                      Create
+</a>                </li>
+                <li>
+                    <a data-no-turbolink="true" href="/products">
+                      <i class="fa fa-list"></i>
+                       List
+</a>                </li>
+            </ul>
+        </li>
+        <li>
+          <a class="waves-effect" data-no-turbolink="true" href="/users/send_invitation">
+            <i class="fa fa-user"></i>
+            <span class="hide-menu">
+              Invite User
+            </span>
+</a>        </li>
+    </ul>
+  </div>
+</div>
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+  <div class="col-lg-8 col-lg-offset-2 col-md-offset-2 col-md-8 col-sm-12 white-box">
+    <h1 class="text-center"></h1>
+    <form class="simple_form form-material form-horizontal" novalidate="novalidate" id="new_customer" action="/customers" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+      
+      <div  class="row">
+  <div class='col-md-12'>
+    <div class="form-group string required customer_name"><input class="form-control string required form-control masked exp_desp styl_text" placeholder="Customer Name Here" type="text" name="customer[name]" id="customer_name" /></div>
+  </div>
+</div>
+<div  class="row">
+  <div class='col-md-4'>
+    <div class="form-group string required customer_phone_number"><label class="control-label string required" for="customer_phone_number">Phone number</label><input class="form-control string required form-control masked exp_desp " placeholder="phone number" type="text" name="customer[phone_number]" id="customer_phone_number" /></div>
+  </div>
+  <div class='col-md-4'>
+    <div class="form-group string required customer_fax"><label class="control-label string required" for="customer_fax">Fax</label><input class="form-control string required form-control masked exp_desp " placeholder="fax" type="text" name="customer[fax]" id="customer_fax" /></div>
+  </div>
+  <div class='col-md-4'>
+    <div class="form-group string optional customer_department"><label class="control-label string optional" for="customer_department">Department</label><input class="form-control string optional form-control masked exp_desp " placeholder="department" type="text" name="customer[department]" id="customer_department" /></div>
+  </div>
+</div>
+
+<a class="remove4 add_nested_fields" data-association="contacts" data-blueprint-id="contacts_fields_blueprint" href="javascript:void(0)">Add contact</a>
+<br>
+<a class="remove1 add_nested_fields" data-association="billing_address" data-blueprint-id="billing_address_fields_blueprint" href="javascript:void(0)">Add billing Address</a>
+<br>
+
+
+<a class="remove2 add_nested_fields" data-association="shipping_address" data-blueprint-id="shipping_address_fields_blueprint" href="javascript:void(0)">Add Shipping Address</a>
+<br>
+
+
+<a class="remove3 add_nested_fields" data-association="additional_address" data-blueprint-id="additional_address_fields_blueprint" href="javascript:void(0)">Add Additional Address</a>
+
+  <div class='col-md-12 text-center'>
+    <input type="submit" name="commit" value="Save" class="btn btn-info btn-lg" data-disable-with="Save" />
+  </div>
+
+
+<div id="contacts_fields_blueprint" style="display: none" data-blueprint="&lt;div class=&quot;fields&quot;&gt;
+  &lt;h3&gt; Contact&lt;/h3&gt;
+  &lt;div class=&quot;form-group string required customer_contacts_name&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_contacts_attributes_new_contacts_name&quot;&gt;Name&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; placeholder=&quot;Contact name&quot; type=&quot;text&quot; name=&quot;customer[contacts_attributes][new_contacts][name]&quot; id=&quot;customer_contacts_attributes_new_contacts_name&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;form-group string optional customer_contacts_title&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;customer_contacts_attributes_new_contacts_title&quot;&gt;Title&lt;/label&gt;&lt;input class=&quot;form-control string optional&quot; placeholder=&quot;Title&quot; type=&quot;text&quot; name=&quot;customer[contacts_attributes][new_contacts][title]&quot; id=&quot;customer_contacts_attributes_new_contacts_title&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;form-group email required customer_contacts_email&quot;&gt;&lt;label class=&quot;control-label email required&quot; for=&quot;customer_contacts_attributes_new_contacts_email&quot;&gt;Email&lt;/label&gt;&lt;input class=&quot;form-control string email required&quot; placeholder=&quot;Email&quot; type=&quot;email&quot; name=&quot;customer[contacts_attributes][new_contacts][email]&quot; id=&quot;customer_contacts_attributes_new_contacts_email&quot; /&gt;&lt;/div&gt;
+  &lt;div class=&quot;form-group string required customer_contacts_mob_number&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_contacts_attributes_new_contacts_mob_number&quot;&gt;Mobile Number&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; placeholder=&quot;Mobile Number&quot; type=&quot;text&quot; name=&quot;customer[contacts_attributes][new_contacts][mob_number]&quot; id=&quot;customer_contacts_attributes_new_contacts_mob_number&quot; /&gt;&lt;/div&gt;
+  &lt;input type=&quot;hidden&quot; value=&quot;false&quot; name=&quot;customer[contacts_attributes][new_contacts][_destroy]&quot; id=&quot;customer_contacts_attributes_new_contacts__destroy&quot; /&gt;&lt;a class=&quot;remove_nested_fields&quot; data-association=&quot;contacts&quot; href=&quot;javascript:void(0)&quot;&gt;Remove&lt;/a&gt;
+&lt;/div&gt;"></div> <div id="billing_address_fields_blueprint" style="display: none" data-blueprint="&lt;div class=&quot;fields&quot;&gt;
+  &lt;h3&gt; Billing Address&lt;/h3&gt;
+  &lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_billing_address_line_1&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_billing_address_attributes_line_1&quot;&gt;Line 1&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; placeholder=&quot;line 1&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][line_1]&quot; id=&quot;customer_billing_address_attributes_line_1&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string optional customer_billing_address_line_2&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;customer_billing_address_attributes_line_2&quot;&gt;Line 2&lt;/label&gt;&lt;input class=&quot;form-control string optional&quot; placeholder=&quot;line 2&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][line_2]&quot; id=&quot;customer_billing_address_attributes_line_2&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_billing_address_zip&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_billing_address_attributes_zip&quot;&gt;Zip&lt;/label&gt;&lt;input class=&quot;form-control string required zip_code&quot; autocomplete=&quot;off&quot; placeholder=&quot;zip&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][zip]&quot; id=&quot;customer_billing_address_attributes_zip&quot; /&gt;&lt;/div&gt;
+        &lt;span class = &quot;zipcode_error hidden&quot;&gt;Enter Valid Zip Code
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_billing_address_city&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_city&quot;&gt;City&lt;/label&gt;&lt;input class=&quot;form-control string optional city_dropdown &quot; id=&quot;dropdown_city&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][city]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_billing_address_state&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_state&quot;&gt;State&lt;/label&gt;&lt;input class=&quot;form-control string optional state_dropdown &quot; id=&quot;dropdown_state&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][state]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_billing_address_country&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;dd_country&quot;&gt;Country&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; id=&quot;dd_country&quot; type=&quot;text&quot; name=&quot;customer[billing_address_attributes][country]&quot; /&gt;&lt;/div&gt;
+      &lt;/div &gt;
+    &lt;/div &gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;"></div> <div id="shipping_address_fields_blueprint" style="display: none" data-blueprint="&lt;div class=&quot;fields&quot;&gt;
+  &lt;h3&gt;Shipping Address&lt;/h3&gt;
+  &lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_shipping_address_line_1&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_shipping_address_attributes_line_1&quot;&gt;Line 1&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; placeholder=&quot;line 1&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][line_1]&quot; id=&quot;customer_shipping_address_attributes_line_1&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string optional customer_shipping_address_line_2&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;customer_shipping_address_attributes_line_2&quot;&gt;Line 2&lt;/label&gt;&lt;input class=&quot;form-control string optional&quot; placeholder=&quot;line 2&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][line_2]&quot; id=&quot;customer_shipping_address_attributes_line_2&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_shipping_address_zip&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_shipping_address_attributes_zip&quot;&gt;Zip&lt;/label&gt;&lt;input class=&quot;form-control string required zip_code&quot; autocomplete=&quot;off&quot; placeholder=&quot;zip&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][zip]&quot; id=&quot;customer_shipping_address_attributes_zip&quot; /&gt;&lt;/div&gt;
+        &lt;span class = &quot;zipcode_error hidden&quot;&gt;Enter Valid Zip Code
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_shipping_address_city&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_city&quot;&gt;City&lt;/label&gt;&lt;input class=&quot;form-control string optional city_dropdown &quot; id=&quot;dropdown_city&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][city]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_shipping_address_state&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_state&quot;&gt;State&lt;/label&gt;&lt;input class=&quot;form-control string optional state_dropdown &quot; id=&quot;dropdown_state&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][state]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_shipping_address_country&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;dd_country&quot;&gt;Country&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; id=&quot;dd_country&quot; type=&quot;text&quot; name=&quot;customer[shipping_address_attributes][country]&quot; /&gt;&lt;/div&gt;
+      &lt;/div &gt;
+    &lt;/div &gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;"></div> <div id="additional_address_fields_blueprint" style="display: none" data-blueprint="&lt;div class=&quot;fields&quot;&gt;
+  &lt;h3&gt;Additional Address&lt;/h3&gt;
+  &lt;div class=&quot;main&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_additional_address_line_1&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_additional_address_attributes_line_1&quot;&gt;Line 1&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; placeholder=&quot;line 1&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][line_1]&quot; id=&quot;customer_additional_address_attributes_line_1&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string optional customer_additional_address_line_2&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;customer_additional_address_attributes_line_2&quot;&gt;Line 2&lt;/label&gt;&lt;input class=&quot;form-control string optional&quot; placeholder=&quot;line 2&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][line_2]&quot; id=&quot;customer_additional_address_attributes_line_2&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_additional_address_zip&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;customer_additional_address_attributes_zip&quot;&gt;Zip&lt;/label&gt;&lt;input class=&quot;form-control string required zip_code&quot; autocomplete=&quot;off&quot; placeholder=&quot;zip&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][zip]&quot; id=&quot;customer_additional_address_attributes_zip&quot; /&gt;&lt;/div&gt;
+        &lt;span class = &quot;zipcode_error hidden&quot;&gt;Enter Valid Zip Code
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_additional_address_city&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_city&quot;&gt;City&lt;/label&gt;&lt;input class=&quot;form-control string optional city_dropdown &quot; id=&quot;dropdown_city&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][city]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div  class=&quot;row&quot;&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+      &lt;div class=&quot;form-group string optional customer_additional_address_state&quot;&gt;&lt;label class=&quot;control-label string optional&quot; for=&quot;dropdown_state&quot;&gt;State&lt;/label&gt;&lt;input class=&quot;form-control string optional state_dropdown &quot; id=&quot;dropdown_state&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][state]&quot; /&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#39;col-md-6 select_lbl&#39;&gt;
+        &lt;div class=&quot;form-group string required customer_additional_address_country&quot;&gt;&lt;label class=&quot;control-label string required&quot; for=&quot;dd_country&quot;&gt;Country&lt;/label&gt;&lt;input class=&quot;form-control string required&quot; id=&quot;dd_country&quot; type=&quot;text&quot; name=&quot;customer[additional_address_attributes][country]&quot; /&gt;&lt;/div&gt;
+      &lt;/div &gt;
+    &lt;/div &gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;"></div></form>  </div>
+</div>
+
+
+
+
+
+            </div>
+          </div>
+    <footer class="footer my_footer center ">
+   <div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+        <div class="logofooter">
+          <img src="/assets/mobile-0d740da7358179733afd580dddfc717ebabcba480571274e59a300c065fe7c84.png" alt="Mobile" />
+        </div>
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+    </div>
+  </div>
+    <div class="row">
+       <div class="col-md-12 text-center">
+         2017 &copy; cWs | build-v1.3
+       </div>
+
+    </div>
+  </div>
+</div>
+
+   <!-- 2017 &copy; cWs | build-v1.0 -->
+</footer>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
